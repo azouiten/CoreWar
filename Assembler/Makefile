@@ -6,7 +6,7 @@
 #    By: azouiten <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/06 12:38:23 by azouiten          #+#    #+#              #
-#    Updated: 2019/12/14 10:35:17 by azouiten         ###   ########.fr        #
+#    Updated: 2019/12/16 18:30:47 by azouiten         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@ SRC_PATH = src
 
 OBJ_PATH = obj
 
-SRC_NAME = assembler.c
+SRC_NAME = lexical_analysis.c \
+		   syntax_analysis.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 
@@ -41,13 +42,13 @@ $(NAME):$(OBJ)
 	$(CC) $(CFLAGS) $(INCL) $(INCLLFT) -lft $^ -o $@
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
-	@mkdir $(OBJ_PATH) 2> NULL || true
+	@mkdir $(OBJ_PATH) 2> /dev/random || true
 	$(CC) $(CFLAGS) $(INCL) -c $< -o $@
 
 clean:
 	@make -C libft fclean
 	@rm -vf $(OBJ)
-	@rm -vrf $(OBJ_PATH) > NULL || true
+	@rm -vrf $(OBJ_PATH) > /dev/random || true
 
 fclean: clean
 	@make -C libft fclean
