@@ -39,7 +39,8 @@ int      ft_count_champions(char **argv)
         wn = 1;
         while (argv[wn])
         {
-                if (!ft_strequ(argv[wn], "-n") && ft_check_cor_extension(argv[wn]))
+                if (!ft_strequ(argv[wn], "-n")
+                && ft_check_cor_extension(argv[wn]))
                         champions++;
                 else
                 {
