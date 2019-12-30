@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 17:56:42 by ohachim           #+#    #+#             */
-/*   Updated: 2019/12/28 15:11:37 by ohachim          ###   ########.fr       */
+/*   Updated: 2019/12/30 16:06:56 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,22 +68,24 @@ typedef union           u_reg
 
 typedef struct          s_process
 {
-    union u_reg			program_counter; //  TODO Check this, possible change type to u_reg.
-    union u_reg         *registries;
+    //int			program_counter; //  TODO Check this, possible change type to u_reg.
+   	//int         *registries;
 	int					current_op;
 	int					bytes_to_next_op;
 	int					cycles_till_op;
     int                 carry;
 	int					last_live;
-	
+	struct s_process	*next;	
 }                       t_process;
+
 typedef struct			s_global
 {
     struct s_champion	*champions;
-    struct s_process    *processes;
+    //struct s_process    *processes;
 	struct s_champion	last_live_player;
     unsigned char       *arena;
     char                **error_buf;
+	int				last_champion_index;
 	int					number_of_checks;
     int                 valid_champions;
     int                 champion_count;
