@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/26 14:23:25 by ohachim           #+#    #+#             */
-/*   Updated: 2019/12/30 15:54:56 by ohachim          ###   ########.fr       */
+/*   Updated: 2019/12/30 16:57:59 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ static void	ft_get_starting_points(t_global *global_data)
 		checked++;
 	}
 	global_data->last_champion_index = i;
+	global_data->last_live_player = global_data->champions[i];
+	ft_printf("last live player init ---%s--\n", global_data->last_live_player.byte_name);
 }
 
 static void	ft_get_valid_champions_count(t_global *global_data)
