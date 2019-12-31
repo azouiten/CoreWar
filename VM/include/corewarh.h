@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 17:56:42 by ohachim           #+#    #+#             */
-/*   Updated: 2019/12/30 17:55:59 by ohachim          ###   ########.fr       */
+/*   Updated: 2019/12/31 01:51:13 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@
 # define OUT ft_printf("Out\n");
 
 # include <stdlib.h>
-# include <unistd.h>
-# include <string.h>
+# include <unistd.h> 
 # include <libft.h>
 # include "op.h"
 # include <stdio.h> // Should remove.
@@ -64,15 +63,16 @@ typedef union 			u_hexa
 typedef struct          	s_process
 {
 	//int			program_counter; // Will keep up with where the process is in the arena.
-	//int         		*registries;
+	int			alive;
+	int         		registries[REG_NUMBER]; // Will be used by champions, first registry contains the champion's index in its negative format for some reason, the others will be initialized with 0s.
 	int			carriage_number; // Must be unique.
 	int			carry; // Don't know its purpose yet, will be initialized with 0, some operations will be able to change its value.
 	int			current_op; // Might change type later, will help us indentify the operation in which the process is currently sitting on.
-	int			last_live_cycle; // The number of cycle where this process last declared live.
-	int			process_cursor; // The value of where the process is sitting; might be referring to the PC (Program Counter).
-	//int			bytes_to_next_op;
+	int			last_live_cycle; // The number of cycle where live was decalared last..
 	int			cycles_till_op; // The number of cycles remaining till the current operation executes.
-	struct s_process	*next;	
+	int			process_cursor; // The value of where the process is sitting; might be referring to the PC (Program Counter).
+	int			bytes_to_next_op; // The number of bytes needed to be crossed to get to the next operation.
+	struct s_process	*next; // Processes start with the champion with the highest index, newborn processes get added last probably.	
 }                       	t_process;
 
 typedef struct			s_global
@@ -82,7 +82,7 @@ typedef struct			s_global
 	struct s_champion	last_live_player; // The player who last declared it was alive, will be initialized with the player with the highest index.
 	unsigned char		*arena; // The chunk of memory will the champions's code will be executed.
 	char			**error_buf; // An array where error messages are stored.
-	int			last_champion_index; // The bigest index with a valid champion in global.champions.
+//	int			last_champion_index; // The bigest index with a valid champion in global.champions.
 	int			champion_count; // The number of champions given as arguments, checks for the .cor extension to choose what's a champion.
 	int			valid_champions; // Counts the number of champions who survived the error checks.
 	int			cycle_since_start; // How many cycles past since beginning of the game. Still don't know where this will be usefull.
@@ -92,6 +92,7 @@ typedef struct			s_global
 
 }				t_global;
 
+void				ft_create_initial_processes(t_global *global_data); // Created initial processes and initalizes their content.
 void				ft_fill_arena(t_global *global_data); // Creates the arena, transports the valid champions s code to their rightful place in the arena.
 void				ft_prepare_arena(t_global *global_data); // Allocated unsigned char arena and fills counts the number of valid players, it with 0s, fixes the starting point of every champion.
 int				ft_dodge_bytes(t_global *global_data, int i, int bytes, int error_num); // Dodges 4 bytes by reading them.

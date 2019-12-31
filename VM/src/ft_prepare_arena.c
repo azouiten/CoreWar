@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/26 14:23:25 by ohachim           #+#    #+#             */
-/*   Updated: 2019/12/30 16:57:59 by ohachim          ###   ########.fr       */
+/*   Updated: 2019/12/31 01:29:55 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,11 @@ static void	ft_get_starting_points(t_global *global_data)
 		|| global_data->champions[i].starting_point != -1)
 			i++;
 		global_data->champions[i].starting_point = mem_point;
-	//	global_data->processes[checked].program_counter.value = mem_point; // TODO Make it into a linked list.
-	//	global_data->processes[checked].registries[0].value = checked * -1; // TODO check if this value needs to be negative.
 		mem_point = mem_point + step;
 		checked++;
 	}
-	global_data->last_champion_index = i;
+//	global_data->last_champion_index = i;
 	global_data->last_live_player = global_data->champions[i];
-	ft_printf("last live player init ---%s--\n", global_data->last_live_player.byte_name);
 }
 
 static void	ft_get_valid_champions_count(t_global *global_data)
@@ -61,7 +58,7 @@ void	ft_prepare_arena(t_global *global_data)
 		ft_manage_error(global_data, MALLOC_FAIL, -1, 1);
 	ft_bzero((void*)global_data->arena, MEM_SIZE);
 	ft_get_valid_champions_count(global_data);
-//	ft_create_processes(global_data);
 	ft_get_starting_points(global_data);
+	ft_create_initial_processes(global_data);
 	ft_fill_arena(global_data);
 }

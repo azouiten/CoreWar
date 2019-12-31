@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 18:05:02 by ohachim           #+#    #+#             */
-/*   Updated: 2019/12/30 17:15:54 by ohachim          ###   ########.fr       */
+/*   Updated: 2019/12/31 03:24:47 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,11 @@ static void	ft_init_global_data(t_global *global_data)
 	global_data->error_buf = NULL;
 	global_data->champion_count = 0;
 	global_data->valid_champions = 0;
-	global_data->last_champion_index = -1;
-	/*global_data->cycle_since_start = 0;
+//	global_data->last_champion_index = -1; // Might remove from everywhere.
+	global_data->processes = NULL;
+	global_data->number_lives_declared = 0;
 	global_data->cycles_to_die = CYCLE_TO_DIE;
-	global_data->number_of_checks = 0;*/
+	global_data->number_of_checks = 0;
 }
 
 int		main(int argc, char **argv)
