@@ -6,13 +6,11 @@
 /*   By: azouiten <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/06 13:39:18 by azouiten          #+#    #+#             */
-/*   Updated: 2019/12/16 18:29:16 by azouiten         ###   ########.fr       */
+/*   Updated: 2019/12/31 03:26:47 by azouiten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
-#include "op.h"
-#include <stdio.h>
 
 void	ft_exit(t_data *data, int status)
 {
@@ -35,13 +33,13 @@ int		ft_isplit(char c)
 	return (c == SEPARATOR_CHAR || c == LABEL_CHAR || c == DIRECT_CHAR);
 }
 
-int		ft_istring(char c)
+int		ft_istring(t_data *data, char c)
 {
-	return (c != SEPARATOR_CHAR && c != '\t' && c != ' ' && c != LABEL_CHAR
-			&& c != DIRECT_CHAR);
+	return ((c != SEPARATOR_CHAR && c != '\t' && c != ' ' && c != LABEL_CHAR
+			&& c != DIRECT_CHAR) || data->dquo);
 }
 
-t_token	*token_new_genesis(t_data *data)
+t_token	*token_neo_genesis(t_data *data)
 {
 	t_token	*token;
 
@@ -77,18 +75,26 @@ int		ft_take_token(t_data *data, char *str)
 	while (str[i] && (str[i] == ' ' || str[i] == '\t'))
 		i++;
 	j = i;
-	while (str[i] && ft_istring(str[i]))
+	if (str[i] == '#')
+		return (i);
+	while (str[i] && ft_istring(data, str[i]))
+	{
+		if (str[i] == '"')
+			data->dquo = (data->dquo == 1) ? 0 : 1;
+		if (str[i] == '#')
+			break ;
 		i++;
+	}
 	if (i != j)
 	{
-		token = token_new_genesis(data);
+		token = token_neo_genesis(data);
 		token->piece = ft_strsub(str, j, i - j);
 		ft_add_token(data, token);
 		return (i);
 	}
 	if (str[i] && ft_isplit(str[i]))
 		i++;
-	token = token_new_genesis(data);
+	token = token_neo_genesis(data);
 	token->piece = ft_strsub(str, j, i - j);
 	ft_add_token(data, token);
 	return (i);
@@ -98,9 +104,26 @@ void	ft_add_spliter(t_data *data)
 {
 	t_token	*token;
 
-	token = token_new_genesis(data);
+	token = token_neo_genesis(data);
 	token->piece = ft_strdup("\n");
 	ft_add_token(data, token);
+}
+
+int		ft_rest_string(t_data *data, char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] && str[i] != '"')
+		i++;
+	data->tokens->last->piece = ft_strjoin(data->tokens->last->piece,
+			ft_strsub(str, 0, (str[i] == '"') ? i + 1 : i));
+	if (str[i] == '"')
+	{
+		i++;
+		data->dquo = 0;
+	}
+	return (i);
 }
 
 void	ft_lexical_analysis(t_data *data, char *str)
@@ -108,13 +131,15 @@ void	ft_lexical_analysis(t_data *data, char *str)
 	int	i;
 
 	i = 0;
+	if (data->dquo == 1)
+		i += ft_rest_string(data, str);
 	while (str[i])
 	{
 		if (str[i] == ';' || str[i] == COMMENT_CHAR)// ignores the comments!
 			break ;
 		i += ft_take_token(data, str + i);
 	}
-	if (str[0] != '\0')
+	if (str[0] != '\0' && data->dquo != 1)
 		ft_add_spliter(data);
 	ft_strdel(&str);
 }
@@ -132,7 +157,7 @@ void	ft_parse(t_data *data, char *str)
 	ft_syntax_analysis(data);
 }
 
-t_data	*data_new_genesis(void)
+t_data	*data_neo_genesis(void)
 {
 	t_data	*data;
 
@@ -140,6 +165,7 @@ t_data	*data_new_genesis(void)
 		ft_exit(NULL, 1);
 	data->files = NULL;
 	data->tokens = NULL;
+	data->dquo = 0;
 	return (data);
 }
 
@@ -156,7 +182,7 @@ int				main(int argc, char **argv)
 {
 	t_data	*data;
 
-	data = data_new_genesis();
+	data = data_neo_genesis();
 	ft_check_argument(argc);
 	ft_parse(data, argv[1]);
 	ft_list_tokens(data);
