@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/31 03:57:22 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/05 07:15:58 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/01/05 07:32:36 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 static void	ft_get_new_op(t_global *global_data, t_process **process)
 {
-	(*process)->current_op = global_data->arena[(*process)->process_cursor + 1];
-	ft_printf("%x-----------\n", (*process)->current_op);
+	(*process)->current_op = global_data->arena[(*process)->process_cursor];
+	if ((*process)->current_op > 16 || (*process)->current_op < 1)
+		ft_printf("bad operation in the process number %d.\n", (*process)->carriage_number);
 }
 
 void	ft_get_op(t_global *global_data)
