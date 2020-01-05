@@ -6,13 +6,13 @@
 /*   By: ohachim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/04 18:06:59 by ohachim           #+#    #+#             */
-/*   Updated: 2019/05/26 05:48:32 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/01/05 07:26:36 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	ft_init_opsa(char **a1, char **a2, t_op *as)
+static void	ft_init_opssa(char **a1, char **a2, t_ops *as)
 {
 	as->carry = 0;
 	as->len1 = ft_strlen(*a1) - 1;
@@ -40,7 +40,7 @@ static void	ft_init_opsa(char **a1, char **a2, t_op *as)
 	as->rescn = as->alloc;
 }
 
-static void	ft_check_point(char **res, t_op *as, char **a1, char **a2)
+static void	ft_check_point(char **res, t_ops *as, char **a1, char **a2)
 {
 	res[0][as->rescn] = '.';
 	as->rescn--;
@@ -50,14 +50,14 @@ static void	ft_check_point(char **res, t_op *as, char **a1, char **a2)
 		as->len1--;
 }
 
-static void	ft_one_calc(t_op *as, char **a, char **res, int len)
+static void	ft_one_calc(t_ops *as, char **a, char **res, int len)
 {
 	as->ires = (a[0][len] - '0') + as->carry;
 	as->carry = as->ires / 10;
 	res[0][as->rescn] = (as->ires % 10) + '0';
 }
 
-static char	*ft_calc_add(t_op *a, char **res, char **b, char **c)
+static char	*ft_calc_add(t_ops *a, char **res, char **b, char **c)
 {
 	while (a->len2 >= 0 || a->len1 >= 0)
 	{
@@ -88,10 +88,10 @@ static char	*ft_calc_add(t_op *a, char **res, char **b, char **c)
 
 char		*ft_bi_add(char **a1, char **a2, int fre)
 {
-	t_op	as;
+	t_ops	as;
 	char	*res;
 
-	ft_init_opsa(a1, a2, &as);
+	ft_init_opssa(a1, a2, &as);
 	res = ft_make_s(as.alloc, '0');
 	res[as.alloc + 1] = '\0';
 	while (as.clen2 > as.clen1)

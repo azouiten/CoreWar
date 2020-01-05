@@ -6,7 +6,7 @@
 /*   By: zaz <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2019/12/06 13:30:43 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/01/05 07:27:56 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
  ** Toutes les tailles sont en octets.
  ** On part du principe qu'un int fait 32 bits. Est-ce vrai chez vous ?
  */
-
 #define IND_SIZE				2
 #define REG_SIZE				4
 #define DIR_SIZE				REG_SIZE

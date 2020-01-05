@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/06 23:28:13 by ohachim           #+#    #+#             */
-/*   Updated: 2019/12/24 03:26:17 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/01/05 07:25:46 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ typedef struct				s_ld
 	char					*one;
 }							t_ld;
 
-typedef struct				s_op
+typedef struct				s_ops
 {
 	char					*temp;
 	int						tl;
@@ -67,7 +67,7 @@ typedef struct				s_op
 	int						alloc;
 	char					*mcarry;
 	int						pnt;
-}							t_op;
+}							t_ops;
 
 typedef struct				s_fdta
 {

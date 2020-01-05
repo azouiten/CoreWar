@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 12:23:20 by ohachim           #+#    #+#             */
-/*   Updated: 2019/12/28 13:42:47 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/01/05 06:43:46 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ static void	ft_extract_exec_code(t_global *global_data, int i)
 			global_data->champions[i].hex_code_size)))
 	    ft_manage_error(global_data, DATA_LACK, i, 0);
 	else if (ret < 0)
-	    ft_manage_error(global_data, READ_FAIL, i, 0);
+		ft_manage_error(global_data, READ_FAIL, i, 0);
 }
 
 void	ft_gather_byte_code(t_global *global_data)

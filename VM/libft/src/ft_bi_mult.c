@@ -6,13 +6,13 @@
 /*   By: ohachim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/07 20:18:46 by ohachim           #+#    #+#             */
-/*   Updated: 2019/05/26 06:06:45 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/01/05 07:26:52 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	ft_init_opsm(t_op *ms)
+static void	ft_init_opssm(t_ops *ms)
 {
 	if (ms->clen1 > 0)
 		ms->alloc = ms->len1 - 1;
@@ -31,7 +31,7 @@ static void	ft_init_opsm(t_op *ms)
 		ms->pnt = ms->alloc - ms->clen1 - ms->clen2 - 3;
 }
 
-static void	ft_swapem(char **m1, char **m2, t_op *ms)
+static void	ft_swapem(char **m1, char **m2, t_ops *ms)
 {
 	char	*temp;
 
@@ -51,7 +51,7 @@ static void	ft_swapem(char **m1, char **m2, t_op *ms)
 	ms->dlen1 = ms->len1;
 }
 
-static void	ft_divi_m(t_op *m, char **a, char **b, char **res)
+static void	ft_divi_m(t_ops *m, char **a, char **b, char **res)
 {
 	m->alloc = m->dupa;
 	m->len1 = m->dlen1;
@@ -82,10 +82,10 @@ static void	ft_divi_m(t_op *m, char **a, char **b, char **res)
 char		*ft_bi_mult(char **m1, char **m2)
 {
 	char	*res;
-	t_op	ms;
+	t_ops	ms;
 
 	ft_swapem(m1, m2, &ms);
-	ft_init_opsm(&ms);
+	ft_init_opssm(&ms);
 	if (!(res = (char*)malloc(ms.alloc)))
 		return (NULL);
 	res[ms.alloc - 1] = '\0';

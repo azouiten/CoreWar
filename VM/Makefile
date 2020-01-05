@@ -6,7 +6,7 @@
 #    By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/11 17:52:15 by ohachim           #+#    #+#              #
-#    Updated: 2019/12/30 22:56:49 by ohachim          ###   ########.fr        #
+#    Updated: 2020/01/05 07:24:29 by ohachim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,10 @@ SRC_NAME = main.c \
 	   ft_manage_error.c \
 	   ft_prepare_arena.c \
 	   ft_fill_arena.c \
-	   ft_create_initial_processes.c
+	   ft_create_initial_processes.c \
+	   ft_battlegrounds.c \
+	   ft_get_op.c \
+	   op.c
 
 SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
 
@@ -42,7 +45,7 @@ LDLIBS = -lft
 
 NAME = corewar
 
-DEPS = include/corewarh.h
+DEPS = include/corewarh.h include/op.h
 
 CC = gcc
 

@@ -6,20 +6,15 @@
 /*   By: ohachim <ohachim@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/31 01:34:58 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/02 06:47:52 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/01/05 07:14:51 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewarh.h"
 
-static void	ft_get_op(t_global *global_data)
-{
-	t_pro
-}
-
 static int	ft_enough_processes(t_global *global_data)
 {
-	t_process *temp_processes;
+	t_process *temp_process;
 	int		alive;
 
 	alive = 0;
@@ -30,22 +25,24 @@ static int	ft_enough_processes(t_global *global_data)
 			alive++;
 		temp_process = temp_process->next;
 	}
+	ft_printf("ah shit here we go again%d\n", alive);
 	return (alive);
 }
 
 void	ft_battlegrounds(t_global *global_data)
 {
-	while (global_data->cycles_to_die > 0 && ft_enough_processes(global_data) > 1)
+	while (global_data->cycles_to_die > 0 && ft_enough_processes(global_data) >= 1)
 	{
-		global_data->cycles_since_start = 0;
+		ft_printf("ah shit here we go again\n");
+		global_data->cycle_since_start = 0;
 		while (global_data->cycle_since_start < global_data->cycles_to_die)
 		{
 		/*
 		 * Code execution will happen here.
 		 */
 			ft_get_op(global_data);
-			ft_check_arguments(global_data);
-			ft_execute_op(global_data);
+			/*ft_check_arguments(global_data);
+			ft_execute_op(global_data);*/
 			global_data->cycle_since_start += 1;
 		}
 		/*
@@ -65,6 +62,8 @@ void	ft_battlegrounds(t_global *global_data)
 			global_data->number_of_checks = 0;
 		}
 		global_data->number_lives_declared = 0;
+		global_data->number_of_checks += 1;
+		break ;
 	}
 	/*
 	 * We should keep executing code after cycles_to_die is less than or equal to zero, but this time we do the verification after every cycle.

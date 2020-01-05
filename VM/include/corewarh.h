@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 17:56:42 by ohachim           #+#    #+#             */
-/*   Updated: 2019/12/31 01:51:13 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/01/05 07:23:49 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # include "op.h"
 # include <stdio.h> // Should remove.
 
-enum	                e_errors
+enum				e_errors
 {
 	ZERO_CHAMPION,
 	TOO_MANY_PLAYERS,
@@ -39,6 +39,18 @@ enum	                e_errors
 	ZERO_VALID_CHAMPION,
 	TOTAL
 };
+
+typedef struct			s_op
+{
+	char			*name;
+	int			argc;
+	t_arg_type		tab[3];
+	int			op_code;
+	int			cost;
+	char			*description;
+	int			NA;
+	int			NA0;
+}				t_op;
 
 typedef struct			s_champion
 {
@@ -82,7 +94,7 @@ typedef struct			s_global
 	struct s_champion	last_live_player; // The player who last declared it was alive, will be initialized with the player with the highest index.
 	unsigned char		*arena; // The chunk of memory will the champions's code will be executed.
 	char			**error_buf; // An array where error messages are stored.
-//	int			last_champion_index; // The bigest index with a valid champion in global.champions.
+	//	int			last_champion_index; // The bigest index with a valid champion in global.champions.
 	int			champion_count; // The number of champions given as arguments, checks for the .cor extension to choose what's a champion.
 	int			valid_champions; // Counts the number of champions who survived the error checks.
 	int			cycle_since_start; // How many cycles past since beginning of the game. Still don't know where this will be usefull.
@@ -91,7 +103,7 @@ typedef struct			s_global
 	int			number_of_checks; // How many checks done so far, a check is done after every cycles_to_die, resets to 0 every time we decrement cycles_to_die.
 
 }				t_global;
-
+t_op	op_tab[17];
 void				ft_create_initial_processes(t_global *global_data); // Created initial processes and initalizes their content.
 void				ft_fill_arena(t_global *global_data); // Creates the arena, transports the valid champions s code to their rightful place in the arena.
 void				ft_prepare_arena(t_global *global_data); // Allocated unsigned char arena and fills counts the number of valid players, it with 0s, fixes the starting point of every champion.
@@ -104,4 +116,6 @@ int				ft_count_champions(char **argv); // Counts the number of champions given 
 void				ft_create_champions(t_global *global_data, char **argv); // Allocates to struct champion, and initializes it.
 void				ft_fill_champions(char **argv, t_global *global_data); // Fill champions structure with their file names in the order demanded.
 void				ft_manage_error(t_global *global_data, int error_num, int champion_index, int exit); // Prints error codes, and frees then exits if demanded.
+void				ft_battlegrounds(t_global *global_data);
+void				ft_get_op(t_global *global_data);
 #endif
