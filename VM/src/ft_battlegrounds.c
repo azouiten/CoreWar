@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/31 01:34:58 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/01 21:50:20 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/01/02 06:47:52 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ void	ft_battlegrounds(t_global *global_data)
 		 * Code execution will happen here.
 		 */
 			ft_get_op(global_data);
+			ft_check_arguments(global_data);
+			ft_execute_op(global_data);
 			global_data->cycle_since_start += 1;
 		}
 		/*
