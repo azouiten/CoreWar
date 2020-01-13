@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 17:56:42 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/12 00:21:09 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/01/13 12:00:28 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ typedef struct			s_op
 	int			op_code;
 	int			cost;
 	char			*description;
-	int			NA;
-	int			NA0;
+	int			arguments; // 1 if there is a argument type byte.
+	int			NA0; // defines the size of T_DIR.
 }				t_op;
 
 typedef struct			s_champion
@@ -84,6 +84,7 @@ typedef struct          	s_process
 	int			cycles_till_op; // The number of cycles remaining till the current operation executes.
 	int			process_cursor; // The value of where the process is sitting; might be referring to the PC (Program Counter).
 	int			bytes_to_next_op; // The number of bytes needed to be crossed to get to the next operation.
+	int			arg[3]; // Initialize.
 	struct s_process	*next; // Processes start with the champion with the highest index, newborn processes get added last probably.	
 }                       	t_process;
 
