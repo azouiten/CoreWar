@@ -6,7 +6,7 @@
 #    By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/11 17:52:15 by ohachim           #+#    #+#              #
-#    Updated: 2020/01/05 07:24:29 by ohachim          ###   ########.fr        #
+#    Updated: 2020/01/12 00:20:45 by ohachim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,8 @@ SRC_NAME = main.c \
 	   ft_create_initial_processes.c \
 	   ft_battlegrounds.c \
 	   ft_get_op.c \
-	   op.c
+	   op.c \
+	   ft_get_bit_value.c
 
 SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
 

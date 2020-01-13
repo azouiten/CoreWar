@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 17:56:42 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/05 07:23:49 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/01/12 00:21:09 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,8 @@ typedef struct			s_global
 
 }				t_global;
 t_op	op_tab[17];
+
+int				ft_get_bit_value(int number, int number_bits, int position);
 void				ft_create_initial_processes(t_global *global_data); // Created initial processes and initalizes their content.
 void				ft_fill_arena(t_global *global_data); // Creates the arena, transports the valid champions s code to their rightful place in the arena.
 void				ft_prepare_arena(t_global *global_data); // Allocated unsigned char arena and fills counts the number of valid players, it with 0s, fixes the starting point of every champion.
