@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/31 03:57:22 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/13 12:30:16 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/01/15 09:12:14 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ static int	ft_count_dodge_bytes(t_global *global_data, t_process **process, int 
 	{
 		(*process)->arg[arg_num] = ft_get_bit_value(global_data->arena[(*process)->processd_cursor + arg_type], 2, position);
 		bytes += ft_arg_size((*process)->arg[arg_num];
+				// Must check arguments validity.
 		position += 2;
 		arg_num++;
 	}
@@ -82,8 +83,8 @@ void	ft_get_op(t_global *global_data)
 			ft_get_new_op(global_data, &temp_process);
 		if (temp_process->cycles_till_op > 0)
 			temp_process->cycles_till_op -= 1;
-//		if (temp_process->cycles_till_op == 0 && temp_process->current_op <= 16 && temp_process->current_op >= 1) Condition to exec operation.
-//			ft_execute_op
+		if (temp_process->cycles_till_op == 0 && temp_process->current_op <= 16 && temp_process->current_op >= 1) Condition to exec operation.
+			ft_execute_op(global_data, &temp_process);
 		temp_process = temp_process->next;
 	}
 }
