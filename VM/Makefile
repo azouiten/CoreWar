@@ -6,7 +6,7 @@
 #    By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/11 17:52:15 by ohachim           #+#    #+#              #
-#    Updated: 2020/01/12 00:20:45 by ohachim          ###   ########.fr        #
+#    Updated: 2020/01/15 11:59:30 by ohachim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,8 @@ SRC_NAME = main.c \
 	   ft_battlegrounds.c \
 	   ft_get_op.c \
 	   op.c \
-	   ft_get_bit_value.c
+	   ft_get_bit_value.c \
+	   ft_check_arg_validity.c
 
 SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
 
@@ -69,7 +70,7 @@ all: $(NAME) #visu
 
 $(NAME): $(OBJ)
 	@cd libft ; make
-	$(CC) $^ -o $@ $(LDFLAGS) $(LDLIBS) -g
+	$(CC) $^ -o $@ $(LDFLAGS) $(LDLIBS)
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(DEPS)
 	@mkdir $(OBJ_PATH) 2> /dev/null || true

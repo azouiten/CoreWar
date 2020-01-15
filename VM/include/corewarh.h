@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 17:56:42 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/13 12:00:28 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/01/15 12:13:37 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ typedef struct			s_op
 	int			cost;
 	char			*description;
 	int			arguments; // 1 if there is a argument type byte.
-	int			NA0; // defines the size of T_DIR.
+	int			t_dir_size; // defines the size of T_DIR.
 }				t_op;
 
 typedef struct			s_champion
@@ -121,4 +121,5 @@ void				ft_fill_champions(char **argv, t_global *global_data); // Fill champions
 void				ft_manage_error(t_global *global_data, int error_num, int champion_index, int exit); // Prints error codes, and frees then exits if demanded.
 void				ft_battlegrounds(t_global *global_data);
 void				ft_get_op(t_global *global_data);
+int				ft_check_arg_validity(int arg, int position, int current_op_index);
 #endif
