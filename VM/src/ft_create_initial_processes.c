@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/30 22:11:33 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/05 06:49:28 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/01/16 15:55:19 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ static t_process	*ft_create_process_node(t_global *global_data, int i, int real_
 	temp->cycles_till_op = 0;
 	temp->process_cursor = global_data->champions[i].starting_point;
 	temp->bytes_to_next_op = 0;
+	temp->arg[0] = 0;
+	temp->arg[1] = 0;
+	temp->arg[2] = 0;
 	temp->next = NULL;
 	temp->registries[0] = (real_index + 1) * -1; // Still don't know why.
 	while (count < REG_NUMBER)

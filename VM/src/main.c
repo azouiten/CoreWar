@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 18:05:02 by ohachim           #+#    #+#             */
-/*   Updated: 2019/12/31 03:24:47 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/01/16 14:40:40 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,9 @@ int		main(int argc, char **argv)
 	ft_check_magic_headers(&global_data, 0, 0);
 	ft_gather_byte_code(&global_data);
 	ft_prepare_arena(&global_data);
+	while (i < global_data.champions[0].hex_code_size)
+		ft_printf("[%.2x]", global_data.champions[0].exec_code[i++]);
+	ft_printf("\n");
 	ft_declare_champions(global_data);
 	ft_free_data(&global_data);
 	SUCCESS;

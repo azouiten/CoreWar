@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/31 01:34:58 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/05 07:14:51 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/01/16 16:20:15 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ static int	ft_enough_processes(t_global *global_data)
 			alive++;
 		temp_process = temp_process->next;
 	}
-	ft_printf("ah shit here we go again%d\n", alive);
 	return (alive);
 }
 
@@ -33,9 +32,8 @@ void	ft_battlegrounds(t_global *global_data)
 {
 	while (global_data->cycles_to_die > 0 && ft_enough_processes(global_data) >= 1)
 	{
-		ft_printf("ah shit here we go again\n");
 		global_data->cycle_since_start = 0;
-		while (global_data->cycle_since_start < global_data->cycles_to_die)
+		while (global_data->cycle_since_start < global_data->cycles_to_die) // global_data->cycles_to_die
 		{
 		/*
 		 * Code execution will happen here.
@@ -45,6 +43,7 @@ void	ft_battlegrounds(t_global *global_data)
 			ft_execute_op(global_data);*/
 			global_data->cycle_since_start += 1;
 		}
+		break ;
 		/*
 		 * Maybe count lives here, maybe we count lives while executing code.
 		 * Kill processes that didn't declare live.
@@ -68,5 +67,6 @@ void	ft_battlegrounds(t_global *global_data)
 	/*
 	 * We should keep executing code after cycles_to_die is less than or equal to zero, but this time we do the verification after every cycle.
 	 * Or maybe we just stop after cycle_to_die reaches 0.
+	 * Should we stop when all processes are dead? or when only one process is alive.
 	 */
 }
