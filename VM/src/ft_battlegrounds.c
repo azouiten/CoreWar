@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/31 01:34:58 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/16 19:54:29 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/01/16 20:13:40 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static int	ft_enough_processes(t_global *global_data)
 	}
 	return (alive);
 }
-
+// Remeber to check if player size is too big by reading one extra byte, or not....
 void	ft_battlegrounds(t_global *global_data)
 {
 	while (global_data->cycles_to_die > 0 && ft_enough_processes(global_data) >= 1)

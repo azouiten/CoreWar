@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 17:56:42 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/16 19:49:03 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/01/16 20:09:06 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,29 @@
 # include <libft.h>
 # include "op.h"
 # include <stdio.h> // Should remove.
+
+enum				e_operations
+{
+	ZERO,
+	LIVE,
+	LOAD,
+	STORE,
+	ADDITION,
+	SUBSTRACTION,
+	AND,
+	OR,
+	XOR,
+	JUMP_IF_ZERO,
+	LOAD_INDEX,
+	STORE_INDEX,
+	FORK,
+	LONG_LOAD,
+	LONG_LOAD_INDEX,
+	LONG_FORK,
+	AFF,
+	TOTAL
+},
+
 
 enum				e_errors
 {
