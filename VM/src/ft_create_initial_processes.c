@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/30 22:11:33 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/16 15:55:19 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/01/16 19:49:39 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ static t_process	*ft_create_process_node(t_global *global_data, int i, int real_
 	temp->arg[0] = 0;
 	temp->arg[1] = 0;
 	temp->arg[2] = 0;
+	temp->live_declared = 0;
 	temp->next = NULL;
 	temp->registries[0] = (real_index + 1) * -1; // Still don't know why.
 	while (count < REG_NUMBER)

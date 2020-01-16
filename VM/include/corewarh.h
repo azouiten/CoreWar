@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 17:56:42 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/15 12:13:37 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/01/16 19:49:03 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ typedef struct          	s_process
 	int			carry; // Don't know its purpose yet, will be initialized with 0, some operations will be able to change its value.
 	int			current_op; // Might change type later, will help us indentify the operation in which the process is currently sitting on.
 	int			last_live_cycle; // The number of cycle where live was decalared last..
+	int			live_declared;
 	int			cycles_till_op; // The number of cycles remaining till the current operation executes.
 	int			process_cursor; // The value of where the process is sitting; might be referring to the PC (Program Counter).
 	int			bytes_to_next_op; // The number of bytes needed to be crossed to get to the next operation.

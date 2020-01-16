@@ -6,11 +6,34 @@
 /*   By: ohachim <ohachim@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/31 01:34:58 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/16 16:20:15 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/01/16 19:54:29 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewarh.h"
+
+static int	ft_cremate_dead_processes(t_global *global_data)
+{
+	t_process	*temp_process;
+
+	temp_process = global_data->processes;
+	while (temp_process)
+	{
+		if (!temp_process->alive)
+		{
+			temp_process = temp_process->next;
+			continue ;
+		}
+		if (!temp_process->live_declared)
+		{
+			ft_printf("Kill it\n");
+			temp_process->alive = 0;
+		}
+		temp_process->live_declared = 0;
+		temp_process = temp_process->next;
+	}
+	return (0);
+}
 
 static int	ft_enough_processes(t_global *global_data)
 {
@@ -43,9 +66,9 @@ void	ft_battlegrounds(t_global *global_data)
 			ft_execute_op(global_data);*/
 			global_data->cycle_since_start += 1;
 		}
+		ft_cremate_dead_processes(global_data);
 		break ;
 		/*
-		 * Maybe count lives here, maybe we count lives while executing code.
 		 * Kill processes that didn't declare live.
 		 * Give new values to variables.
 		 * Remeber player who last declared to be alive.
