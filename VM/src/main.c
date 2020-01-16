@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 18:05:02 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/16 14:40:40 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/01/16 19:03:41 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ int		main(int argc, char **argv)
 		ft_printf("[%.2x]", global_data.champions[0].exec_code[i++]);
 	ft_printf("\n");
 	ft_declare_champions(global_data);
+	ft_printf("Contestant %d, \"%s\", has won !\n", global_data.last_live_player.number + 1, global_data.last_live_player.byte_name);
 	ft_free_data(&global_data);
 	SUCCESS;
 }

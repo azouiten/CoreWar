@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/31 03:57:22 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/16 16:43:27 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/01/16 19:10:09 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	ft_arg_size(int	arg, int current_op_index)
 		else
 			return (DIR_SIZE / 2);
 	}
-	return (-1);
+	return (0);
 }
 
 static int	ft_count_dodge_bytes(t_global *global_data, t_process **process)
@@ -41,11 +41,12 @@ static int	ft_count_dodge_bytes(t_global *global_data, t_process **process)
 	arg_num = 0;
 	bytes = 1;
 	position = 7;
-	while (position > 2)
+	while (position > 7 - (2 * op_tab[(*process)->current_op - 1].argc)) // Maybe some macros??
 	{
 		(*process)->arg[arg_num] = ft_get_bit_value(global_data->arena[((*process)->process_cursor + 1) % MEM_SIZE], 2, position);
 		ft_printf("value %d, arg_num %d, position %d, arg_type %d, bit value %d\n", global_data->arena[((*process)->process_cursor + 1) % MEM_SIZE], arg_num, position, 1, (*process)->arg[arg_num]);
 		bytes += ft_arg_size((*process)->arg[arg_num], (*process)->current_op - 1);
+		ft_printf("it's size====> %d\n", ft_arg_size((*process)->arg[arg_num], (*process)->current_op - 1));
 				// Must check arguments validity.
 		if (!ft_check_arg_validity(ft_arg_size((*process)->arg[arg_num], (*process)->current_op - 1), position, (*process)->current_op - 1))
 			fail = 1; // Init.
@@ -69,8 +70,10 @@ static void	ft_execute_op(t_global *global_data, t_process **process)
 		fail = ft_count_dodge_bytes(global_data, process);
 	else
 	{
+		ft_printf("no code type byte\n"); 
 		(*process)->arg[0] = op_tab[(*process)->current_op - 1].tab[0];
 		(*process)->bytes_to_next_op = ft_arg_size(op_tab[(*process)->current_op - 1].tab[0], (*process)->current_op - 1) + 1;
+		ft_printf("bytes to dodge== %d\n", (*process)->bytes_to_next_op);
 	}
 	/*if (!fail)
 		execute*/
@@ -103,14 +106,19 @@ void	ft_get_op(t_global *global_data)
 	temp_process = global_data->processes;
 	while (temp_process)
 	{
-		ft_printf("temp-process--->%d\n", temp_process->cycles_till_op);
+		if (!temp_process->alive && (temp_process = temp_process->next)) // Skip if process is dead.
+			continue ;
 		if (temp_process->cycles_till_op == 0)
 			ft_get_new_op(global_data, &temp_process);
 		if (temp_process->cycles_till_op > 0)
 			temp_process->cycles_till_op -= 1;
 		if (temp_process->cycles_till_op == 0 && temp_process->current_op <= 16 && temp_process->current_op >= 1) //Condition to exec operation.
+		{
+			ft_printf("cursor----%d\n", temp_process->process_cursor);
 			ft_execute_op(global_data, &temp_process);
-		ft_printf("arg----> %d, %d, %d\n", temp_process->arg[0], temp_process->arg[1], temp_process->arg[2]);
+			ft_printf("arg----> %d, %d, %d\n", temp_process->arg[0], temp_process->arg[1], temp_process->arg[2]);
+		}
+
 		temp_process = temp_process->next;
 	}
 }
