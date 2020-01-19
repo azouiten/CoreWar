@@ -6,7 +6,7 @@
 /*   By: azouiten <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 16:39:24 by azouiten          #+#    #+#             */
-/*   Updated: 2019/12/30 21:45:46 by azouiten         ###   ########.fr       */
+/*   Updated: 2020/01/16 16:29:06 by azouiten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include "libft.h"
 #include <unistd.h>
 #include <fcntl.h>
-#include <stdio.h> //hied had l 9lawi
+#include <stdio.h> //to be removed
 
 typedef	struct		s_op
 {
@@ -50,8 +50,12 @@ typedef	struct		s_data
 {
 	struct	s_file	*files;
 	struct	s_token	*tokens;
-	int				curr_pos;
+	struct	s_token	*ltoken;
+	struct	s_label	*labels;
+	int				line;
 	int				dquo;
+	int				n_cmd;
+	int				pos;
 }					t_data;
 
 typedef	struct		s_label
@@ -63,6 +67,6 @@ typedef	struct		s_label
 
 t_op				op_tab[17];
 void				ft_syntax_analysis(t_data *data);
-void				ft_exit(t_data *data, int status);
+void				ft_exit(t_data *data, int line);
 
 #endif
