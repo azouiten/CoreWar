@@ -1,10 +1,11 @@
-.name           "42"
+.name           "42"#""
 .comment        "Just a basic
  Winner 
  Program
  sdjkfkj"
 
-entree:	live	%42# entree
+
+	live %42# entree
 	ld	%0,r5
 	ld	%0,r5
 	zjmp	%:bite
@@ -115,7 +116,7 @@ top:	live	%42
 	ld	%0,r3
 	zjmp	%:topd
 
-
+entree:
 infi:	sti	r1,%:l0,%1
 	sti	r1,%:l1,%1
 	sti	r1,%:l2,%1
