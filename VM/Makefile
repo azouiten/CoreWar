@@ -6,7 +6,7 @@
 #    By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/11 17:52:15 by ohachim           #+#    #+#              #
-#    Updated: 2020/01/15 11:59:30 by ohachim          ###   ########.fr        #
+#    Updated: 2020/01/20 16:30:29 by ohachim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,9 @@ SRC_NAME = main.c \
 	   ft_get_op.c \
 	   op.c \
 	   ft_get_bit_value.c \
-	   ft_check_arg_validity.c
+	   ft_check_arg_validity.c \
+	   ft_execute_hq.c \
+	   ft_execute_live.c
 
 SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
 

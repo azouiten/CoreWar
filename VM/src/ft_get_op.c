@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/31 03:57:22 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/16 19:10:09 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/01/20 16:37:28 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,8 @@ static void	ft_execute_op(t_global *global_data, t_process **process)
 		(*process)->bytes_to_next_op = ft_arg_size(op_tab[(*process)->current_op - 1].tab[0], (*process)->current_op - 1) + 1;
 		ft_printf("bytes to dodge== %d\n", (*process)->bytes_to_next_op);
 	}
-	/*if (!fail)
-		execute*/
+	if (!fail)
+		ft_execute_hq(process, global_data);
 	(*process)->current_op = -1;
 	(*process)->process_cursor = ((*process)->process_cursor + (*process)->bytes_to_next_op) % MEM_SIZE;
 }

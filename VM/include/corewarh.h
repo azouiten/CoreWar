@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 17:56:42 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/16 20:09:06 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/01/20 16:29:57 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ enum				e_operations
 	LONG_LOAD_INDEX,
 	LONG_FORK,
 	AFF,
-	TOTAL
-},
+	NIL
+};
 
 
 enum				e_errors
@@ -92,7 +92,7 @@ typedef struct			s_champion
 typedef union 			u_hexa
 {
 	unsigned char       	buf[4];
-	long long           	value;
+	int	           	value;
 }                       	t_hexa;
 
 typedef struct          	s_process
@@ -128,7 +128,7 @@ typedef struct			s_global
 	int			number_of_checks; // How many checks done so far, a check is done after every cycles_to_die, resets to 0 every time we decrement cycles_to_die.
 
 }				t_global;
-t_op	op_tab[17];
+t_op	op_tab[17]; // Change name for norminette (g_).
 
 int				ft_get_bit_value(int number, int number_bits, int position);
 void				ft_create_initial_processes(t_global *global_data); // Created initial processes and initalizes their content.
@@ -146,4 +146,6 @@ void				ft_manage_error(t_global *global_data, int error_num, int champion_index
 void				ft_battlegrounds(t_global *global_data);
 void				ft_get_op(t_global *global_data);
 int				ft_check_arg_validity(int arg, int position, int current_op_index);
+void				ft_execute_hq(t_process **process, t_global *global_data);
+void				ft_execute_live(t_process **process, t_global *global_data);
 #endif
