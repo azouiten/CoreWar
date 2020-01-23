@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_execute_hq.c                                    :+:      :+:    :+:   */
+/*   ft_get_ind_value.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ohachim <ohachim@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/16 19:59:03 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/23 06:54:08 by ohachim          ###   ########.fr       */
+/*   Created: 2020/01/23 00:41:49 by ohachim           #+#    #+#             */
+/*   Updated: 2020/01/23 06:38:42 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewarh.h"
 
-void	ft_execute_hq(t_process **process, t_global *global_data)
+int	ft_get_ind_value(t_global *global_data, int adress)
 {
-	ft_printf("hwlloooooo %d\n", (*process)->current_op);
-	if ((*process)->current_op == LIVE)
-		ft_execute_live(process, global_data);
-	else if ((*process)->current_op == LOAD)
-		ft_execute_load(process, global_data);
+	t_hexa		ind_union;
+	int		cn;
+
+	cn = 3;
+	while (cn >= 0)
+	{
+		ind_union.buf[cn] = global_data->arena[adress];
+		cn--;
+		adress++;
+	}
+	return (ind_union.value);
 }

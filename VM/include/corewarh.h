@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 17:56:42 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/20 16:29:57 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/01/23 07:02:46 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,7 +145,10 @@ void				ft_fill_champions(char **argv, t_global *global_data); // Fill champions
 void				ft_manage_error(t_global *global_data, int error_num, int champion_index, int exit); // Prints error codes, and frees then exits if demanded.
 void				ft_battlegrounds(t_global *global_data);
 void				ft_get_op(t_global *global_data);
-int				ft_check_arg_validity(int arg, int position, int current_op_index);
+int				ft_check_arg_validity(int arg, int arg_num, int current_op_index);
 void				ft_execute_hq(t_process **process, t_global *global_data);
 void				ft_execute_live(t_process **process, t_global *global_data);
+int				ft_get_ind_value(t_global *global_data, int adress);
+void				ft_execute_load(t_process **process, t_global *global_data);
+
 #endif
