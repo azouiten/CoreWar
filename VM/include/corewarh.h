@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 17:56:42 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/25 04:07:32 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/01/25 10:36:10 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,4 +162,13 @@ int				ft_extract_argument_dir_long(t_global *global_data, t_process **process, 
 int				ft_get_arg(t_process **process, t_global *global_data, int *dodge, int arg_index);
 int				ft_extract_argument_dir_short(t_global *global_data, t_process **process, int byte_distance);
 void				ft_execute_jump_if_zero(t_process **process, t_global *global_data);
+void				ft_arena_cpy(t_global *global_data, int cpy_to, int to_cpy);
+int				ft_get_arg_short(t_process **process, t_global *global_data, int *dodge, int arg_index);
+void				ft_execute_store_index(t_process **process, t_global *global_data);
+void				ft_execute_load_index(t_process **process, t_global *global_data);
+void				ft_execute_fork(t_process **process, t_global *global_data);
+t_process			*ft_duplicate_process(t_process *process, int adress, t_global *global_data);
+void				ft_execute_long_fork(t_process **process, t_global *global_data);
+void				ft_execute_long_load(t_process **process, t_global *global_data);
+void				ft_execute_long_load_index(t_process **process, t_global *global_data);
 #endif

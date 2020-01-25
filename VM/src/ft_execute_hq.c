@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 19:59:03 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/25 03:54:01 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/01/25 10:39:09 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,18 @@ void	ft_execute_hq(t_process **process, t_global *global_data)
 		ft_execute_and(process, global_data);
 	else if ((*process)->current_op == JUMP_IF_ZERO)
 		ft_execute_jump_if_zero(process, global_data);
+	else if ((*process)->current_op == LOAD_INDEX)
+		ft_execute_load_index(process, global_data);
+	else if ((*process)->current_op == STORE_INDEX)
+		ft_execute_store_index(process, global_data);
+	else if ((*process)->current_op == FORK)
+		ft_execute_fork(process, global_data);
+	else if ((*process)->current_op == LONG_FORK)
+		ft_execute_long_fork(process, global_data);
+	else if ((*process)->current_op == LONG_LOAD)
+		ft_execute_long_load(process, global_data);
+	else if ((*process)->current_op == LONG_LOAD_INDEX)
+		ft_execute_long_load_index(process, global_data);
+	else if ((*process)->aff == AFF)
+		ft_execute_aff(process, global_data);
 }

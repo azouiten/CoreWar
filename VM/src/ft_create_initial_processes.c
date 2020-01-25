@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/30 22:11:33 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/16 19:49:39 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/01/25 10:00:23 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static t_process	*ft_create_process_node(t_global *global_data, int i, int real_
 	temp->carriage_number = real_index;
 	temp->alive = 1;
 	temp->carry = 0;
-	temp->current_op = -1;
+	temp->current_op = 0;
 	temp->last_live_cycle = -1;
 	temp->cycles_till_op = 0;
 	temp->process_cursor = global_data->champions[i].starting_point;

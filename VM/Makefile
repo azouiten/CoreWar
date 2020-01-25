@@ -6,7 +6,7 @@
 #    By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/11 17:52:15 by ohachim           #+#    #+#              #
-#    Updated: 2020/01/25 04:06:37 by ohachim          ###   ########.fr        #
+#    Updated: 2020/01/25 10:35:54 by ohachim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,16 @@ SRC_NAME = main.c \
 	   ft_extract_argument_dir_long.c \
 	   ft_get_arg.c \
 	   ft_extract_argument_dir_short.c \
-	   ft_execute_jump_if_zero.c
+	   ft_execute_jump_if_zero.c \
+	   ft_arena_cpy.c \
+	   ft_get_arg_short.c \
+	   ft_execute_store_index.c \
+	   ft_execute_load_index.c \
+	   ft_execute_fork.c \
+	   ft_duplicate_process.c \
+	   ft_execute_long_fork.c \
+	   ft_execute_long_load.c \
+	   ft_execute_long_load_index.c
 
 SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
 

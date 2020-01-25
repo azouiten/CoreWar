@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_arg.c                                       :+:      :+:    :+:   */
+/*   ft_get_arg_short.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ohachim <ohachim@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/25 03:37:34 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/25 10:19:18 by ohachim          ###   ########.fr       */
+/*   Created: 2020/01/25 09:41:58 by ohachim           #+#    #+#             */
+/*   Updated: 2020/01/25 09:45:49 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewarh.h"
 
-int     ft_get_arg(t_process **process, t_global *global_data, int *dodge, int arg_index) // Only works if dir is 4 bytes.
+int     ft_get_arg_short(t_process **process, t_global *global_data, int *dodge, int arg_index) // Only works if dir is 2 bytes.
 {
 	int     arg;
 
@@ -24,14 +24,14 @@ int     ft_get_arg(t_process **process, t_global *global_data, int *dodge, int a
 	}
 	else if ((*process)->arg[arg_index] == IND_CODE)
 	{
-		arg = ft_extract_argument_ind(global_data, process, *dodge);
-		arg = ft_get_ind_value(global_data, (arg + (*process)->process_cursor) % IDX_MOD);
+		arg = ft_extract_argument_ind(global_data, process, *dodge) % IDX_MOD;
+		arg = ft_get_ind_value(global_data, arg + (*process)->process_cursor);
 		*dodge = *dodge + 2;
 	}
 	else if ((*process)->arg[arg_index] == DIR_CODE)
 	{
-		arg = ft_extract_argument_dir_long(global_data, process, *dodge);
-		*dodge = *dodge + 4;
+		arg = ft_extract_argument_dir_short(global_data, process, *dodge);
+		*dodge = *dodge + 2;
 	}
 	return (arg);
 }

@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/31 01:34:58 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/24 00:02:07 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/01/25 10:07:15 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ static int	ft_cremate_dead_processes(t_global *global_data)
 		if (!temp_process->live_declared)
 			temp_process->alive = 0;
 		temp_process->live_declared = 0;
+		temp_process->last_live_cycle = 0; // Might be uselss.
 		temp_process = temp_process->next;
 	}
 	return (0);

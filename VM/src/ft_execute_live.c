@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/19 21:45:10 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/20 16:40:16 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/01/25 10:06:34 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	ft_execute_live(t_process **process, t_global *global_data)
 	int	live_arg_value;
 
 	live_arg_value = ft_extract_argument(global_data, process);
-	(*process)->last_live_cycle = global_data->cycle_since_start;
+	(*process)->last_live_cycle = global_data->cycle_since_start; // Maybe meant for an all time cycle;
 	(*process)->live_declared = 1; // Must reset this.
 	global_data->number_lives_declared++;
 	if (live_arg_value == (*process)->registries[0]) // Maybe add varible to champion struct to know if it's alive.

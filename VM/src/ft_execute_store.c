@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 07:30:06 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/25 03:13:17 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/01/25 09:41:41 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,6 @@ void	ft_print_arena(t_global *global_data, int xs)
 	{
 		ft_printf("[%.2x]", global_data->arena[cn]);
 		cn++;
-	}
-	ft_printf("\n");
-}
-static void	ft_arena_cpy(t_global *global_data, int cpy_to, int to_cpy) // Might make independent.
-{
-	t_hexa	store_hexa;
-	int	cn;
-
-	cn = 3;
-	store_hexa.value = to_cpy;
-	while (cn >= 0)
-	{
-		global_data->arena[cpy_to] = store_hexa.buf[cn];
-		cpy_to++;
-		cn--;
 	}
 	ft_printf("\n");
 }
@@ -57,7 +42,7 @@ void	ft_execute_store(t_process **process, t_global *global_data)
 	if ((*process)->arg[1] == IND_CODE)
 	{
 		second_arg_value = ft_extract_argument_ind(global_data, process, 3) % IDX_MOD;
-		ft_arena_cpy(global_data, second_arg_value + (*process)->process_cursor, (*process)->registries[first_arg_value - 1]);
+		ft_arena_cpy(global_data, (second_arg_value + (*process)->process_cursor) % IDX_MOD, (*process)->registries[first_arg_value - 1]);
 	}
 }
 

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_execute_load.c                                  :+:      :+:    :+:   */
+/*   ft_execute_long_load.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ohachim <ohachim@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/20 16:41:53 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/25 10:27:21 by ohachim          ###   ########.fr       */
+/*   Created: 2020/01/25 10:26:05 by ohachim           #+#    #+#             */
+/*   Updated: 2020/01/25 10:26:26 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewarh.h"
 
-void	ft_execute_load(t_process **process, t_global *global_data)
+void	ft_execute_long_load(t_process **process, t_global *global_data)
 {
 	int	load_arg_value;
 	int	reg_value;
@@ -23,7 +23,7 @@ void	ft_execute_load(t_process **process, t_global *global_data)
 		reg_value = global_data->arena[(*process)->process_cursor + 4];
 		if (reg_value < 1 || reg_value > REG_NUMBER)
 			return ;
-		(*process)->registries[reg_value - 1] = ft_get_ind_value(global_data, ((*process)->process_cursor + load_arg_value) % IDX_MOD);
+		(*process)->registries[reg_value - 1] = ft_get_ind_value(global_data, (*process)->process_cursor + load_arg_value);
 		if ((*process)->registries[reg_value - 1])
 			(*process)->carry = 0;
 		else
