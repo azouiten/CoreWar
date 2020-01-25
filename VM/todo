@@ -1,0 +1,5 @@
+Remove leaks
+protect mallocs
+debug
+make the size tests better
+alloc non .cor files
