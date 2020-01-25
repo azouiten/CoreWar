@@ -6,7 +6,7 @@
 #    By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/11 17:52:15 by ohachim           #+#    #+#              #
-#    Updated: 2020/01/23 06:35:43 by ohachim          ###   ########.fr        #
+#    Updated: 2020/01/25 04:06:37 by ohachim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,18 @@ SRC_NAME = main.c \
 	   ft_execute_hq.c \
 	   ft_execute_live.c \
 	   ft_get_ind_value.c \
-	   ft_execute_load.c
+	   ft_execute_load.c \
+	   ft_execute_store.c \
+	   ft_extract_argument_ind.c \
+	   ft_execute_addition.c \
+	   ft_execute_substraction.c \
+	   ft_execute_or.c \
+	   ft_execute_and.c \
+	   ft_execute_xor.c \
+	   ft_extract_argument_dir_long.c \
+	   ft_get_arg.c \
+	   ft_extract_argument_dir_short.c \
+	   ft_execute_jump_if_zero.c
 
 SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
 

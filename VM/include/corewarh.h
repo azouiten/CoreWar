@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 17:56:42 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/23 07:02:46 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/01/25 04:07:32 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ typedef union 			u_hexa
 {
 	unsigned char       	buf[4];
 	int	           	value;
+	short int		short_value;
 }                       	t_hexa;
 
 typedef struct          	s_process
@@ -148,7 +149,17 @@ void				ft_get_op(t_global *global_data);
 int				ft_check_arg_validity(int arg, int arg_num, int current_op_index);
 void				ft_execute_hq(t_process **process, t_global *global_data);
 void				ft_execute_live(t_process **process, t_global *global_data);
-int				ft_get_ind_value(t_global *global_data, int adress);
-void				ft_execute_load(t_process **process, t_global *global_data);
-
+int				ft_get_ind_value(t_global *global_data, int adress); // More debugging needed.
+void				ft_execute_load(t_process **process, t_global *global_data); // More debugging needed.
+void				ft_execute_store(t_process **process, t_global *global_data);
+int				ft_extract_argument_ind(t_global *global_data, t_process **process, int byte_distance);
+void				ft_execute_addition(t_process **process, t_global *global_data);
+void				ft_execute_substraction(t_process **process, t_global *global_data);
+void				ft_execute_or(t_process **process, t_global *global_data);
+void				ft_execute_xor(t_process **process, t_global *global_data);
+void				ft_execute_and(t_process **process, t_global *global_data);
+int				ft_extract_argument_dir_long(t_global *global_data, t_process **process, int byte_distance);
+int				ft_get_arg(t_process **process, t_global *global_data, int *dodge, int arg_index);
+int				ft_extract_argument_dir_short(t_global *global_data, t_process **process, int byte_distance);
+void				ft_execute_jump_if_zero(t_process **process, t_global *global_data);
 #endif

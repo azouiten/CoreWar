@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/31 03:57:22 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/23 07:14:57 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/01/24 00:02:31 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ static int	ft_count_dodge_bytes(t_global *global_data, t_process **process)
 				// Must check arguments validity.
 		if (!ft_check_arg_validity((*process)->arg[arg_num], arg_num, (*process)->current_op - 1)) // Seems good, but must recheck.
 			fail = 1; // Init.
-		ft_printf("shiett boiiiii\n");
 		position -= 2;
 		arg_num++;
 	}
@@ -71,7 +70,6 @@ static void	ft_execute_op(t_global *global_data, t_process **process)
 		(*process)->arg[0] = op_tab[(*process)->current_op - 1].tab[0];
 		(*process)->bytes_to_next_op = ft_arg_size(op_tab[(*process)->current_op - 1].tab[0], (*process)->current_op - 1) + 1;
 	}
-	ft_printf("fail is ----> %d\n", fail);
 	if (!fail)
 		ft_execute_hq(process, global_data);
 	(*process)->current_op = -1;
@@ -87,7 +85,6 @@ static void	ft_get_new_op(t_global *global_data, t_process **process)
 		return ;
 	}
 	(*process)->current_op = global_data->arena[(*process)->process_cursor]; // Will get the current operation's op_code.
-	ft_printf("opcode is ------> %d\n", (*process)->current_op);
 	if ((*process)->current_op > 16 || ((*process)->current_op <= 0))
 	{
 		(*process)->cycles_till_op = 0;

@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_ind_value.c                                 :+:      :+:    :+:   */
+/*   ft_execute_jump_if_zero.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ohachim <ohachim@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/23 00:41:49 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/24 23:45:59 by ohachim          ###   ########.fr       */
+/*   Created: 2020/01/25 03:51:31 by ohachim           #+#    #+#             */
+/*   Updated: 2020/01/25 04:05:29 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewarh.h"
 
-int	ft_get_ind_value(t_global *global_data, int adress)
+void	ft_execute_jump_if_zero(t_process **process, t_global *global_data)
 {
-	t_hexa		ind_union;
+	int	dir_value;
 
-	ind_union.buf[3] = global_data->arena[adress];
-	ind_union.buf[2] = global_data->arena[adress + 1];
-	ind_union.buf[1] = global_data->arena[adress + 2];
-	ind_union.buf[0] = global_data->arena[adress + 3];
-	return (ind_union.value);
+	dir_value = ft_extract_argument_dir_short(global_data, process, 1);
+	if ((*process)->carry)
+		(*process)->process_cursor = (*process)->process_cursor + (dir_value % IDX_MOD);
 }

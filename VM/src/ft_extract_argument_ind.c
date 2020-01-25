@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_ind_value.c                                 :+:      :+:    :+:   */
+/*   ft_extract_argument_ind.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ohachim <ohachim@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/23 00:41:49 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/24 23:45:59 by ohachim          ###   ########.fr       */
+/*   Created: 2020/01/24 01:09:14 by ohachim           #+#    #+#             */
+/*   Updated: 2020/01/25 00:27:50 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewarh.h"
 
-int	ft_get_ind_value(t_global *global_data, int adress)
+int	ft_extract_argument_ind(t_global *global_data, t_process **process, int byte_distance)
 {
-	t_hexa		ind_union;
+	t_hexa	v_union;
 
-	ind_union.buf[3] = global_data->arena[adress];
-	ind_union.buf[2] = global_data->arena[adress + 1];
-	ind_union.buf[1] = global_data->arena[adress + 2];
-	ind_union.buf[0] = global_data->arena[adress + 3];
-	return (ind_union.value);
+	v_union.buf[1] = global_data->arena[(*process)->process_cursor + byte_distance];
+	v_union.buf[0] = global_data->arena[(*process)->process_cursor + byte_distance + 1];
+	return (v_union.short_value);
 }
