@@ -6,7 +6,7 @@
 #    By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/11 17:52:15 by ohachim           #+#    #+#              #
-#    Updated: 2020/01/25 10:35:54 by ohachim          ###   ########.fr        #
+#    Updated: 2020/01/25 10:59:29 by ohachim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,7 +53,8 @@ SRC_NAME = main.c \
 	   ft_duplicate_process.c \
 	   ft_execute_long_fork.c \
 	   ft_execute_long_load.c \
-	   ft_execute_long_load_index.c
+	   ft_execute_long_load_index.c \
+	   ft_execute_aff.c
 
 SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
 

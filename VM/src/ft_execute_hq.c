@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 19:59:03 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/25 10:39:09 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/01/25 10:59:54 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,6 @@ void	ft_execute_hq(t_process **process, t_global *global_data)
 		ft_execute_long_load(process, global_data);
 	else if ((*process)->current_op == LONG_LOAD_INDEX)
 		ft_execute_long_load_index(process, global_data);
-	else if ((*process)->aff == AFF)
+	else if ((*process)->current_op == AFF)
 		ft_execute_aff(process, global_data);
 }
