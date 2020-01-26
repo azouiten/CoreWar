@@ -6,7 +6,7 @@
 /*   By: azouiten <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/06 13:39:18 by azouiten          #+#    #+#             */
-/*   Updated: 2020/01/16 20:09:02 by azouiten         ###   ########.fr       */
+/*   Updated: 2020/01/26 15:53:55 by azouiten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ int		ft_take_token(t_data *data, char *str)
 	t_token	*token;
 
 	i = 0;
-	j = 0;
 	while (str[i] && (str[i] == ' ' || str[i] == '\t'))
 		i++;
 	j = i;
@@ -163,6 +162,7 @@ void	ft_parse(t_data *data, char *str)
 	if (!data->tokens)
 		ft_exit(data, 1);
 	ft_syntax_analysis(data);
+	data->ltoken = data->tokens;
 }
 
 t_data	*data_neo_genesis(void)
@@ -177,7 +177,7 @@ t_data	*data_neo_genesis(void)
 	data->dquo = 0;
 	data->n_cmd = 0;
 	data->pos = 0;
-	data->line = 0;
+	data->line = 1;
 	return (data);
 }
 
@@ -196,6 +196,7 @@ int				main(int argc, char **argv)
 
 	data = data_neo_genesis();
 	ft_check_argument(argc);
+	data->file = argv[1];
 	ft_parse(data, argv[1]);
 	//ft_list_tokens(data);
 	return (0);

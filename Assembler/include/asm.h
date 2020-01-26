@@ -6,7 +6,7 @@
 /*   By: azouiten <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 16:39:24 by azouiten          #+#    #+#             */
-/*   Updated: 2020/01/16 16:29:06 by azouiten         ###   ########.fr       */
+/*   Updated: 2020/01/26 18:47:44 by azouiten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ typedef	struct		s_data
 	struct	s_token	*tokens;
 	struct	s_token	*ltoken;
 	struct	s_label	*labels;
+	int				fd;
+	char			*file;
 	int				line;
 	int				dquo;
 	int				n_cmd;

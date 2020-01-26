@@ -6,7 +6,7 @@
 /*   By: azouiten <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 18:31:08 by azouiten          #+#    #+#             */
-/*   Updated: 2020/01/16 20:38:37 by azouiten         ###   ########.fr       */
+/*   Updated: 2020/01/19 23:10:46 by azouiten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int		ft_check_cmd(t_data *data)
 		data->n_cmd++;
 		return (2);
 	}
-	if (!ft_strcmp(data->ltoken->piece, ".extend")) //need to cover all cmds
+	if (!ft_strcmp(data->ltoken->piece, ".extend")) //need to cover all cmds needs more work!
 		return (3);
 	return (0);
 }
