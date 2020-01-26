@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 18:05:02 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/24 00:07:41 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/01/26 02:16:26 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	ft_declare_champions(t_global global_data)
 			ft_printf("* Player %d, weighing %d bytes, \"%s\" (\"%s\") ", j,
 			global_data.champions[i].hex_code_size,
 			global_data.champions[i].byte_name,
-			global_data.champions[i].comment);
+			global_data.champions[i].comment); // Needs to be edited.
 			ft_printf("With the starting point (\"%d\")\n", global_data.champions[i].starting_point);
 			j++;
 		}

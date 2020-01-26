@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 09:24:56 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/25 09:43:49 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/01/26 02:25:05 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,5 @@ void	ft_execute_store_index(t_process **process, t_global *global_data)
 	dodge = 3;
 	second_arg = ft_get_arg_short(process, global_data, &dodge, 1);
 	third_arg = ft_get_arg_short(process, global_data, &dodge, 2);
-	ft_arena_cpy(global_data, ((*process)->process_cursor + (second_arg + third_arg)) % IDX_MOD, (*process)->registries[reg - 1]);
+	ft_arena_cpy(global_data, (*process)->process_cursor + ((second_arg + third_arg)) % IDX_MOD, (*process)->registries[reg - 1]);
 }

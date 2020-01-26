@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 07:30:06 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/25 09:41:41 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/01/26 02:20:40 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	ft_execute_store(t_process **process, t_global *global_data)
 	if ((*process)->arg[1] == IND_CODE)
 	{
 		second_arg_value = ft_extract_argument_ind(global_data, process, 3) % IDX_MOD;
-		ft_arena_cpy(global_data, (second_arg_value + (*process)->process_cursor) % IDX_MOD, (*process)->registries[first_arg_value - 1]);
+		ft_arena_cpy(global_data, second_arg_value + (*process)->process_cursor, (*process)->registries[first_arg_value - 1]);
 	}
 }
 

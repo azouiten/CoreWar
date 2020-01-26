@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 09:05:50 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/25 09:46:17 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/01/26 02:23:59 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ void	ft_execute_load_index(t_process **process, t_global *global_data)
 	reg = global_data->arena[(*process)->process_cursor + dodge];
 	if (reg < 1 || reg > REG_NUMBER)
 		return ;
-	adress_value = ft_get_ind_value(global_data, ((*process)->process_cursor + (first_arg + second_arg) % IDX_MOD)); // Check if this is how we idx_mode.
+	adress_value = ft_get_ind_value(global_data, ((*process)->process_cursor + ((first_arg + second_arg) % IDX_MOD))); // Check if this is how we idx_mode.
 	(*process)->registries[reg - 1] = adress_value;
 }
