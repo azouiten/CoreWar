@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 09:41:58 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/25 09:45:49 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/01/26 14:21:06 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@ int     ft_get_arg_short(t_process **process, t_global *global_data, int *dodge,
 
 	if ((*process)->arg[arg_index] == REG_CODE)
 	{
-		arg = global_data->arena[(*process)->process_cursor + *dodge];
+		arg = global_data->arena[((*process)->process_cursor + *dodge) % MEM_SIZE];
 		arg = (*process)->registries[arg - 1];
 		*dodge = *dodge + 1;
 	}
 	else if ((*process)->arg[arg_index] == IND_CODE)
 	{
 		arg = ft_extract_argument_ind(global_data, process, *dodge) % IDX_MOD;
-		arg = ft_get_ind_value(global_data, arg + (*process)->process_cursor);
+		arg = ft_get_ind_value(global_data, (arg + (*process)->process_cursor) % MEM_SIZE);
 		*dodge = *dodge + 2;
 	}
 	else if ((*process)->arg[arg_index] == DIR_CODE)

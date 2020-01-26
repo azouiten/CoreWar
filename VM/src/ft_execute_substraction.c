@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 02:10:54 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/25 02:42:23 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/01/26 14:14:38 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	ft_execute_substraction(t_process **process, t_global *global_data)
 	int	third_reg;
 
 	// Hopefully the argument check works fine, must check later.
-	first_reg = global_data->arena[(*process)->process_cursor + 2];
-	second_reg = global_data->arena[(*process)->process_cursor + 3];
-	third_reg = global_data->arena[(*process)->process_cursor + 4];
+	first_reg = global_data->arena[((*process)->process_cursor + 2) % MEM_SIZE];
+	second_reg = global_data->arena[((*process)->process_cursor + 3) % MEM_SIZE];
+	third_reg = global_data->arena[((*process)->process_cursor + 4) % MEM_SIZE];
 	if (first_reg < 1 || first_reg > REG_NUMBER)
 		return ;
 	if (second_reg < 1 || second_reg > REG_NUMBER)
