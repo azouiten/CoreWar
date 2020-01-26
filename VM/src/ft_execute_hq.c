@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 19:59:03 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/25 10:59:54 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/01/26 11:42:32 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	ft_execute_hq(t_process **process, t_global *global_data)
 {
+	ft_printf("\n");
 	if ((*process)->current_op == LIVE)
 		ft_execute_live(process, global_data);
 	else if ((*process)->current_op == LOAD)

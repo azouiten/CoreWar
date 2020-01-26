@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/31 03:57:22 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/24 00:02:31 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/01/26 12:39:26 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,9 @@ static void	ft_execute_op(t_global *global_data, t_process **process)
 	}
 	if (!fail)
 		ft_execute_hq(process, global_data);
+	if (!(*process)->carry || (*process)->current_op != 9)
+		(*process)->process_cursor = ((*process)->process_cursor + (*process)->bytes_to_next_op) % MEM_SIZE;
 	(*process)->current_op = -1;
-	(*process)->process_cursor = ((*process)->process_cursor + (*process)->bytes_to_next_op) % MEM_SIZE;
 }
 
 static void	ft_get_new_op(t_global *global_data, t_process **process)

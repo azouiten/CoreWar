@@ -6,12 +6,12 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 18:05:02 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/26 02:16:26 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/01/26 11:11:01 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewarh.h"
-
+void    ft_print_arena(t_global *global_data, int xs);
 static void	ft_declare_champions(t_global global_data)
 {
 	int	i;
@@ -41,7 +41,6 @@ static void	ft_init_global_data(t_global *global_data)
 	global_data->error_buf = NULL;
 	global_data->champion_count = 0;
 	global_data->valid_champions = 0;
-//	global_data->last_champion_index = -1; // Might remove from everywhere.
 	global_data->processes = NULL;
 	global_data->number_lives_declared = 0;
 	global_data->cycles_to_die = CYCLE_TO_DIE;
@@ -59,9 +58,6 @@ int		main(int argc, char **argv)
 	ft_check_magic_headers(&global_data, 0, 0);
 	ft_gather_byte_code(&global_data);
 	ft_prepare_arena(&global_data);
-	while (i < global_data.champions[0].hex_code_size)
-		ft_printf("[%.2x]", global_data.champions[0].exec_code[i++]);
-	ft_printf("\n");
 	ft_declare_champions(global_data);
 	ft_printf("Contestant %d, \"%s\", has won !\n", global_data.last_live_player.number + 1, global_data.last_live_player.byte_name);
 	ft_free_data(&global_data);

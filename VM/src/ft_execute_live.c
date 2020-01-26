@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/19 21:45:10 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/25 10:06:34 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/01/26 13:33:00 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	ft_extract_argument(t_global *global_data, t_process **process)
 	cn = DIR_SIZE - 1;
 	while (cn >= 0)
 	{
-		live_union.buf[cn] = global_data->arena[(*process)->process_cursor + byte_distance];
+		live_union.buf[cn] = global_data->arena[((*process)->process_cursor + byte_distance) % MEM_SIZE];
 		byte_distance++;
 		cn--;
 	}

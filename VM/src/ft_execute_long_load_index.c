@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 09:05:50 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/25 10:35:35 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/01/26 13:41:40 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ void	ft_execute_long_load_index(t_process **process, t_global *global_data)
 	dodge = 2;
 	first_arg = ft_get_arg_short(process, global_data, &dodge, 0);
 	second_arg = ft_get_arg_short(process, global_data, &dodge, 1);
-	reg = global_data->arena[(*process)->process_cursor + dodge];
+	reg = global_data->arena[((*process)->process_cursor + dodge) % MEM_SIZE];
 	if (reg < 1 || reg > REG_NUMBER)
 		return ;
-	adress_value = ft_get_ind_value(global_data, ((*process)->process_cursor + first_arg + second_arg)); // Check if this is how we idx_mode.
+	adress_value = ft_get_ind_value(global_data, ((*process)->process_cursor + first_arg + second_arg) % MEM_SIZE); // Check if this is how we idx_mode.
 	(*process)->registries[reg - 1] = adress_value;
 }
