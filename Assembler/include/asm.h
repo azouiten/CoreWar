@@ -6,7 +6,7 @@
 /*   By: azouiten <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 16:39:24 by azouiten          #+#    #+#             */
-/*   Updated: 2020/01/26 18:47:44 by azouiten         ###   ########.fr       */
+/*   Updated: 2020/01/27 17:43:13 by azouiten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ typedef	struct		s_op
 	int				op_code;
 	int				cost;
 	char			*description;
-	int				NA;
-	int				NA0;
+	int				p_opc;
+	int				dir_size;
 }					t_op;
 
 typedef	struct		s_file

@@ -6,7 +6,7 @@
 /*   By: azouiten <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 18:31:08 by azouiten          #+#    #+#             */
-/*   Updated: 2020/01/19 23:10:46 by azouiten         ###   ########.fr       */
+/*   Updated: 2020/01/27 18:20:47 by azouiten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,6 @@ int		ft_is_label(char *str)
 	int i;
 
 	i = 0;
-	printf("label{%s}\n", str);
 	if (str[i] != LABEL_CHAR)
 		return (0);
 	i++;
@@ -125,18 +124,14 @@ int		ft_identify_arg(t_data *data)
 {
 	if (data->ltoken->piece[0] == DIRECT_CHAR && (ft_is_num(data->ltoken->next->piece) ||
 				ft_is_label(data->ltoken->next->piece))){
-		printf("dir\n");
 		data->ltoken = data->ltoken->next;
 		return (DIR_CODE);}
 	else if (data->ltoken->piece[0] == 'r' && ft_is_num(data->ltoken->piece + 1)
 			&& (ft_atoi(data->ltoken->piece + 1) < REG_NUMBER)){ // is it < or <=, needs a quick check.
-		printf("reg\n");
 		return (REG_CODE);}
 	else if (ft_is_num(data->ltoken->piece) || ft_is_label(data->ltoken->piece)){
-		printf("ind\n");
 		return (IND_CODE);}
 	else{
-		printf("out we go\n");
 		ft_exit(data, data->ltoken->line);}
 	return (0);
 }
@@ -149,7 +144,6 @@ void	ft_get_arg(t_data *data, int arg)
 	if (!data->ltoken)
 		ft_exit(data, data->ltoken->line);
 	code = ft_identify_arg(data);
-	write(1, "arg\n", 4);
 	if ((code & arg) != code)
 		ft_exit(data, data->ltoken->line);
 }
@@ -172,7 +166,6 @@ void	ft_take_inst(t_data *data, int t)
 		i++;
 		if (i != op_tab[t].argc)
 			ft_get_sep(data);
-		printf("----------\n");
 	}
 	printf("argnum = %i\n", i);
 	printf("+++++++++++++++++++++++++++\n");
