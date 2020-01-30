@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_battlegrounds.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ohachim <ohachim@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/31 01:34:58 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/30 10:32:48 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/01/30 18:34:28 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ static int	ft_cremate_dead_processes(t_global *global_data)
 			temp_process->alive = 0;
 		temp_process->live_declared = 0;
 		temp_process->last_live_cycle = 0; // Might be uselss, Will change to one that keeps an all_time counter.
+		temp_process->arg[0] = 0;
+		temp_process->arg[1] = 0;
+		temp_process->arg[2] = 0;
 		temp_process = temp_process->next;
 	}
 	return (0);
@@ -56,10 +59,9 @@ void	ft_battlegrounds(t_global *global_data)
 		while (global_data->cycle_since_start < global_data->cycles_to_die) // global_data->cycles_to_die
 		{
 			ft_get_op(global_data);
-			ft_print_arena(global_data, MEM_SIZE, global_data->processes->process_cursor);
+			global_data->all_time_cycles += 1;
 			global_data->cycle_since_start += 1;
 		}
-		ft_printf("\n\n");
 		ft_cremate_dead_processes(global_data);
 		if (global_data->number_of_checks >= MAX_CHECKS)
 		{
@@ -74,4 +76,6 @@ void	ft_battlegrounds(t_global *global_data)
 		global_data->number_lives_declared = 0;
 		global_data->number_of_checks += 1;
 	}
+	ft_printf("%d\n", global_data->all_time_cycles);
+	 ft_print_arena(global_data, MEM_SIZE, global_data->processes->process_cursor);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_arena_cpy.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ohachim <ohachim@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 09:39:57 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/30 09:43:09 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/01/30 18:33:02 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,4 @@ void     ft_arena_cpy(t_global *global_data, int cpy_to, int to_cpy)
                 cpy_to++;
                 cn--;
         }
-        ft_printf("\n");
 }

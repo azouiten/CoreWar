@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_arena.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ohachim <ohachim@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 13:07:35 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/29 13:21:57 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/01/30 18:18:09 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	ft_in_cursor(int cn, t_global *global_data)
 	temp = global_data->processes;
 	while (temp)
 	{
-		if (temp->process_cursor == cn)
+		if (temp->process_cursor == cn && temp->alive)
 			return (1);
 		temp = temp->next;
 	}
@@ -37,9 +37,9 @@ void    ft_print_arena(t_global *global_data, int xs, int cursor)
 	while (cn < xs)
 	{
 		if (ft_in_cursor(cn, global_data))
-			ft_printf(" -%.2x- ", global_data->arena[cn]);
-		else
 			ft_printf("[%.2x]", global_data->arena[cn]);
+		else
+			ft_printf(" %.2x ", global_data->arena[cn]);
 		mod++;
 		cn++;
 		if (mod == 64 && !(mod = 0))

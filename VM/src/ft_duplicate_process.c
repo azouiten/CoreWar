@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_duplicate_process.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ohachim <ohachim@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 09:55:47 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/26 10:53:19 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/01/30 12:36:04 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_process	*ft_duplicate_process(t_process *process, int adress, t_global *global
 	if (!(temp = (t_process*)malloc(sizeof(t_process)))) // To free.
 		ft_manage_error(global_data, MALLOC_FAIL, -1, 1);
 	temp->carriage_number = process->carriage_number;
-	temp->alive = 0; // Must check.
+	temp->alive = 1; // Must check.
 	temp->carry = process->carry;
 	temp->current_op = -1;
 	temp->last_live_cycle = process->last_live_cycle; // Might be usless.

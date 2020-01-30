@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 18:05:02 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/29 13:08:56 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/01/30 12:21:13 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ static void	ft_declare_champions(t_global global_data)
 static void	ft_init_global_data(t_global *global_data)
 {
 	global_data->champions = NULL;
+	global_data->all_time_cycles = 0;
 	global_data->error_buf = NULL;
 	global_data->champion_count = 0;
 	global_data->valid_champions = 0;

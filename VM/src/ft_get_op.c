@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_get_op.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ohachim <ohachim@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/31 03:57:22 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/26 12:39:26 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/01/30 12:47:04 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ static void	ft_get_new_op(t_global *global_data, t_process **process)
 		return ;
 	}
 	(*process)->current_op = global_data->arena[(*process)->process_cursor]; // Will get the current operation's op_code.
-	if ((*process)->current_op > 16 || ((*process)->current_op <= 0))
+	if ((*process)->current_op > 16 || ((*process)->current_op < 1))
 	{
 		(*process)->cycles_till_op = 0;
 		(*process)->process_cursor = ((*process)->process_cursor + 1) % MEM_SIZE;
@@ -102,17 +102,17 @@ void	ft_get_op(t_global *global_data)
 	temp_process = global_data->processes;
 	while (temp_process)
 	{
-		if (!temp_process->alive && (temp_process = temp_process->next)) // Skip if process is dead.
+		if (!temp_process->alive)  // Skip if process is dead.
+		{
+			temp_process = temp_process->next;
 			continue ;
+		}
 		if (temp_process->cycles_till_op == 0)
 			ft_get_new_op(global_data, &temp_process);
 		if (temp_process->cycles_till_op > 0)
 			temp_process->cycles_till_op -= 1;
 		if (temp_process->cycles_till_op == 0 && temp_process->current_op <= 16 && temp_process->current_op >= 1) //Condition to exec operation.
-		{
 			ft_execute_op(global_data, &temp_process);
-		}
-
 		temp_process = temp_process->next;
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_execute_addition.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ohachim <ohachim@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 02:10:54 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/30 09:46:23 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/01/30 18:21:48 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,5 @@ void	ft_execute_addition(t_process **process, t_global *global_data)
 		(*process)->carry = 0;
 	else
 		(*process)->carry = 1;
+	// ft_printf("first_reg is %d, second is %d, third is %d, their addition is and in hexa %#x\n", (*process)->registries[third_reg - 1], (*process)->registries[third_reg - 1]);
 }
