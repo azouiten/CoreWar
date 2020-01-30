@@ -6,26 +6,11 @@
 /*   By: ohachim <ohachim@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 07:30:06 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/26 13:43:18 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/01/29 13:08:37 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewarh.h"
-void	ft_print_arena(t_global *global_data, int xs, int cursor)
-{
-	int cn;
-
-	cn = 0;
-	while (cn < xs)
-	{
-		if (cn == cursor)
-			ft_printf("-%.2x-", global_data->arena[cn]);
-		else
-			ft_printf("-%.2x-", global_data->arena[cn]);
-		cn++;
-	}
-	ft_printf("\n");
-}
 
 void	ft_execute_store(t_process **process, t_global *global_data)
 {

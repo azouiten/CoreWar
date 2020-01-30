@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 10:26:05 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/26 13:40:23 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/01/30 09:54:51 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ void	ft_execute_long_load(t_process **process, t_global *global_data)
 	if ((*process)->arg[0] == IND_CODE)
 	{
 		load_arg_value = ft_extract_argument_ind(global_data, process, 2);
-		reg_value = global_data->arena[((*process)->process_cursor + 4) % MEM_SIZE];
+		reg_value = global_data->arena[ft_euclidean_mod(((*process)->process_cursor + 4), MEM_SIZE)];
 		if (reg_value < 1 || reg_value > REG_NUMBER)
 			return ;
-		(*process)->registries[reg_value - 1] = ft_get_ind_value(global_data, ((*process)->process_cursor + load_arg_value) % MEM_SIZE);
+		(*process)->registries[reg_value - 1] = ft_get_ind_value(global_data, ft_euclidean_mod(((*process)->process_cursor + load_arg_value), MEM_SIZE));
 		if ((*process)->registries[reg_value - 1])
 			(*process)->carry = 0;
 		else

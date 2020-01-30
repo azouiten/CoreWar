@@ -6,12 +6,12 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 18:05:02 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/26 11:11:01 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/01/29 13:08:56 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewarh.h"
-void    ft_print_arena(t_global *global_data, int xs);
+
 static void	ft_declare_champions(t_global global_data)
 {
 	int	i;

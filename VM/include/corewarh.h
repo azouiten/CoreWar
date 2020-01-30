@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 17:56:42 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/25 10:59:20 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/01/30 09:31:55 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,4 +172,6 @@ void				ft_execute_long_fork(t_process **process, t_global *global_data);
 void				ft_execute_long_load(t_process **process, t_global *global_data);
 void				ft_execute_long_load_index(t_process **process, t_global *global_data);
 void				ft_execute_aff(t_process **process, t_global *global_data);
+void				ft_print_arena(t_global *global_data, int xs, int cursor);
+int				ft_euclidean_mod(int a, int b);
 #endif

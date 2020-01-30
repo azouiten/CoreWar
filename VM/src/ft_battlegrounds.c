@@ -6,12 +6,11 @@
 /*   By: ohachim <ohachim@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/31 01:34:58 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/26 12:27:26 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/01/30 10:32:48 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewarh.h"
-void    ft_print_arena(t_global *global_data, int xs, int cursor);
 static int	ft_cremate_dead_processes(t_global *global_data)
 {
 	t_process	*temp_process;
@@ -25,12 +24,9 @@ static int	ft_cremate_dead_processes(t_global *global_data)
 			continue ;
 		}
 		if (!temp_process->live_declared)
-		{
-			ft_printf("did it die\n");
 			temp_process->alive = 0;
-		}
 		temp_process->live_declared = 0;
-		temp_process->last_live_cycle = 0; // Might be uselss.
+		temp_process->last_live_cycle = 0; // Might be uselss, Will change to one that keeps an all_time counter.
 		temp_process = temp_process->next;
 	}
 	return (0);
@@ -56,21 +52,15 @@ void	ft_battlegrounds(t_global *global_data)
 {
 	while (global_data->cycles_to_die > 0 && ft_enough_processes(global_data) >= 1)
 	{
-		global_data->cycle_since_start = 0;
+		global_data->cycle_since_start = 0; // Add variables for live.
 		while (global_data->cycle_since_start < global_data->cycles_to_die) // global_data->cycles_to_die
 		{
-		/*
-		 * Code execution will happen here.
-		 */
 			ft_get_op(global_data);
+			ft_print_arena(global_data, MEM_SIZE, global_data->processes->process_cursor);
 			global_data->cycle_since_start += 1;
 		}
+		ft_printf("\n\n");
 		ft_cremate_dead_processes(global_data);
-		/*
-		 * Kill processes that didn't declare live.
-		 * Give new values to variables.
-		 * Remeber player who last declared to be alive.
-		 */
 		if (global_data->number_of_checks >= MAX_CHECKS)
 		{
 			global_data->cycles_to_die -= CYCLE_DELTA;
@@ -84,10 +74,4 @@ void	ft_battlegrounds(t_global *global_data)
 		global_data->number_lives_declared = 0;
 		global_data->number_of_checks += 1;
 	}
-	ft_print_arena(global_data, MEM_SIZE, global_data->processes->process_cursor);
-	/*
-	 * We should keep executing code after cycles_to_die is less than or equal to zero, but this time we do the verification after every cycle.
-	 * Or maybe we just stop after cycle_to_die reaches 0.
-	 * Should we stop when all processes are dead? or when only one process is alive.
-	 */
 }
