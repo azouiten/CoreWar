@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 09:55:47 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/30 12:36:04 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/01/30 19:17:19 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_process	*ft_duplicate_process(t_process *process, int adress, t_global *global
 	temp->carriage_number = process->carriage_number;
 	temp->alive = 1; // Must check.
 	temp->carry = process->carry;
-	temp->current_op = -1;
+	temp->current_op = 0;
 	temp->last_live_cycle = process->last_live_cycle; // Might be usless.
 	temp->cycles_till_op = 0;
 	temp->process_cursor = adress;

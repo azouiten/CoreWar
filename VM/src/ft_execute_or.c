@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 02:43:20 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/30 18:24:44 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/01/30 19:20:40 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ void	ft_execute_or(t_process **process, t_global *global_data)
 
 	dodge = 2;
 	first_arg = ft_get_arg(process, global_data, &dodge, 0);
-	// ft_printf("first arg is %d, and %#x in hexa\n", first_arg, first_arg);
+	ft_printf("first arg is %d, and %#x in hexa\n", first_arg, first_arg);
 	second_arg = ft_get_arg(process, global_data, &dodge, 1);
-	// ft_printf("second arg is %d, and %#x in hexa\n", second_arg, second_arg);
+	ft_printf("second arg is %d, and %#x in hexa\n", second_arg, second_arg);
 	reg = global_data->arena[((*process)->process_cursor + dodge) % MEM_SIZE];
-	// ft_printf("reg is %d\n", reg);
+	ft_printf("reg is %d\n", reg);
 	(*process)->registries[reg - 1] = first_arg | second_arg;
-	// ft_printf("their | is %d and in hexa %#x\n", (*process)->registries[reg - 1], (*process)->registries[reg - 1]);
+	ft_printf("their | is %d and in hexa %#x\n", (*process)->registries[reg - 1], (*process)->registries[reg - 1]);
 	if ((*process)->registries[reg - 1])
 		(*process)->carry = 0;
 	else
