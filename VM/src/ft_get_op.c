@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/31 03:57:22 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/30 12:47:04 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/01/31 16:28:51 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ static void	ft_get_new_op(t_global *global_data, t_process **process)
 	if (global_data->arena[(*process)->process_cursor] == 0)
 	{
 		(*process)->current_op = -1;
+		(*process)->cycles_till_op = 0;
 		(*process)->process_cursor = ((*process)->process_cursor + 1) % MEM_SIZE;
 		return ;
 	}

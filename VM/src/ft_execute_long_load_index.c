@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 09:05:50 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/30 19:20:18 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/01/31 14:45:27 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,18 @@ void	ft_execute_long_load_index(t_process **process, t_global *global_data)
 
 	dodge = 2;
 	first_arg = ft_get_arg_short(process, global_data, &dodge, 0);
-	ft_printf("first_arg is %d, in hexa %#x\n", first_arg, first_arg);
+	if (DEBUG)
+		ft_printf("first_arg is %d, in hexa %#x\n", first_arg, first_arg);
 	second_arg = ft_get_arg_short(process, global_data, &dodge, 1);
-	ft_printf("second_arg is %d, in hexa %#x\n", second_arg, first_arg);
+	if (DEBUG)
+		ft_printf("second_arg is %d, in hexa %#x\n", second_arg, first_arg);
 	reg = global_data->arena[((*process)->process_cursor + dodge) % MEM_SIZE];
-	ft_printf("reg is %d\n", reg);
+	if (DEBUG)
+		ft_printf("reg is %d\n", reg);
 	if (reg < 1 || reg > REG_NUMBER)
 		return ;
 	adress_value = ft_get_ind_value(global_data, ft_euclidean_mod(((*process)->process_cursor + first_arg + second_arg), MEM_SIZE)); // Check if this is how we idx_mode.
-	ft_printf("the adress_value loadded is %d, in hexa %#x\n", adress_value);
+	if (DEBUG)
+		ft_printf("the adress_value loadded is %d, in hexa %#x\n", adress_value);
 	(*process)->registries[reg - 1] = adress_value;
 }
