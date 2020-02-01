@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 17:56:42 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/01 16:10:06 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/01 20:04:22 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # define FAILURE ft_printf("Failure\n");
 # define IN ft_printf("In\n");
 # define OUT ft_printf("Out\n");
-# define DEBUG 1
+# define DEBUG 0
 
 # include <stdlib.h>
 # include <unistd.h> 

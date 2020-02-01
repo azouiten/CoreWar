@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 19:59:03 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/01 16:52:35 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/01 20:26:00 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,5 +112,4 @@ void	ft_execute_hq(t_process **process, t_global *global_data)
 			ft_printf("aff\n");
 		ft_execute_aff(process, global_data);
 	}
-	ft_printf("%d\n", global_data->all_time_cycles + 1);
 }

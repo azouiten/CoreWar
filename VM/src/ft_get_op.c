@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/31 03:57:22 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/01 16:13:08 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/01 23:42:34 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ static int	ft_count_dodge_bytes(t_global *global_data, t_process **process)
 	int	arg_num;
 	int	fail;
 
-	// A condition for arg_type = 0.
 	fail = 0;
 	arg_num = 0;
 	bytes = 1;
@@ -46,7 +45,7 @@ static int	ft_count_dodge_bytes(t_global *global_data, t_process **process)
 		(*process)->arg[arg_num] = ft_get_bit_value(global_data->arena[((*process)->process_cursor + 1) % MEM_SIZE], 2, position);
 		bytes += ft_arg_size((*process)->arg[arg_num], (*process)->current_op - 1);
 				// Must check arguments validity.
-		if (!ft_check_arg_validity((*process)->arg[arg_num], arg_num, (*process)->current_op - 1)) // Seems good, but must recheck.
+		if (!ft_check_arg_validity((*process)->arg[arg_num], arg_num, (*process)->current_op - 1)) // Seems good, but must recheck. // Check for registrie invalidity here.
 			fail = 1; // Init.
 		position -= 2;
 		arg_num++;
@@ -79,13 +78,6 @@ static void	ft_execute_op(t_global *global_data, t_process **process)
 
 static void	ft_get_new_op(t_global *global_data, t_process **process)
 {
-	if (global_data->arena[(*process)->process_cursor] == 0)
-	{
-		(*process)->current_op = -1;
-		(*process)->cycles_till_op = 0;
-		(*process)->process_cursor = ((*process)->process_cursor + 1) % MEM_SIZE;
-		return ;
-	}
 	(*process)->current_op = global_data->arena[(*process)->process_cursor]; // Will get the current operation's op_code.
 	if ((*process)->current_op > 16 || ((*process)->current_op < 1))
 	{
@@ -113,11 +105,9 @@ void	ft_get_op(t_global *global_data)
 		if (temp_process->cycles_till_op > 0)
 			temp_process->cycles_till_op -= 1;
 		if (temp_process->cycles_till_op == 0 && temp_process->current_op <= 16 && temp_process->current_op >= 1) //Condition to exec operation.
-		{
 			ft_execute_op(global_data, &temp_process);
-			ft_print_arena(global_data, MEM_SIZE, global_data->processes->process_cursor);
-		}
 		temp_process = temp_process->next;
 	}
+	// ft_print_arena(global_data, MEM_SIZE, global_data->processes->process_cursor);
 }
 

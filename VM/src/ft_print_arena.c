@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 13:07:35 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/30 18:18:09 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/01 22:30:52 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,5 @@ void    ft_print_arena(t_global *global_data, int xs, int cursor)
 			ft_printf("\n");
 	}
 	ft_printf("\n");
+
 }

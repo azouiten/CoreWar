@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_create_initial_processes.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ohachim <ohachim@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/30 22:11:33 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/25 10:00:23 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/01 23:09:44 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,10 @@ static t_process	*ft_create_process_node(t_global *global_data, int i, int real_
 	temp->next = NULL;
 	temp->registries[0] = (real_index + 1) * -1; // Still don't know why.
 	while (count < REG_NUMBER)
-		temp->registries[count++] = 0;
+	{
+		temp->registries[count] = 0;
+		count++;
+	}
 	return (temp);
 }
 
