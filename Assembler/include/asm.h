@@ -6,7 +6,7 @@
 /*   By: azouiten <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 16:39:24 by azouiten          #+#    #+#             */
-/*   Updated: 2020/01/27 17:43:13 by azouiten         ###   ########.fr       */
+/*   Updated: 2020/02/01 18:51:15 by azouiten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,9 @@ typedef	struct		s_label
 t_op				op_tab[17];
 void				ft_syntax_analysis(t_data *data);
 void				ft_exit(t_data *data, int line);
+void				ft_write_file(t_data *data);
+int					ft_check_inst(t_data *data);
+int					ft_check_cmd(t_data *data);
+int					ft_identify_arg(t_data *data);
 
 #endif

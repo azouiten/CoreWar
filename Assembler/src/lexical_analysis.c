@@ -6,7 +6,7 @@
 /*   By: azouiten <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/06 13:39:18 by azouiten          #+#    #+#             */
-/*   Updated: 2020/01/26 15:53:55 by azouiten         ###   ########.fr       */
+/*   Updated: 2020/02/01 20:10:11 by azouiten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,6 +163,7 @@ void	ft_parse(t_data *data, char *str)
 		ft_exit(data, 1);
 	ft_syntax_analysis(data);
 	data->ltoken = data->tokens;
+	ft_write_file(data);
 }
 
 t_data	*data_neo_genesis(void)
