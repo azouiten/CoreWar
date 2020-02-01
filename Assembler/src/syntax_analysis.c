@@ -6,7 +6,7 @@
 /*   By: azouiten <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 18:31:08 by azouiten          #+#    #+#             */
-/*   Updated: 2020/01/27 18:20:47 by azouiten         ###   ########.fr       */
+/*   Updated: 2020/02/01 20:14:31 by azouiten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,13 +125,14 @@ int		ft_identify_arg(t_data *data)
 	if (data->ltoken->piece[0] == DIRECT_CHAR && (ft_is_num(data->ltoken->next->piece) ||
 				ft_is_label(data->ltoken->next->piece))){
 		data->ltoken = data->ltoken->next;
-		return (DIR_CODE);}
+		return (T_DIR);}
 	else if (data->ltoken->piece[0] == 'r' && ft_is_num(data->ltoken->piece + 1)
 			&& (ft_atoi(data->ltoken->piece + 1) < REG_NUMBER)){ // is it < or <=, needs a quick check.
-		return (REG_CODE);}
+		return (T_REG);}
 	else if (ft_is_num(data->ltoken->piece) || ft_is_label(data->ltoken->piece)){
-		return (IND_CODE);}
+		return (T_IND);}
 	else{
+		write(1, "yes\n", 4);
 		ft_exit(data, data->ltoken->line);}
 	return (0);
 }
@@ -144,8 +145,8 @@ void	ft_get_arg(t_data *data, int arg)
 	if (!data->ltoken)
 		ft_exit(data, data->ltoken->line);
 	code = ft_identify_arg(data);
-	if ((code & arg) != code)
-		ft_exit(data, data->ltoken->line);
+	if ((code & arg) != code){
+		ft_exit(data, data->ltoken->line);}
 }
 
 void	ft_get_sep(t_data *data)

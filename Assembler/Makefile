@@ -6,7 +6,7 @@
 #    By: azouiten <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/06 12:38:23 by azouiten          #+#    #+#              #
-#    Updated: 2019/12/29 18:39:41 by azouiten         ###   ########.fr        #
+#    Updated: 2020/02/01 18:42:23 by azouiten         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ OBJ_PATH = obj
 
 SRC_NAME = lexical_analysis.c \
 		   op.c \
-		   syntax_analysis.c 
+		   syntax_analysis.c \
+		   ft_write_bytes.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 
