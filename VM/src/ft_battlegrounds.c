@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/31 01:34:58 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/30 18:34:28 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/01 16:13:29 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ static int	ft_enough_processes(t_global *global_data)
 // Remeber to check if player size is too big by reading one extra byte, or not....
 void	ft_battlegrounds(t_global *global_data)
 {
+	ft_print_arena(global_data, MEM_SIZE, global_data->processes->process_cursor);
 	while (global_data->cycles_to_die > 0 && ft_enough_processes(global_data) >= 1)
 	{
 		global_data->cycle_since_start = 0; // Add variables for live.

@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 09:05:50 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/31 14:45:27 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/01 15:06:42 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,8 @@ void	ft_execute_long_load_index(t_process **process, t_global *global_data)
 	if (DEBUG)
 		ft_printf("the adress_value loadded is %d, in hexa %#x\n", adress_value);
 	(*process)->registries[reg - 1] = adress_value;
+	if (adress_value)
+		(*process)->carry = 0;
+	else
+		(*process)->carry = 1;
 }

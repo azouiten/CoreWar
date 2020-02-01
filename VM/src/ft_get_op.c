@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/31 03:57:22 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/31 16:28:51 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/01 16:13:08 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static void	ft_execute_op(t_global *global_data, t_process **process)
 	}
 	if (!fail)
 		ft_execute_hq(process, global_data);
-	if (!(*process)->carry || (*process)->current_op != 9)
+	if (!(*process)->carry || (*process)->current_op != 9 || ((*process)->current_op == 9 && (*process)->carry && fail)) // wut if arguments were invalid?
 		(*process)->process_cursor = ((*process)->process_cursor + (*process)->bytes_to_next_op) % MEM_SIZE;
 	(*process)->current_op = -1;
 }
@@ -113,7 +113,10 @@ void	ft_get_op(t_global *global_data)
 		if (temp_process->cycles_till_op > 0)
 			temp_process->cycles_till_op -= 1;
 		if (temp_process->cycles_till_op == 0 && temp_process->current_op <= 16 && temp_process->current_op >= 1) //Condition to exec operation.
+		{
 			ft_execute_op(global_data, &temp_process);
+			ft_print_arena(global_data, MEM_SIZE, global_data->processes->process_cursor);
+		}
 		temp_process = temp_process->next;
 	}
 }

@@ -6,11 +6,11 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 19:59:03 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/31 16:29:19 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/01 16:52:35 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewarh.h"
+#include "corewarh.h" // 3275
 
 void	ft_execute_hq(t_process **process, t_global *global_data)
 {
@@ -31,20 +31,14 @@ void	ft_execute_hq(t_process **process, t_global *global_data)
 	else if ((*process)->current_op == STORE)
 	{
 		if (DEBUG)
-		{
-			ft_printf("at: %d===\n", global_data->all_time_cycles);
 			ft_printf("store\n");
-			ft_print_arena(global_data, MEM_SIZE, global_data->processes->process_cursor);
-		}
 		ft_execute_store(process, global_data);
 	}
 	else if ((*process)->current_op == ADDITION)
 	{
-		ft_printf("add in\n");
 		if (DEBUG)
 			ft_printf("additio\n");
 		ft_execute_addition(process, global_data);
-		ft_printf("add out\n");
 	}
 	else if ((*process)->current_op == SUBSTRACTION)
 	{
@@ -60,19 +54,15 @@ void	ft_execute_hq(t_process **process, t_global *global_data)
 	}
 	else if ((*process)->current_op == XOR )
 	{
-		ft_printf("xor in\n");
 		if (DEBUG)
 			ft_printf("xor\n");
 		ft_execute_xor(process, global_data);
-		ft_printf("xor out\n");
 	}
 	else if ((*process)->current_op == AND)
 	{
-		ft_printf("and in\n");
 		if (DEBUG)
 			ft_printf("and\n");
 		ft_execute_and(process, global_data);
-		ft_printf("and out\n");
 	}
 	else if ((*process)->current_op == JUMP_IF_ZERO)
 	{
@@ -122,8 +112,5 @@ void	ft_execute_hq(t_process **process, t_global *global_data)
 			ft_printf("aff\n");
 		ft_execute_aff(process, global_data);
 	}
-	if (DEBUG)
-		ft_printf("at: %d===\n", global_data->all_time_cycles);
-	if (DEBUG)
-		ft_print_arena(global_data, MEM_SIZE, global_data->processes->process_cursor);
+	ft_printf("%d\n", global_data->all_time_cycles + 1);
 }
