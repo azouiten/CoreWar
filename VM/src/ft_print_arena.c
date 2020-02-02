@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 13:07:35 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/01 22:30:52 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/02 17:56:46 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ void    ft_print_arena(t_global *global_data, int xs, int cursor)
 		else
 			ft_printf(" %.2x ", global_data->arena[cn]);
 		mod++;
-		cn++;
 		if (mod == 64 && !(mod = 0))
-			ft_printf("\n");
+			ft_printf("---[%d]\n", cn);
+		cn++;
 	}
 	ft_printf("\n");
 

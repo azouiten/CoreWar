@@ -6,14 +6,31 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 19:59:03 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/01 20:26:00 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/02 18:35:44 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewarh.h" // 3275
 
+int		ft_count_processes(t_global *global_data)
+{
+	t_process *temp;
+	int		alive = 0;
+	temp = global_data->processes;
+	while (temp)
+	{
+		if (temp->alive == 1)
+			alive++;
+		temp = temp->next;
+	}
+	return (alive);
+}
+
 void	ft_execute_hq(t_process **process, t_global *global_data)
 {
+	int i;
+
+	i = 0;
 	if (DEBUG)
 		ft_printf("process_cursor == %d\n", (*process)->process_cursor);
 	if ((*process)->current_op == LIVE)
@@ -111,5 +128,16 @@ void	ft_execute_hq(t_process **process, t_global *global_data)
 		if (DEBUG)
 			ft_printf("aff\n");
 		ft_execute_aff(process, global_data);
+	}
+	if (DEBUG || global_data->all_time_cycles == 8988)
+	{
+		ft_printf("the process with cursor %d with state: %d\n", (*process)->process_cursor, (*process)->alive);
+		while (i < (*process)->bytes_to_next_op)
+		{
+			ft_printf("[%.2x]", global_data->arena[(*process)->process_cursor + i]);
+			i++;
+		}
+		ft_printf("number of processes alive is %d\n", ft_count_processes(global_data));
+		ft_printf("\n");
 	}
 }

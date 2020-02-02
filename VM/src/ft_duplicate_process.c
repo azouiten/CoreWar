@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 09:55:47 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/30 19:17:19 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/02 18:38:58 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_process	*ft_duplicate_process(t_process *process, int adress, t_global *global
 	temp->arg[0] = 0;
 	temp->arg[1] = 0;
 	temp->arg[2] = 0;
-	temp->live_declared = 0; // Might be usless.
+	temp->live_declared = process->live_declared; // Might be usless.
 	temp->next = NULL;
 	while (count < REG_NUMBER)
 	{

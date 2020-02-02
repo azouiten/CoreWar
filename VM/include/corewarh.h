@@ -6,13 +6,13 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 17:56:42 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/01 20:04:22 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/02 18:36:21 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef COREWARH_H
 # define COREWARH_H
-
+// first fail happens in cylce 8988
 # define SUCCESS ft_printf("Success\n");
 # define FAILURE ft_printf("Failure\n");
 # define IN ft_printf("In\n");

@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 03:37:34 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/31 14:48:46 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/02 16:38:04 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int     ft_get_arg(t_process **process, t_global *global_data, int *dodge, int a
 		if (DEBUG)
 			ft_printf("reg---\n");
 		arg = global_data->arena[((*process)->process_cursor + *dodge) % MEM_SIZE];
+		if (arg < 1 || arg > REG_NUMBER)
+			return (-1);
 		arg = (*process)->registries[arg - 1];
 		*dodge = *dodge + 1;
 	}
