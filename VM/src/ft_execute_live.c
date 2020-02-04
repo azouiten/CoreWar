@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/19 21:45:10 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/01 14:01:22 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/05 00:40:19 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,9 @@ void	ft_execute_live(t_process **process, t_global *global_data)
 	int	live_arg_value;
 
 	live_arg_value = ft_extract_argument(global_data, process);
-	if (DEBUG)
-		ft_printf("live_arg_value==%d\n", live_arg_value);
-	(*process)->last_live_cycle = global_data->cycle_since_start; // Maybe meant for an all time cycle;
-	(*process)->live_declared = 1; // Must reset this.
+	(*process)->last_live_cycle = global_data->all_time_cycles;
+	(*process)->live_declared = 1;
 	global_data->number_lives_declared++;
-	if (live_arg_value == (*process)->registries[0]) // Maybe add varible to champion struct to know if it's alive.
-	{
-		if (DEBUG)
-			ft_printf("declared for player number----> %d\n", (*process)->registries[0] * -1);
-		global_data->last_live_player = global_data->champions[(live_arg_value * -1) - 1];
-	}
+	if (live_arg_value == (*process)->registries[0])
+		global_data->last_live_player = global_data->champions[(live_arg_value * -1) - 1];		
 }

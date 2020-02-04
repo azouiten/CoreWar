@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_execute_aff.c                                   :+:      :+:    :+:   */
+/*   ft_check_registries.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/25 10:42:41 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/05 00:12:13 by ohachim          ###   ########.fr       */
+/*   Created: 2020/02/05 00:02:17 by ohachim           #+#    #+#             */
+/*   Updated: 2020/02/05 00:02:46 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewarh.h"
 
-void	ft_execute_aff(t_process **process, t_global *global_data)
+int			ft_check_registries(t_process **process, int reg_index,
+			int arg_num, t_global *global_data)
 {
-	int	reg;
+	int				reg;
 
-	reg = global_data->arena[ft_euclidean_mod(((*process)->process_cursor + 2), MEM_SIZE)];
-	ft_printf("%c\n", (char)((*process)->registries[reg - 1]) % 256);
+	reg = 0;
+	if ((*process)->arg[arg_num] != T_REG)
+		return (1);
+	reg = global_data->arena[((*process)->process_cursor + reg_index)
+			% MEM_SIZE];
+	if (reg < 1 || reg > REG_NUMBER)
+		return (0);
+	return (1);
 }
-	

@@ -6,19 +6,18 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/30 22:11:33 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/01 23:09:44 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/04 23:20:53 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewarh.h"
 
-static t_process	*ft_create_process_node(t_global *global_data, int i, int real_index)
+static t_process	*ft_create_process_node(t_global *global_data,
+					int i, int real_index, int count)
 {
-	t_process	*temp;
-	int		count;
+	t_process		*temp;
 
-	count = 1;
-	if (!(temp = (t_process*)malloc(sizeof(t_process)))) // TODO free this.
+	if (!(temp = (t_process*)malloc(sizeof(t_process))))
 		ft_manage_error(global_data, MALLOC_FAIL, -1, 1);
 	temp->carriage_number = real_index;
 	temp->alive = 1;
@@ -33,7 +32,7 @@ static t_process	*ft_create_process_node(t_global *global_data, int i, int real_
 	temp->arg[2] = 0;
 	temp->live_declared = 0;
 	temp->next = NULL;
-	temp->registries[0] = (real_index + 1) * -1; // Still don't know why.
+	temp->registries[0] = (real_index + 1) * -1;
 	while (count < REG_NUMBER)
 	{
 		temp->registries[count] = 0;
@@ -42,11 +41,11 @@ static t_process	*ft_create_process_node(t_global *global_data, int i, int real_
 	return (temp);
 }
 
-static void	ft_add_process(t_global *global_data, int i, int real_index)
+static void			ft_add_process(t_global *global_data, int i, int real_index)
 {
-	t_process	*temp;
+	t_process		*temp;
 
-	temp = ft_create_process_node(global_data, i, real_index);
+	temp = ft_create_process_node(global_data, i, real_index, 1);
 	if (global_data->processes == NULL)
 		global_data->processes = temp;
 	else
@@ -56,10 +55,10 @@ static void	ft_add_process(t_global *global_data, int i, int real_index)
 	}
 }
 
-void	ft_create_initial_processes(t_global *global_data)
+void				ft_create_initial_processes(t_global *global_data)
 {
-	int	real_index;
-	int	i;
+	int				real_index;
+	int				i;
 
 	real_index = 0;
 	i = 0;

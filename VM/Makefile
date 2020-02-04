@@ -6,7 +6,7 @@
 #    By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/11 17:52:15 by ohachim           #+#    #+#              #
-#    Updated: 2020/01/30 09:32:09 by ohachim          ###   ########.fr        #
+#    Updated: 2020/02/05 00:03:07 by ohachim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,7 +56,10 @@ SRC_NAME = main.c \
 	   ft_execute_long_load_index.c \
 	   ft_execute_aff.c \
 	   ft_print_arena.c \
-	   ft_euclidean_mod.c
+	   ft_euclidean_mod.c \
+	   ft_count_dodge_bytes.c \
+	   ft_arg_size.c \
+	   ft_check_registries.c
 
 SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
 

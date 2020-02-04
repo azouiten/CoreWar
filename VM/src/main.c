@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 18:05:02 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/30 12:21:13 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/04 22:56:37 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,10 @@ static void	ft_declare_champions(t_global global_data)
 	{
 		if (global_data.champions[i].validity)
 		{
-			ft_printf("* Player %d, weighing %d bytes, \"%s\" (\"%s\") ", j,
-			global_data.champions[i].hex_code_size,
-			global_data.champions[i].byte_name,
-			global_data.champions[i].comment); // Needs to be edited.
-			ft_printf("With the starting point (\"%d\")\n", global_data.champions[i].starting_point);
+			ft_printf("* Player %d, weighing %d bytes, \"%s\" (\"%s\") !\n", j,
+					global_data.champions[i].hex_code_size,
+					global_data.champions[i].byte_name,
+					global_data.champions[i].comment);
 			j++;
 		}
 		i++;
@@ -48,7 +47,7 @@ static void	ft_init_global_data(t_global *global_data)
 	global_data->number_of_checks = 0;
 }
 
-int		main(int argc, char **argv)
+int			main(int argc, char **argv)
 {
 	t_global	global_data;
 	int			i;
@@ -58,9 +57,10 @@ int		main(int argc, char **argv)
 	ft_create_champions(&global_data, argv);
 	ft_check_magic_headers(&global_data, 0, 0);
 	ft_gather_byte_code(&global_data);
-	ft_prepare_arena(&global_data);
 	ft_declare_champions(global_data);
-	ft_printf("Contestant %d, \"%s\", has won !\n", global_data.last_live_player.number + 1, global_data.last_live_player.byte_name);
+	ft_prepare_arena(&global_data);
+	ft_printf("Contestant %d, \"%s\", has won !\n",
+	global_data.last_live_player.number + 1,
+	global_data.last_live_player.byte_name);
 	ft_free_data(&global_data);
-	SUCCESS;
 }

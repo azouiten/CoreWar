@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_magic_headers.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ohachim <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 00:23:04 by ohachim           #+#    #+#             */
-/*   Updated: 2019/12/25 08:45:13 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/04 23:06:30 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewarh.h"
 
-static void		ft_error_adjust(int *i, int *validity, int error,
+static void			ft_error_adjust(int *i, int *validity, int error,
 		t_global *global_data)
 {
 	*validity = 0;
@@ -26,7 +26,7 @@ static void		ft_error_adjust(int *i, int *validity, int error,
 		*i = *i + 1;
 }
 
-static int		ft_cmp_magic_header(t_global *global_data,
+static int			ft_cmp_magic_header(t_global *global_data,
 		unsigned char *magic_header)
 {
 	if (magic_header[0] != 0x0
@@ -37,15 +37,15 @@ static int		ft_cmp_magic_header(t_global *global_data,
 	return (1);
 }
 
-void			ft_check_magic_headers(t_global *global_data,
+void				ft_check_magic_headers(t_global *global_data,
 		int i, int ret)
 {
-	unsigned char 	magic_header[5];
+	unsigned char	magic_header[5];
 
 	while (i < global_data->champion_count)
 	{
 		global_data->champions[i].fd =
-			open(global_data->champions[i].name, O_RDONLY); // Remember to close these ones.
+			open(global_data->champions[i].name, O_RDONLY);
 		if (global_data->champions[i].fd < 0)
 		{
 			ft_error_adjust(&i,

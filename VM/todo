@@ -2,4 +2,4 @@ Remove leaks
 protect mallocs
 debug
 make the size tests better
-alloc non .cor files
+fix bug where an invalid -n index is taken as a champion/file.

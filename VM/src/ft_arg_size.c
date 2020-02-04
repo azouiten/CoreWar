@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_execute_aff.c                                   :+:      :+:    :+:   */
+/*   ft_arg_size.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/25 10:42:41 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/05 00:12:13 by ohachim          ###   ########.fr       */
+/*   Created: 2020/02/04 23:54:53 by ohachim           #+#    #+#             */
+/*   Updated: 2020/02/04 23:55:15 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewarh.h"
 
-void	ft_execute_aff(t_process **process, t_global *global_data)
+int			ft_arg_size(int arg, int current_op_index)
 {
-	int	reg;
-
-	reg = global_data->arena[ft_euclidean_mod(((*process)->process_cursor + 2), MEM_SIZE)];
-	ft_printf("%c\n", (char)((*process)->registries[reg - 1]) % 256);
+	if (arg == IND_CODE)
+		return (IND_SIZE);
+	if (arg == REG_CODE)
+		return (1);
+	if (arg == DIR_CODE)
+	{
+		if (!op_tab[current_op_index].t_dir_size)
+			return (DIR_SIZE);
+		else
+			return (DIR_SIZE / 2);
+	}
+	return (0);
 }
-	

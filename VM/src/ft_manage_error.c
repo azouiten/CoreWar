@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 08:19:44 by ohachim           #+#    #+#             */
-/*   Updated: 2019/12/26 18:18:35 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/04 22:58:39 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	ft_init_error_buf(t_global *global_data)
 {
 	if (!(global_data->error_buf =
-			(char**)malloc(sizeof(char*) * TOTAL + 1)))
+			(char**)malloc(sizeof(char*) * TOTAL + 1))) // Might remove + 1;
 		ft_manage_error(global_data, MALLOC_FAIL, -1, 0);
 	global_data->error_buf[ZERO_CHAMPION] = "0 Champions";
 	global_data->error_buf[TOO_MANY_PLAYERS] = "Too many players";

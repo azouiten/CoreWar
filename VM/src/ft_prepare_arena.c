@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/26 14:23:25 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/05 07:03:34 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/04 23:14:32 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ static void	ft_get_starting_points(t_global *global_data)
 		mem_point = mem_point + step;
 		checked++;
 	}
-//	global_data->last_champion_index = i;
 	global_data->last_live_player = global_data->champions[i];
 }
 
@@ -54,7 +53,8 @@ static void	ft_get_valid_champions_count(t_global *global_data)
 
 void	ft_prepare_arena(t_global *global_data)
 {
-	if (!(global_data->arena = (unsigned char*)malloc(sizeof(unsigned char) * MEM_SIZE))) // TODO Free this.
+	if (!(global_data->arena = (unsigned char*)malloc(sizeof(unsigned char)
+								* MEM_SIZE)))
 		ft_manage_error(global_data, MALLOC_FAIL, -1, 1);
 	ft_bzero((void*)global_data->arena, MEM_SIZE);
 	ft_get_valid_champions_count(global_data);

@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 17:56:42 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/02 18:36:21 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/05 00:02:55 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,4 +175,9 @@ void				ft_execute_long_load_index(t_process **process, t_global *global_data);
 void				ft_execute_aff(t_process **process, t_global *global_data);
 void				ft_print_arena(t_global *global_data, int xs, int cursor);
 int				ft_euclidean_mod(int a, int b);
+int			ft_count_dodge_bytes(t_global *global_data, t_process **process, int fail, int arg_num);
+int			ft_arg_size(int arg, int current_op_index);
+int			ft_check_registries(t_process **process, int reg_index, int arg_num, t_global *global_data);
+
+
 #endif
