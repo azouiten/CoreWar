@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/31 01:34:58 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/08 00:29:33 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/08 06:58:29 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,5 +105,5 @@ void			ft_battlegrounds(t_global *global_data)
 		}
 	}
 	ft_print_arena(global_data, MEM_SIZE, 0);
-	ft_printf("all time cycles is %d--%d\n", global_data->all_time_cycles, global_data->cycles_to_die);
+	ft_printf("%d\n", global_data->all_time_cycles, global_data->cycles_to_die);
 }
