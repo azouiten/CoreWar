@@ -6,7 +6,7 @@
 /*   By: azouiten <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 18:31:08 by azouiten          #+#    #+#             */
-/*   Updated: 2020/02/01 20:14:31 by azouiten         ###   ########.fr       */
+/*   Updated: 2020/02/07 18:48:06 by azouiten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,8 +122,10 @@ int		ft_is_label(char *str)
 
 int		ft_identify_arg(t_data *data)
 {
+	
 	if (data->ltoken->piece[0] == DIRECT_CHAR && (ft_is_num(data->ltoken->next->piece) ||
 				ft_is_label(data->ltoken->next->piece))){
+		write(1, "DIR\n", 4);
 		data->ltoken = data->ltoken->next;
 		return (T_DIR);}
 	else if (data->ltoken->piece[0] == 'r' && ft_is_num(data->ltoken->piece + 1)
@@ -132,7 +134,7 @@ int		ft_identify_arg(t_data *data)
 	else if (ft_is_num(data->ltoken->piece) || ft_is_label(data->ltoken->piece)){
 		return (T_IND);}
 	else{
-		write(1, "yes\n", 4);
+		write(1, "yeshereout\n", 11);
 		ft_exit(data, data->ltoken->line);}
 	return (0);
 }
