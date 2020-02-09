@@ -1,4 +1,3 @@
-
 #!/bin/sh
 $1 $3 $4 $5 $6 > ourfile
 tail -2 ourfile > sub
@@ -10,4 +9,4 @@ rm sub sub1
 #cat ourfile
 $2 $3 $4 $5 $6 -d $var > file
 tail -64 file > tfile
-diff -q tfile ourfile
+diff tfile ourfile

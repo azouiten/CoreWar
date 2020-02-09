@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/31 03:57:22 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/07 23:30:36 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/09 05:43:00 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void				ft_get_op(t_global *global_data)
 {
 	t_process		*temp_process;
 
+	global_data->all_time_cycles += 1;
 	temp_process = global_data->processes;
 	while (temp_process)
 	{
