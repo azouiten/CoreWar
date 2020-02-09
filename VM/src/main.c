@@ -6,11 +6,35 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 18:05:02 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/06 22:16:55 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/09 08:05:54 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewarh.h"
+
+static void	ft_get_dump_cycle(t_global *global_data, char **argv)
+{
+	int	wn;
+	int	cn;
+
+	cn = 0;
+	wn = 0;
+	while (argv[wn])
+	{
+		if (!ft_strcmp(argv[wn], "-d") && argv[wn + 1])
+		{
+			while (argv[wn + 1][cn] != '\0')
+			{
+				if (!ft_isdigit(argv[wn + 1][cn]))
+					return ;
+				cn++;
+			}
+			global_data->dump_cycle = ft_atoi(argv[wn + 1]);
+			return ;
+		}
+		wn++;
+	}
+}
 
 static void	ft_declare_champions(t_global global_data)
 {
@@ -45,6 +69,7 @@ static void	ft_init_global_data(t_global *global_data)
 	global_data->number_lives_declared = 0;
 	global_data->cycles_to_die = CYCLE_TO_DIE;
 	global_data->number_of_checks = 0;
+	global_data->dump_cycle = -1;
 }
 
 int			main(int argc, char **argv)
@@ -57,6 +82,7 @@ int			main(int argc, char **argv)
 	ft_create_champions(&global_data, argv);
 	ft_check_magic_headers(&global_data, 0, 0);
 	ft_gather_byte_code(&global_data);
+	ft_get_dump_cycle(&global_data, argv);
 	ft_declare_champions(global_data);
 	ft_prepare_arena(&global_data);
 	ft_printf("Contestant %d, \"%s\", has won !\n",

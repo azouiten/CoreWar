@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/31 03:57:22 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/09 05:43:00 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/09 08:23:55 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ void				ft_get_op(t_global *global_data)
 {
 	t_process		*temp_process;
 
-	global_data->all_time_cycles += 1;
 	temp_process = global_data->processes;
 	while (temp_process)
 	{
@@ -73,4 +72,7 @@ void				ft_get_op(t_global *global_data)
 			ft_execute_op(global_data, &temp_process);
 		temp_process = temp_process->next;
 	}
+	if (global_data->all_time_cycles == global_data->dump_cycle - 1)
+		ft_print_arena(global_data, MEM_SIZE);
+	global_data->all_time_cycles += 1;
 }

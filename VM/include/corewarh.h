@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 17:56:42 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/05 00:02:55 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/09 08:10:53 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,7 @@ typedef struct			s_global
 	int			cycles_to_die; // The value of the current number of cycles before a check. will be initialized with CYCLES_TO_DIE.
 	int			number_of_checks; // How many checks done so far, a check is done after every cycles_to_die, resets to 0 every time we decrement cycles_to_die.
 	int			all_time_cycles;
+	int			dump_cycle;
 }				t_global;
 t_op	op_tab[17]; // Change name for norminette (g_).
 
@@ -173,7 +174,7 @@ void				ft_execute_long_fork(t_process **process, t_global *global_data);
 void				ft_execute_long_load(t_process **process, t_global *global_data);
 void				ft_execute_long_load_index(t_process **process, t_global *global_data);
 void				ft_execute_aff(t_process **process, t_global *global_data);
-void				ft_print_arena(t_global *global_data, int xs, int cursor);
+void				ft_print_arena(t_global *global_data, int xs);
 int				ft_euclidean_mod(int a, int b);
 int			ft_count_dodge_bytes(t_global *global_data, t_process **process, int fail, int arg_num);
 int			ft_arg_size(int arg, int current_op_index);
