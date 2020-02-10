@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 18:05:02 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/10 04:42:36 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/10 08:57:26 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ static void	ft_init_global_data(t_global *global_data)
 	global_data->cycles_to_die = CYCLE_TO_DIE;
 	global_data->number_of_checks = 0;
 	global_data->dump_cycle = -1;
+	global_data->arena = NULL;
 }
 
 int			main(int argc, char **argv)
