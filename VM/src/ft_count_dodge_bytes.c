@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 23:50:22 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/05 00:02:16 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/10 06:13:29 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int			ft_count_dodge_bytes(t_global *global_data,
 
 	bytes = 1;
 	position = 7;
-	while (position > 7 - (2 * op_tab[(*process)->current_op - 1].argc))
+	while (position > 7 - (2 * g_op_tab[(*process)->current_op - 1].argc))
 	{
 		(*process)->arg[arg_num] =
 		ft_get_bit_value(global_data->arena[((*process)->process_cursor + 1)

@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 17:56:42 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/09 08:10:53 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/10 06:12:54 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ typedef struct			s_global
 	int			all_time_cycles;
 	int			dump_cycle;
 }				t_global;
-t_op	op_tab[17]; // Change name for norminette (g_).
+t_op	g_op_tab[17]; // Change name for norminette (g_).
 
 int				ft_get_bit_value(int number, int number_bits, int position);
 void				ft_create_initial_processes(t_global *global_data); // Created initial processes and initalizes their content.

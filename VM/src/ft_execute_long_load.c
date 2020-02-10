@@ -6,53 +6,53 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 10:26:05 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/31 14:45:50 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/10 05:58:12 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewarh.h"
 
-void	ft_execute_long_load(t_process **process, t_global *global_data)
+static void	ft_long_load_dir(t_process **process,
+				t_global *global_data, int load_arg_value, int reg_value)
 {
-	int	load_arg_value;
-	int	reg_value;
+	load_arg_value = ft_extract_argument_dir_long(global_data, process, 2);
+	reg_value = global_data->arena[((*process)->process_cursor + 6)
+		% MEM_SIZE];
+	if (reg_value < 1 || reg_value > REG_NUMBER)
+		return ;
+	(*process)->registries[reg_value - 1] = load_arg_value;
+	if (load_arg_value)
+		(*process)->carry = 0;
+	else
+		(*process)->carry = 1;
+}
+
+static void	ft_long_load_ind(t_process **process,
+				t_global *global_data, int load_arg_value, int reg_value)
+{
+	load_arg_value = ft_extract_argument_ind(global_data, process, 2);
+	reg_value =
+		global_data->arena[ft_euclidean_mod(((*process)->process_cursor
+			+ 4), MEM_SIZE)];
+	if (reg_value < 1 || reg_value > REG_NUMBER)
+		return ;
+	(*process)->registries[reg_value - 1] =
+		ft_get_ind_value(global_data,
+			ft_euclidean_mod(((*process)->process_cursor + load_arg_value),
+				MEM_SIZE));
+	if ((*process)->registries[reg_value - 1])
+		(*process)->carry = 0;
+	else
+		(*process)->carry = 1;
+}
+
+void		ft_execute_long_load(t_process **process, t_global *global_data)
+{
+	int		load_arg_value;
+	int		reg_value;
 
 	if ((*process)->arg[0] == IND_CODE)
-	{
-		if (DEBUG)
-			ft_printf("ind\n");
-		load_arg_value = ft_extract_argument_ind(global_data, process, 2);
-		if (DEBUG)
-			ft_printf("argument_ind is %d, in hexa %#x\n", load_arg_value, load_arg_value);
-		reg_value = global_data->arena[ft_euclidean_mod(((*process)->process_cursor + 4), MEM_SIZE)];
-		if (DEBUG)
-			ft_printf("reg %d\n", reg_value);
-		if (reg_value < 1 || reg_value > REG_NUMBER)
-			return ;
-		(*process)->registries[reg_value - 1] = ft_get_ind_value(global_data, ft_euclidean_mod(((*process)->process_cursor + load_arg_value), MEM_SIZE));
-		if (DEBUG)
-			ft_printf("ind_value is %d, in hexa %#x\n", (*process)->registries[reg_value - 1], (*process)->registries[reg_value - 1]);
-		if ((*process)->registries[reg_value - 1])
-			(*process)->carry = 0;
-		else
-			(*process)->carry = 1;
-	}
+		ft_long_load_ind(process, global_data, load_arg_value, reg_value);
 	else if ((*process)->arg[0] == DIR_CODE)
-	{
-		if (DEBUG)
-			ft_printf("dir\n");
-		load_arg_value = ft_extract_argument_dir_long(global_data, process, 2); // 2 instead of one to dodge byte code.
-		if (DEBUG)
-			ft_printf("dir_value %d, in hexa %#x\n", load_arg_value, load_arg_value);
-		reg_value = global_data->arena[((*process)->process_cursor + 6) % MEM_SIZE]; // 1 for op_code + 1 for byte_code + 4 dir bytes == 6;
-		if (DEBUG)
-			ft_printf("reg value %d\n", reg_value);
-		if (reg_value < 1 || reg_value > REG_NUMBER)
-			return ;
-		(*process)->registries[reg_value - 1] = load_arg_value;
-		if (load_arg_value)
-			(*process)->carry = 0;
-		else
-			(*process)->carry = 1;
-	}
+		ft_long_load_dir(process, global_data, load_arg_value, reg_value);
 }

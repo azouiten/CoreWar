@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 19:59:03 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/07 23:30:52 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/10 05:39:32 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	ft_arena_neutral_ops(t_process **process, t_global *global_data)
 		ft_execute_aff(process, global_data);
 }
 
-static void ft_arena_mutilator_ops(t_process **process, t_global *global_data)
+static void	ft_arena_mutilator_ops(t_process **process, t_global *global_data)
 {
 	if ((*process)->current_op == LOAD)
 		ft_execute_load(process, global_data);
@@ -54,13 +54,13 @@ static void	ft_bit_operations(t_process **process, t_global *global_data)
 		ft_execute_substraction(process, global_data);
 	else if ((*process)->current_op == OR)
 		ft_execute_or(process, global_data);
-	else if ((*process)->current_op == XOR )
+	else if ((*process)->current_op == XOR)
 		ft_execute_xor(process, global_data);
 	else if ((*process)->current_op == AND)
 		ft_execute_and(process, global_data);
 }
 
-void	ft_execute_hq(t_process **process, t_global *global_data)
+void		ft_execute_hq(t_process **process, t_global *global_data)
 {
 	ft_arena_neutral_ops(process, global_data);
 	ft_arena_mutilator_ops(process, global_data);

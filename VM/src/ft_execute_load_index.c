@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 09:05:50 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/31 14:41:10 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/10 05:33:15 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,12 @@ void	ft_execute_load_index(t_process **process, t_global *global_data)
 
 	dodge = 2;
 	first_arg = ft_get_arg_short(process, global_data, &dodge, 0);
-	if (DEBUG)
-		ft_printf("first_arg is %d, in hexa %#x\n", first_arg, first_arg);
 	second_arg = ft_get_arg_short(process, global_data, &dodge, 1);
-	if (DEBUG)
-		ft_printf("second_arg is %d, in hexa %#x\n", second_arg, second_arg);
 	reg = global_data->arena[((*process)->process_cursor + dodge) % MEM_SIZE];
-	if (DEBUG)
-		ft_printf("reg  %d\n", reg);
 	if (reg < 1 || reg > REG_NUMBER)
 		return ;
-	adress_value = ft_get_ind_value(global_data, (ft_euclidean_mod((*process)->process_cursor + ((first_arg + second_arg) % IDX_MOD), MEM_SIZE)));
-	if (DEBUG)
-		ft_printf("value got from adress is %d, in hexa %#x\n", adress_value);
+	adress_value = ft_get_ind_value(global_data,
+		(ft_euclidean_mod((*process)->process_cursor
+			+ ((first_arg + second_arg) % IDX_MOD), MEM_SIZE)));
 	(*process)->registries[reg - 1] = adress_value;
 }

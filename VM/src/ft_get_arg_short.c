@@ -6,21 +6,21 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 09:41:58 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/02 16:38:50 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/10 06:06:39 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewarh.h"
 
-int     ft_get_arg_short(t_process **process, t_global *global_data, int *dodge, int arg_index) // Only works if dir is 2 bytes.
+int		ft_get_arg_short(t_process **process, t_global *global_data,
+			int *dodge, int arg_index)
 {
-	int     arg;
+	int	arg;
 
 	if ((*process)->arg[arg_index] == REG_CODE)
 	{
-		if (DEBUG)
-			ft_printf("reg\n");
-		arg = global_data->arena[((*process)->process_cursor + *dodge) % MEM_SIZE];
+		arg = global_data->arena[((*process)->process_cursor + *dodge)
+			% MEM_SIZE];
 		if (arg < 1 || arg > REG_NUMBER)
 			return (-1);
 		arg = (*process)->registries[arg - 1];
@@ -28,16 +28,13 @@ int     ft_get_arg_short(t_process **process, t_global *global_data, int *dodge,
 	}
 	else if ((*process)->arg[arg_index] == IND_CODE)
 	{
-		if (DEBUG)
-			ft_printf("ind\n");
 		arg = ft_extract_argument_ind(global_data, process, *dodge) % IDX_MOD;
-		arg = ft_get_ind_value(global_data, ft_euclidean_mod(arg + (*process)->process_cursor, MEM_SIZE));
+		arg = ft_get_ind_value(global_data, ft_euclidean_mod(arg
+			+ (*process)->process_cursor, MEM_SIZE));
 		*dodge = *dodge + 2;
 	}
 	else if ((*process)->arg[arg_index] == DIR_CODE)
 	{
-		if (DEBUG)
-			ft_printf("dirshor\n");
 		arg = ft_extract_argument_dir_short(global_data, process, *dodge);
 		*dodge = *dodge + 2;
 	}

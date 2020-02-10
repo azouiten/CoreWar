@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/31 01:34:58 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/09 08:30:57 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/10 05:35:39 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static int		ft_enough_processes(t_global *global_data)
 	return (alive);
 }
 
-static void		ft_verification(t_global *global_data) // Might need to rewind to older commits.
+static void		ft_verification(t_global *global_data)
 {
 	if (global_data->number_lives_declared >= NBR_LIVE)
 	{
@@ -71,12 +71,13 @@ static void		ft_verification(t_global *global_data) // Might need to rewind to o
 	global_data->number_lives_declared = 0;
 }
 
-static void	ft_battlegrounds_afterlife(t_global *global_data)
+static void		ft_battlegrounds_afterlife(t_global *global_data)
 {
 	while (ft_enough_processes(global_data))
 	{
 		while (global_data->cycle_since_start < 1)
 		{
+			global_data->all_time_cycles -= 1;
 			ft_get_op(global_data);
 			global_data->cycle_since_start += 1;
 		}
@@ -100,11 +101,7 @@ void			ft_battlegrounds(t_global *global_data)
 		ft_cremate_dead_processes(global_data);
 		if (!ft_enough_processes(global_data))
 			break ;
-		else
-			if (global_data->all_time_cycles == global_data->dump_cycle - 1)
-				ft_print_arena(global_data, MEM_SIZE);
-			ft_verification(global_data);
-		}
-		ft_battlegrounds_afterlife(global_data);
-		ft_printf("%d----%d\n", global_data->all_time_cycles, global_data->cycles_to_die);
+		ft_verification(global_data);
 	}
+	ft_battlegrounds_afterlife(global_data);
+}

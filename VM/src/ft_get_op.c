@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/31 03:57:22 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/09 08:23:55 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/10 06:13:44 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@ static void			ft_execute_op(t_global *global_data, t_process **process)
 	int				fail;
 
 	fail = 0;
-	if (op_tab[(*process)->current_op - 1].arguments)
+	if (g_op_tab[(*process)->current_op - 1].arguments)
 		fail = ft_count_dodge_bytes(global_data, process, 0, 0);
 	else
 	{
-		(*process)->arg[0] = op_tab[(*process)->current_op - 1].tab[0];
+		(*process)->arg[0] = g_op_tab[(*process)->current_op - 1].tab[0];
 		if (!ft_check_registries(process, 1, 0, global_data))
 			fail = 1;
 		(*process)->bytes_to_next_op =
-			ft_arg_size(op_tab[(*process)->current_op - 1].tab[0],
+			ft_arg_size(g_op_tab[(*process)->current_op - 1].tab[0],
 			(*process)->current_op - 1) + 1;
 	}
 	if (!fail)
@@ -48,13 +48,14 @@ static void			ft_get_new_op(t_global *global_data, t_process **process)
 										% MEM_SIZE;
 	}
 	else
-		(*process)->cycles_till_op = op_tab[(*process)->current_op - 1].cost;
+		(*process)->cycles_till_op = g_op_tab[(*process)->current_op - 1].cost;
 }
 
 void				ft_get_op(t_global *global_data)
 {
 	t_process		*temp_process;
 
+	global_data->all_time_cycles += 1;
 	temp_process = global_data->processes;
 	while (temp_process)
 	{
@@ -72,7 +73,6 @@ void				ft_get_op(t_global *global_data)
 			ft_execute_op(global_data, &temp_process);
 		temp_process = temp_process->next;
 	}
-	if (global_data->all_time_cycles == global_data->dump_cycle - 1)
+	if (global_data->all_time_cycles == global_data->dump_cycle)
 		ft_print_arena(global_data, MEM_SIZE);
-	global_data->all_time_cycles += 1;
 }

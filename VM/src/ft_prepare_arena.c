@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/26 14:23:25 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/09 08:14:47 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/10 06:08:41 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static void	ft_get_valid_champions_count(t_global *global_data)
 		ft_manage_error(global_data, ZERO_VALID_CHAMPION, -1, 1);
 }
 
-void	ft_prepare_arena(t_global *global_data)
+void		ft_prepare_arena(t_global *global_data)
 {
 	if (!(global_data->arena = (unsigned char*)malloc(sizeof(unsigned char)
 								* MEM_SIZE)))

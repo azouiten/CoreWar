@@ -6,13 +6,13 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/22 22:15:20 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/08 05:07:20 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/10 06:05:45 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewarh.h"
 
-static void	ft_free_processes(t_global *global_data)
+static void		ft_free_processes(t_global *global_data)
 {
 	t_process	*temp_process;
 	t_process	*temp_process_next;
@@ -26,7 +26,7 @@ static void	ft_free_processes(t_global *global_data)
 	}
 }
 
-static void	ft_free_champion_content(t_global *global_data, int i)
+static void		ft_free_champion_content(t_global *global_data, int i)
 {
 	if (global_data->champions[i].fd >= 0)
 		close(global_data->champions[i].fd);
@@ -47,7 +47,7 @@ static void	ft_free_champion_content(t_global *global_data, int i)
 	}
 }
 
-void	ft_free_data(t_global *global_data)
+void			ft_free_data(t_global *global_data)
 {
 	int	i;
 

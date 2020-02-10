@@ -6,22 +6,22 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 13:07:35 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/09 08:10:26 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/10 06:10:12 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewarh.h"
 
-void    ft_print_arena(t_global *global_data, int xs)
+void		ft_print_arena(t_global *global_data, int xs)
 {
-	int	cn;
-	int	mod;
+	int		cn;
+	int		mod;
 
 	cn = 0;
 	mod = 0;
 	while (cn < xs)
 	{
-		if ((mod == 0 && !(mod = 0)) || (mod == 64 && !(mod = 0)))
+		if ((mod == 0 || (mod == 64 && !(mod = 0))))
 		{
 			ft_printf("0x");
 			ft_printf("%.4x : ", cn);

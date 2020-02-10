@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 23:54:53 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/04 23:55:15 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/10 06:13:11 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int			ft_arg_size(int arg, int current_op_index)
 		return (1);
 	if (arg == DIR_CODE)
 	{
-		if (!op_tab[current_op_index].t_dir_size)
+		if (!g_op_tab[current_op_index].t_dir_size)
 			return (DIR_SIZE);
 		else
 			return (DIR_SIZE / 2);

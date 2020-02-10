@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 02:43:20 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/31 14:46:15 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/10 05:49:20 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,9 @@ void	ft_execute_or(t_process **process, t_global *global_data)
 
 	dodge = 2;
 	first_arg = ft_get_arg(process, global_data, &dodge, 0);
-	if (DEBUG)
-		ft_printf("first arg is %d, and %#x in hexa\n", first_arg, first_arg);
 	second_arg = ft_get_arg(process, global_data, &dodge, 1);
-	if (DEBUG)
-		ft_printf("second arg is %d, and %#x in hexa\n", second_arg, second_arg);
 	reg = global_data->arena[((*process)->process_cursor + dodge) % MEM_SIZE];
-	if (DEBUG)
-		ft_printf("reg is %d\n", reg);
 	(*process)->registries[reg - 1] = first_arg | second_arg;
-	if (DEBUG)
-		ft_printf("their | is %d and in hexa %#x\n", (*process)->registries[reg - 1], (*process)->registries[reg - 1]);
 	if ((*process)->registries[reg - 1])
 		(*process)->carry = 0;
 	else

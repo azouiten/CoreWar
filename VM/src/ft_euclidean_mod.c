@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_euclidean_mod.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ohachim <ohachim@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 09:14:45 by ohachim           #+#    #+#             */
-/*   Updated: 2020/01/30 09:38:26 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/10 05:22:54 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@ int	ft_euclidean_mod(int a, int b)
 
 	m = a % b;
 	if (m < 0)
-		m = (b < 0) ? m - b: m + b;
+		m = (b < 0) ? m - b : m + b;
 	return (m);
 }
