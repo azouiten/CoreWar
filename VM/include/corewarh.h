@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   corewarh.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: magoumi <magoumi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 17:56:42 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/10 09:01:40 by magoumi          ###   ########.fr       */
+/*   Updated: 2020/02/10 09:40:43 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef COREWARH_H
 # define COREWARH_H
-// first fail happens in cylce 8988
+
 # define SUCCESS ft_printf("Success\n");
 # define FAILURE ft_printf("Failure\n");
 # define IN ft_printf("In\n");
@@ -23,7 +23,6 @@
 # include <unistd.h>
 # include <libft.h>
 # include "op.h"
-# include <stdio.h> // Should remove.
 
 enum					e_operations
 {
@@ -71,8 +70,8 @@ typedef struct			s_op
 	int					op_code;
 	int					cost;
 	char				*description;
-	int					arguments; // 1 if there is a argument type byte.
-	int					t_dir_size; // defines the size of T_DIR.
+	int					arguments;
+	int					t_dir_size;
 }						t_op;
 
 typedef struct			s_champion
@@ -98,57 +97,57 @@ typedef union 			u_hexa
 
 typedef struct			s_process
 {
-	//int				program_counter; // Will keep up with where the process is in the arena.
 	int					alive;
-	int					registries[REG_NUMBER]; // Will be used by champions, first registry contains the champion's index in its negative format for some reason, the others will be initialized with 0s.
-	int					carriage_number; // Must be unique.
-	int					carry; // Don't know its purpose yet, will be initialized with 0, some operations will be able to change its value.
-	int					current_op; // Might change type later, will help us indentify the operation in which the process is currently sitting on.
-	int					last_live_cycle; // The number of cycle where live was decalared last..
+	int					registries[REG_NUMBER];
+	int					carriage_number;
+	int					carry;
+	int					current_op;
+	int					last_live_cycle;
 	int					live_declared;
-	int					cycles_till_op; // The number of cycles remaining till the current operation executes.
-	int					process_cursor; // The value of where the process is sitting; might be referring to the PC (Program Counter).
-	int					bytes_to_next_op; // The number of bytes needed to be crossed to get to the next operation.
-	int					arg[3]; // Initialize.
-	struct s_process	*next; // Processes start with the champion with the highest index, newborn processes get added last probably.	
+	int					cycles_till_op;
+	int					process_cursor;
+	int					bytes_to_next_op;
+	int					arg[3];
+	struct s_process	*next;
 }						t_process;
 
 typedef struct			s_global
 {
-	struct s_champion	*champions; // The champions, some of them might not be valid, might duplicate this one with only the valid champions.
-	struct s_process	*processes; // A process will help us execute the champions's code, it will be places at the beginning of every champions's code in the arena.
-	struct s_champion	last_live_player; // The player who last declared it was alive, will be initialized with the player with the highest index.
-	unsigned char		*arena; // The chunk of memory will the champions's code will be executed.
-	char				**error_buf; // An array where error messages are stored.
-	//	int				last_champion_index; // The bigest index with a valid champion in global.champions.
-	int					champion_count; // The number of champions given as arguments, checks for the .cor extension to choose what's a champion.
-	int					valid_champions; // Counts the number of champions who survived the error checks.
-	int					cycle_since_start; // How many cycles past since beginning of the game. Still don't know where this will be usefull.
-	int					number_lives_declared; // Keeps count of how many lives delcared before the end of a cycle_to_die.
-	int					cycles_to_die; // The value of the current number of cycles before a check. will be initialized with CYCLES_TO_DIE.
-	int					number_of_checks; // How many checks done so far, a check is done after every cycles_to_die, resets to 0 every time we decrement cycles_to_die.
+	struct s_champion	*champions;
+	struct s_process	*processes;
+	struct s_champion	last_live_player;
+	unsigned char		*arena;
+	char				**error_buf;
+	int					champion_count;
+	int					valid_champions;
+	int					cycle_since_start;
+	int					number_lives_declared;
+	int					cycles_to_die;
+	int					number_of_checks;
 	int					all_time_cycles;
 	int					dump_cycle;
 }						t_global;
 
-t_op					g_op_tab[17]; // Change name for norminette (g_).
+t_op					g_op_tab[17];
+
 int						ft_get_bit_value(int number, int number_bits,
 						int position);
-void					ft_create_initial_processes(t_global *global_data); // Created initial processes and initalizes their content.
-void					ft_fill_arena(t_global *global_data); // Creates the arena, transports the valid champions s code to their rightful place in the arena.
-void					ft_prepare_arena(t_global *global_data); // Allocated unsigned char arena and fills counts the number of valid players, it with 0s, fixes the starting point of every champion.
+void					ft_create_initial_processes(t_global *global_data);
+void					ft_fill_arena(t_global *global_data);
+void					ft_prepare_arena(t_global *global_data);
 int						ft_dodge_bytes(t_global *global_data, int i, int bytes,
-						int error_num); // Dodges 4 bytes by reading them.
-void					ft_free_data(t_global *global_data); // Frees global_data allocs.
-void					ft_gather_byte_code(t_global *global_data); // For now, it extracts name from the .cor byte_code.
+						int error_num);
+void					ft_free_data(t_global *global_data);
+void					ft_gather_byte_code(t_global *global_data);
 void					ft_check_magic_headers(t_global *global_data, int i,
-						int ret); // Checks for champions with invalid magic headers, and assigns 0 to their validity.
-int						ft_check_cor_extension(char *potential_champion); // Check if the files is an actual champion (has a .cor extension).
-int						ft_count_champions(char **argv); // Counts the number of champions given as arguments using the check_cor_extension fucntion.
-void					ft_create_champions(t_global *global_data, char **argv); // Allocates to struct champion, and initializes it.
-void					ft_fill_champions(char **argv, t_global *global_data); // Fill champions structure with their file names in the order demanded.
+						int ret);
+int						ft_check_cor_extension(char *potential_champion);
+int						ft_count_champions(char **argv);
+void					ft_create_champions(t_global *global_data,
+						char **argv);
+void					ft_fill_champions(char **argv, t_global *global_data);
 void					ft_manage_error(t_global *global_data, int error_num,
-						int champion_index, int exit); // Prints error codes, and frees then exits if demanded.
+						int champion_index, int exit);
 void					ft_battlegrounds(t_global *global_data);
 void					ft_get_op(t_global *global_data);
 int						ft_check_arg_validity(int arg, int arg_num,
@@ -157,9 +156,9 @@ void					ft_execute_hq(t_process **process,
 						t_global *global_data);
 void					ft_execute_live(t_process **process,
 						t_global *global_data);
-int						ft_get_ind_value(t_global *global_data, int adress); // More debugging needed.
+int						ft_get_ind_value(t_global *global_data, int adress);
 void					ft_execute_load(t_process **process,
-						t_global *global_data); // More debugging needed.
+						t_global *global_data);
 void					ft_execute_store(t_process **process,
 						t_global *global_data);
 int						ft_extract_argument_ind(t_global *global_data,
