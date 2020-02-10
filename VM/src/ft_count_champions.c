@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_count_champions.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: magoumi <magoumi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 21:05:21 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/10 05:16:15 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/10 10:09:01 by magoumi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,7 @@ int				ft_count_champions(char **argv)
 	wn = 1;
 	while (argv[wn])
 	{
-		if (!ft_strequ(argv[wn], "-n")
-			&& ft_check_cor_extension(argv[wn]))
+		if (ft_check_cor_extension(argv[wn]))
 			champions++;
 		else
 		{
