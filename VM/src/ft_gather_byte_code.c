@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 12:23:20 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/04 23:12:16 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/11 18:33:24 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,8 @@ static void		ft_extract_exec_code_size(t_global *global_data, int i)
 	uni_hexa.buf[1] = uni_hexa.buf[2];
 	uni_hexa.buf[2] = c;
 	global_data->champions[i].hex_code_size = uni_hexa.value;
+	if (uni_hexa.value > CHAMP_MAX_SIZE)
+		ft_manage_error(global_data, BIG_CHAMP, i, 1);
 }
 
 static void		ft_extract_exec_code(t_global *global_data, int i)

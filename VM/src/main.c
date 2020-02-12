@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 18:05:02 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/10 08:57:26 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/12 11:33:45 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,10 @@ static void	ft_declare_champions(t_global global_data)
 
 	j = 1;
 	i = 0;
-	ft_printf("Introducing contestants...\n");
+	if (global_data.valid_champions)
+		ft_printf("Introducing contestants...\n");
+	else
+		return ;
 	while (i < global_data.champion_count)
 	{
 		if (global_data.champions[i].validity)
@@ -56,6 +59,21 @@ static void	ft_declare_champions(t_global global_data)
 		}
 		i++;
 	}
+}
+
+static void     ft_get_valid_champions_count(t_global *global_data)
+{
+	int             i;
+
+	i = 0;
+	while (i < global_data->champion_count)
+	{
+		if (global_data->champions[i].validity)
+			global_data->valid_champions++;
+		i++;
+	}
+	if (!(global_data->valid_champions))
+		ft_manage_error(global_data, ZERO_VALID_CHAMPION, -1, 1);
 }
 
 static void	ft_init_global_data(t_global *global_data)
@@ -71,6 +89,8 @@ static void	ft_init_global_data(t_global *global_data)
 	global_data->number_of_checks = 0;
 	global_data->dump_cycle = -1;
 	global_data->arena = NULL;
+	global_data->arena_dump = NULL;
+	global_data->print = 0;
 }
 
 int			main(int argc, char **argv)
@@ -84,10 +104,12 @@ int			main(int argc, char **argv)
 	ft_check_magic_headers(&global_data, 0, 0);
 	ft_gather_byte_code(&global_data);
 	ft_get_dump_cycle(&global_data, argv);
+	ft_get_valid_champions_count(&global_data);
 	ft_declare_champions(global_data);
 	ft_prepare_arena(&global_data);
-	ft_printf("Contestant %d, \"%s\", has won !\n",
-	global_data.last_live_player.number + 1,
-	global_data.last_live_player.byte_name);
+	if (global_data.valid_champions)
+		ft_printf("Contestant %d, \"%s\", has won !\n",
+				global_data.last_live_player.number + 1,
+				global_data.last_live_player.byte_name);
 	ft_free_data(&global_data);
 }

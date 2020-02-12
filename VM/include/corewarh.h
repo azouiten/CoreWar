@@ -6,17 +6,13 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 17:56:42 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/10 09:40:43 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/12 11:33:28 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef COREWARH_H
 # define COREWARH_H
 
-# define SUCCESS ft_printf("Success\n");
-# define FAILURE ft_printf("Failure\n");
-# define IN ft_printf("In\n");
-# define OUT ft_printf("Out\n");
 # define DEBUG 0
 
 # include <stdlib.h>
@@ -59,6 +55,7 @@ enum					e_errors
 	EXEC_CODE_SIZE_ZERO,
 	EXEC_CODE_SIZE_WRONG,
 	ZERO_VALID_CHAMPION,
+	BIG_CHAMP,
 	TOTAL
 };
 
@@ -88,7 +85,7 @@ typedef struct			s_champion
 	long long			hex_code_size;
 }						t_champion;
 
-typedef union 			u_hexa
+typedef union			u_hexa
 {
 	unsigned char		buf[4];
 	int					value;
@@ -117,6 +114,8 @@ typedef struct			s_global
 	struct s_process	*processes;
 	struct s_champion	last_live_player;
 	unsigned char		*arena;
+	unsigned char		*arena_dump;
+	int					print;
 	char				**error_buf;
 	int					champion_count;
 	int					valid_champions;
@@ -201,6 +200,7 @@ void					ft_execute_long_load_index(t_process **process,
 						t_global *global_data);
 void					ft_execute_aff(t_process **process,
 						t_global *global_data);
+void					ft_copy_arena(t_global *global_data);
 void					ft_print_arena(t_global *global_data, int xs);
 int						ft_euclidean_mod(int a, int b);
 int						ft_count_dodge_bytes(t_global *global_data,

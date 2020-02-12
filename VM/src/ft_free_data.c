@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/22 22:15:20 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/10 08:57:34 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/12 11:18:22 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,6 @@ void			ft_free_data(t_global *global_data)
 	}
 	ft_memdel((void**)&global_data->error_buf);
 	ft_memdel((void**)&global_data->arena);
+	ft_memdel((void**)&global_data->arena_dump);
 	ft_free_processes(global_data);
 }

@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 08:19:44 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/10 09:25:01 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/11 18:41:33 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ static void	ft_init_error_buf(t_global *global_data)
 	global_data->error_buf[EXEC_CODE_SIZE_ZERO] = "Exec code size is 0";
 	global_data->error_buf[EXEC_CODE_SIZE_WRONG] = "Exec code size is wrong";
 	global_data->error_buf[ZERO_VALID_CHAMPION] = "0 Valid champions";
+	global_data->error_buf[BIG_CHAMP] = "Champion size is too big";
 	global_data->error_buf[TOTAL] = NULL;
 }
 
@@ -50,5 +51,5 @@ void		ft_manage_error(t_global *global_data, int error_num,
 	if (quit == 0)
 		return ;
 	ft_free_data(global_data);
-	exit(1);
+	exit(0);
 }
