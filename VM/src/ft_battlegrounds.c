@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/31 01:34:58 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/12 14:01:41 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/13 11:42:01 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,8 @@ void			ft_battlegrounds(t_global *global_data)
 			ft_get_op(global_data);
 			global_data->cycle_since_start += 1;
 		}
+		if (global_data->all_time_cycles > global_data->dump_cycle && global_data->print)
+			ft_print_arena(global_data, MEM_SIZE);
 		ft_cremate_dead_processes(global_data);
 		if (!ft_enough_processes(global_data))
 		{
@@ -114,6 +116,4 @@ void			ft_battlegrounds(t_global *global_data)
 		global_data->all_time_cycles += 1;
 		ft_battlegrounds_afterlife(global_data);
 	}
-	if (global_data->dump_cycle < global_data->all_time_cycles && global_data->print)
-		ft_print_arena(global_data, MEM_SIZE);
 }
