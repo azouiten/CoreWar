@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/31 01:34:58 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/13 11:42:01 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/14 23:54:03 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static int		ft_cremate_dead_processes(t_global *global_data)
 	return (0);
 }
 
-int		ft_enough_processes(t_global *global_data)
+static int		ft_enough_processes(t_global *global_data)
 {
 	t_process	*temp_process;
 	int			alive;
@@ -73,12 +73,15 @@ static void		ft_verification(t_global *global_data)
 
 static void		ft_battlegrounds_afterlife(t_global *global_data)
 {
+	if (global_data->all_time_cycles
+		> global_data->dump_cycle && global_data->print == 1)
+		ft_print_arena(global_data, MEM_SIZE);
 	while (ft_enough_processes(global_data))
 	{
 		while (global_data->cycle_since_start < 1)
 		{
 			global_data->all_time_cycles -= 1;
-			ft_get_op(global_data);
+			ft_get_op(global_data, NULL);
 			global_data->cycle_since_start += 1;
 		}
 		ft_cremate_dead_processes(global_data);
@@ -88,22 +91,20 @@ static void		ft_battlegrounds_afterlife(t_global *global_data)
 	}
 }
 
-void			ft_battlegrounds(t_global *global_data)
+void			ft_battlegrounds(t_global *global_data, int after_life)
 {
-	int	after_life;
-
-	after_life = 1;
 	while (global_data->cycles_to_die > 0
 			&& ft_enough_processes(global_data) >= 1)
 	{
 		while (global_data->cycle_since_start < global_data->cycles_to_die)
 		{
-			ft_get_op(global_data);
+			ft_get_op(global_data, NULL);
 			global_data->cycle_since_start += 1;
 		}
-		if (global_data->all_time_cycles > global_data->dump_cycle && global_data->print)
-			ft_print_arena(global_data, MEM_SIZE);
 		ft_cremate_dead_processes(global_data);
+		if (global_data->all_time_cycles > global_data->dump_cycle
+				&& global_data->print == 1)
+			ft_print_arena(global_data, MEM_SIZE);
 		if (!ft_enough_processes(global_data))
 		{
 			after_life = 0;

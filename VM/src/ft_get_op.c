@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/31 03:57:22 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/12 12:13:49 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/14 23:52:44 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,11 @@ static void			ft_get_new_op(t_global *global_data, t_process **process)
 	else
 		(*process)->cycles_till_op = g_op_tab[(*process)->current_op - 1].cost;
 }
-int             ft_enough_processes(t_global *global_data);
-void				ft_get_op(t_global *global_data)
-{
-	t_process		*temp_process;
 
-	if (0 == global_data->dump_cycle && (global_data->print = 1) && !global_data->all_time_cycles)
+void				ft_get_op(t_global *global_data, t_process *temp_process)
+{
+	if (0 == global_data->dump_cycle && (global_data->print = 1)
+			&& !global_data->all_time_cycles)
 		ft_copy_arena(global_data);
 	global_data->all_time_cycles += 1;
 	temp_process = global_data->processes;
@@ -75,9 +74,7 @@ void				ft_get_op(t_global *global_data)
 			ft_execute_op(global_data, &temp_process);
 		temp_process = temp_process->next;
 	}
-	if (global_data->all_time_cycles == global_data->dump_cycle)
-	{
-		global_data->print = 1;
+	if (global_data->all_time_cycles == global_data->dump_cycle
+			&& (global_data->print = 1))
 		ft_copy_arena(global_data);
-	}
 }

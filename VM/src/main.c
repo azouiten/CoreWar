@@ -6,13 +6,13 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 18:05:02 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/12 11:33:45 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/14 23:58:13 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewarh.h"
 
-static void	ft_get_dump_cycle(t_global *global_data, char **argv)
+static void		ft_get_dump_cycle(t_global *global_data, char **argv)
 {
 	int	wn;
 	int	cn;
@@ -36,10 +36,10 @@ static void	ft_get_dump_cycle(t_global *global_data, char **argv)
 	}
 }
 
-static void	ft_declare_champions(t_global global_data)
+static void		ft_declare_champions(t_global global_data)
 {
-	int	i;
-	int	j;
+	int			i;
+	int			j;
 
 	j = 1;
 	i = 0;
@@ -61,9 +61,9 @@ static void	ft_declare_champions(t_global global_data)
 	}
 }
 
-static void     ft_get_valid_champions_count(t_global *global_data)
+static void		ft_get_valid_champions_count(t_global *global_data)
 {
-	int             i;
+	int			i;
 
 	i = 0;
 	while (i < global_data->champion_count)
@@ -76,7 +76,7 @@ static void     ft_get_valid_champions_count(t_global *global_data)
 		ft_manage_error(global_data, ZERO_VALID_CHAMPION, -1, 1);
 }
 
-static void	ft_init_global_data(t_global *global_data)
+static void		ft_init_global_data(t_global *global_data)
 {
 	global_data->champions = NULL;
 	global_data->all_time_cycles = 0;
@@ -93,7 +93,7 @@ static void	ft_init_global_data(t_global *global_data)
 	global_data->print = 0;
 }
 
-int			main(int argc, char **argv)
+int				main(int argc, char **argv)
 {
 	t_global	global_data;
 	int			i;

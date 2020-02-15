@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/12 11:18:42 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/12 11:24:52 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/14 16:57:18 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ void	ft_copy_arena(t_global *global_data)
 	i = 0;
 	if (!global_data->arena_dump)
 	{
-		if (!(global_data->arena_dump = (unsigned char*)malloc(sizeof(unsigned char) * MEM_SIZE)))
+		if (!(global_data->arena_dump =
+			(unsigned char*)malloc(sizeof(unsigned char) * MEM_SIZE)))
 			ft_manage_error(global_data, MALLOC_FAIL, -1, 1);
 	}
 	while (i < MEM_SIZE)

@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/26 14:23:25 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/12 10:28:03 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/14 17:04:00 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,5 @@ void		ft_prepare_arena(t_global *global_data)
 	ft_get_starting_points(global_data);
 	ft_create_initial_processes(global_data);
 	ft_fill_arena(global_data);
-	ft_battlegrounds(global_data);
+	ft_battlegrounds(global_data, 1);
 }

@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 17:56:42 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/12 11:33:28 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/14 23:53:12 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ typedef struct			s_process
 	int					cycles_till_op;
 	int					process_cursor;
 	int					bytes_to_next_op;
-	int					arg[3];
+	char					arg[3];
 	struct s_process	*next;
 }						t_process;
 
@@ -129,7 +129,7 @@ typedef struct			s_global
 
 t_op					g_op_tab[17];
 
-int						ft_get_bit_value(int number, int number_bits,
+char					ft_get_bit_value(unsigned char number, int number_bits,
 						int position);
 void					ft_create_initial_processes(t_global *global_data);
 void					ft_fill_arena(t_global *global_data);
@@ -147,8 +147,8 @@ void					ft_create_champions(t_global *global_data,
 void					ft_fill_champions(char **argv, t_global *global_data);
 void					ft_manage_error(t_global *global_data, int error_num,
 						int champion_index, int exit);
-void					ft_battlegrounds(t_global *global_data);
-void					ft_get_op(t_global *global_data);
+void					ft_battlegrounds(t_global *global_data, int after_life);
+void					ft_get_op(t_global *global_data, t_process *temp_process);
 int						ft_check_arg_validity(int arg, int arg_num,
 						int current_op_index);
 void					ft_execute_hq(t_process **process,
