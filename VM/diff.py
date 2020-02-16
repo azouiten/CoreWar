@@ -1,7 +1,7 @@
 import os
 
-cycle = 0
-champs = input("Champs:")
+cycle = int(input("Cycle: "))
+champs = input("Champs: ")
 count = 64
 quit = 0
 while count >= 64:
