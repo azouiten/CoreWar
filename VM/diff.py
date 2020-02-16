@@ -6,8 +6,8 @@ count = 64
 quit = 0
 while count >= 64:
 	print("It is now cycle: " + str(cycle))
-	os.system('./ocorewar ' + champs + ' -d ' + str(cycle) + ' -a ' + ' > dif1')
-	os.system('./corewar ' + champs + ' -d ' + str(cycle) + ' > dif2')
+	os.system('./ocorewar ' + champs + ' -d ' + str(cycle) + ' > dif1')
+	os.system('./corewar ' + champs + ' -dump ' + str(cycle) + ' > dif2')
 	os.system('diff dif1 dif2 > mok')
 	mok = open('mok')
 	lines = mok.readlines()

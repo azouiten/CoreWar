@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 18:05:02 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/14 23:58:13 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/16 16:54:17 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void		ft_get_dump_cycle(t_global *global_data, char **argv)
 	wn = 0;
 	while (argv[wn])
 	{
-		if (!ft_strcmp(argv[wn], "-d") && argv[wn + 1])
+		if (!ft_strcmp(argv[wn], "-dump") && argv[wn + 1])
 		{
 			while (argv[wn + 1][cn] != '\0')
 			{
