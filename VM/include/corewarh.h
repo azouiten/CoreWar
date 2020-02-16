@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 17:56:42 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/14 23:53:12 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/16 21:36:43 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ typedef struct			s_process
 	int					cycles_till_op;
 	int					process_cursor;
 	int					bytes_to_next_op;
-	char					arg[3];
+	char				arg[3];
 	struct s_process	*next;
 }						t_process;
 
@@ -148,7 +148,8 @@ void					ft_fill_champions(char **argv, t_global *global_data);
 void					ft_manage_error(t_global *global_data, int error_num,
 						int champion_index, int exit);
 void					ft_battlegrounds(t_global *global_data, int after_life);
-void					ft_get_op(t_global *global_data, t_process *temp_process);
+void					ft_get_op(t_global *global_data,
+						t_process *temp_process);
 int						ft_check_arg_validity(int arg, int arg_num,
 						int current_op_index);
 void					ft_execute_hq(t_process **process,
