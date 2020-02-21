@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 17:56:42 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/16 21:36:43 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/19 00:01:10 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,12 @@ typedef struct			s_champion
 	long long			hex_code_size;
 }						t_champion;
 
+typedef struct			s_aff
+{
+	int					value;
+	struct s_aff		*next;
+}						t_aff;
+
 typedef union			u_hexa
 {
 	unsigned char		buf[4];
@@ -113,6 +119,7 @@ typedef struct			s_global
 	struct s_champion	*champions;
 	struct s_process	*processes;
 	struct s_champion	last_live_player;
+	struct s_aff		*affs;
 	unsigned char		*arena;
 	unsigned char		*arena_dump;
 	int					print;
@@ -209,5 +216,6 @@ int						ft_count_dodge_bytes(t_global *global_data,
 int						ft_arg_size(int arg, int current_op_index);
 int						ft_check_registries(t_process **process, int reg_index,
 						int arg_num, t_global *global_data);
+void					ft_print_affs(t_global global_data);
 
 #endif

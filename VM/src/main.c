@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 18:05:02 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/16 16:54:17 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/18 23:57:05 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ static void		ft_init_global_data(t_global *global_data)
 	global_data->arena = NULL;
 	global_data->arena_dump = NULL;
 	global_data->print = 0;
+	global_data->affs = NULL;
 }
 
 int				main(int argc, char **argv)
@@ -107,6 +108,7 @@ int				main(int argc, char **argv)
 	ft_get_valid_champions_count(&global_data);
 	ft_declare_champions(global_data);
 	ft_prepare_arena(&global_data);
+	ft_print_affs(global_data);
 	if (global_data.valid_champions)
 		ft_printf("Contestant %d, \"%s\", has won !\n",
 				global_data.last_live_player.number + 1,
