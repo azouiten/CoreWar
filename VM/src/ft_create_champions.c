@@ -6,7 +6,7 @@
 /*   By: magoumi <magoumi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 21:57:29 by magoumi           #+#    #+#             */
-/*   Updated: 2020/02/21 19:05:03 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/21 19:44:39 by magoumi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,11 @@ static void	ft_init_champions(t_global *data)
 void		ft_create_champions(t_global *data, char **argv)
 {
 	if (!(data->champion_count = ft_champion_count(argv)))
-		return ;
+		ft_manage_error(data, ZERO_CHAMPION, -1, 1);
 	if (data->champion_count > MAX_PLAYERS)
-		return ;
+		ft_manage_error(data, TOO_MANY_PLAYERS, -1, 1);
 	if (!(data->champions = (t_champion*)malloc(data->champion_count
 			* sizeof(t_champion))))
-		return ;
+		ft_manage_error(data, MALLOC_FAIL, -1, 1);
 	ft_init_champions(data);
 }

@@ -5,4 +5,4 @@ obj/
 corewar
 libft/obj
 libft/libft.a
-*.sw*
+**/*.sw*

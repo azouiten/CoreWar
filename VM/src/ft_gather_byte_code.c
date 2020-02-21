@@ -6,7 +6,7 @@
 /*   By: magoumi <magoumi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 04:14:09 by magoumi           #+#    #+#             */
-/*   Updated: 2020/02/19 00:00:18 by magoumi          ###   ########.fr       */
+/*   Updated: 2020/02/21 23:00:57 by magoumi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ void	ft_extract_name(t_global *data, int i, int cn)
 		return ;
 	if (!(data->champions[i].byte_name = (unsigned char*)malloc(
 		(sizeof(unsigned char) * PROG_NAME_LENGTH) + 1)))
-		exit(1);
+		ft_manage_error(data, MALLOC_FAIL, -1, 1);
 	data->champions[i].byte_name[PROG_NAME_LENGTH] = '\0';
 	if (!(ret = read(data->champions[i].fd,
 		data->champions[i].byte_name, PROG_NAME_LENGTH)) || ret < 0)
-		data->champions[i].validity = 0;
+		ft_manage_error(data, READ_FAIL, i, 0);
 }
 
 void	ft_extract_exec_code_size(t_global *data, int i)
@@ -39,7 +39,7 @@ void	ft_extract_exec_code_size(t_global *data, int i)
 	ret = read(data->champions[i].fd, uni_hexa.buf, 4);
 	if (ret <= 0)
 	{
-		data->champions[i].validity = 0;
+		ft_manage_error(data, READ_FAIL, i, 0);
 		return ;
 	}
 	c = uni_hexa.buf[0];
@@ -50,7 +50,7 @@ void	ft_extract_exec_code_size(t_global *data, int i)
 	uni_hexa.buf[2] = c;
 	data->champions[i].hex_code_size = uni_hexa.value;
 	if (uni_hexa.value > CHAMP_MAX_SIZE || !uni_hexa.value)
-		data->champions[i].validity = 0;
+		ft_manage_error(data, BIG_CHAMP, i, 1);
 }
 
 void	ft_extract_comment(t_global *data, int i, int cn)
@@ -62,17 +62,17 @@ void	ft_extract_comment(t_global *data, int i, int cn)
 	if (!(data->champions[i].comment =
 		(unsigned char*)malloc((sizeof(unsigned char) *
 			COMMENT_LENGTH) + 1)))
-		exit(1);
+		ft_manage_error(data, MALLOC_FAIL, -1, 1);
 	data->champions[i].comment[COMMENT_LENGTH] = '\0';
 	if (!(ret = read(data->champions[i].fd,
 		data->champions[i].comment, COMMENT_LENGTH)))
 	{
-		data->champions[i].validity = 0;
+		ft_manage_error(data, DATA_LACK, i, 0);
 		return ;
 	}
 	if (ret < 0)
 	{
-		data->champions[i].validity = 0;
+		ft_manage_error(data, READ_FAIL, i, 0);
 		return ;
 	}
 }
@@ -84,16 +84,16 @@ void	ft_extract_exec_code(t_global *data, int i)
 
 	cn = 0;
 	if (data->champions[i].validity == 0)
-		return ;
+		ft_manage_error(data, EXEC_CODE_SIZE_ZERO, i, 0);
 	if (!(data->champions[i].exec_code =
 	(unsigned char*)ft_strnew(data->champions[i].hex_code_size)))
-		exit(1);
+		ft_manage_error(data, MALLOC_FAIL, -1, 1);
 	if (!(ret = read(data->champions[i].fd,
 		data->champions[i].exec_code,
 			data->champions[i].hex_code_size)))
-		data->champions[i].validity = 0;
+		ft_manage_error(data, DATA_LACK, i, 0);
 	else if (ret < 0)
-		data->champions[i].validity = 0;
+		ft_manage_error(data, READ_FAIL, i, 0);
 }
 
 /*
