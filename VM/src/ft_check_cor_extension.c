@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_cor_extension.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: magoumi <magoumi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/13 23:26:11 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/10 05:12:10 by ohachim          ###   ########.fr       */
+/*   Created: 2020/02/18 23:59:56 by magoumi           #+#    #+#             */
+/*   Updated: 2020/02/18 23:59:57 by magoumi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewarh.h"
 
-int			ft_check_cor_extension(char *potential_champion)
+int		ft_check_cor_extension(char *potential_champion)
 {
 	int		last_char;
 

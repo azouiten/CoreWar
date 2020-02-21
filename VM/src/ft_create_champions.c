@@ -3,45 +3,64 @@
 /*                                                        :::      ::::::::   */
 /*   ft_create_champions.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: magoumi <magoumi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/11 20:02:54 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/10 05:22:33 by ohachim          ###   ########.fr       */
+/*   Created: 2020/02/16 21:57:29 by magoumi           #+#    #+#             */
+/*   Updated: 2020/02/19 00:04:19 by magoumi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewarh.h"
 
-static void	ft_init_champions(t_global *global_data)
+int		ft_champion_count(char **argv)
 {
-	int	i;
+	int	argn;
+	int	champ_num;
+
+	champ_num = 0;
+	argn = 1;
+	while (argv[argn])
+	{
+		if (ft_check_cor_extension(argv[argn]))
+			champ_num++;
+		argn++;
+	}
+	return (champ_num);
+}
+
+void	ft_init_champions(t_global *data)
+{
+	size_t	i;
 
 	i = 0;
-	while (i < global_data->champion_count)
+	while (i < data->champion_count)
 	{
-		global_data->champions[i].name = NULL;
-		global_data->champions[i].comment = NULL;
-		global_data->champions[i].byte_name = NULL;
-		global_data->champions[i].exec_code = NULL;
-		global_data->champions[i].validity = 1;
-		global_data->champions[i].hex_code_size = 0;
-		global_data->champions[i].number = i;
-		global_data->champions[i].argn = -1;
-		global_data->champions[i].fd = -1;
-		global_data->champions[i].starting_point = -1;
+		data->champions[i].name = NULL;
+		data->champions[i].comment = NULL;
+		data->champions[i].byte_name = NULL;
+		data->champions[i].exec_code = NULL;
+		data->champions[i].validity = 1;
+		data->champions[i].hex_code_size = 0;
+		data->champions[i].number = i;
+		data->champions[i].argn = -1;
+		data->champions[i].fd = -1;
+		data->champions[i].starting_point = -1;
 		i++;
 	}
 }
 
-void		ft_create_champions(t_global *global_data, char **argv)
+/*
+**	add protection to the next function
+*/
+
+void	ft_create_champions(t_global *data, char **argv)
 {
-	if (!(global_data->champion_count = ft_count_champions(argv)))
-		ft_manage_error(global_data, ZERO_CHAMPION, -1, 1);
-	else if (global_data->champion_count > MAX_PLAYERS)
-		ft_manage_error(global_data, TOO_MANY_PLAYERS, -1, 1);
-	if (!(global_data->champions = (t_champion*)malloc(sizeof(t_champion)
-					* global_data->champion_count)))
-		ft_manage_error(global_data, MALLOC_FAIL, -1, 1);
-	ft_init_champions(global_data);
-	ft_fill_champions(argv, global_data);
+	if (!(data->champion_count = ft_champion_count(argv)))
+		return ;
+	if (data->champion_count > MAX_PLAYERS)
+		return ;
+	if (!(data->champions = (t_champion*)malloc(data->champion_count
+			* sizeof(t_champion))))
+		return ;
+	ft_init_champions(data);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: magoumi <magoumi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 18:05:02 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/16 16:54:17 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/18 23:57:09 by magoumi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ int				main(int argc, char **argv)
 	i = 0;
 	ft_init_global_data(&global_data);
 	ft_create_champions(&global_data, argv);
+	ft_fill_champions(&global_data, argv);
 	ft_check_magic_headers(&global_data, 0, 0);
 	ft_gather_byte_code(&global_data);
 	ft_get_dump_cycle(&global_data, argv);
