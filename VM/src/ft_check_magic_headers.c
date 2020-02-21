@@ -6,13 +6,13 @@
 /*   By: magoumi <magoumi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 03:40:36 by magoumi           #+#    #+#             */
-/*   Updated: 2020/02/18 23:51:26 by magoumi          ###   ########.fr       */
+/*   Updated: 2020/02/21 19:11:21 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewarh.h"
 
-int		ft_cmp_magic_header(unsigned char *magic_header)
+static int		ft_cmp_magic_header(unsigned char *magic_header)
 {
 	if (magic_header[0] != 0x0
 			|| magic_header[1] != 0xea

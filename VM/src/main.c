@@ -6,7 +6,7 @@
 /*   By: magoumi <magoumi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 18:05:02 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/21 10:17:38 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/21 14:37:37 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ static void		ft_get_dump_cycle(t_global *global_data, char **argv)
 	int	wn;
 	int	cn;
 
-	cn = 0;
 	wn = 0;
 	while (argv[wn])
 	{
 		if (!ft_strcmp(argv[wn], "-dump") && argv[wn + 1])
 		{
+			cn = 0;
 			while (argv[wn + 1][cn] != '\0')
 			{
 				if (!ft_isdigit(argv[wn + 1][cn]))

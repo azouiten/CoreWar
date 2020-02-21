@@ -6,11 +6,23 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/22 22:15:20 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/12 11:18:22 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/21 12:36:53 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewarh.h"
+
+static void		ft_free_affs(t_global *global_data)
+{
+	t_aff	*temp_aff;
+
+	while (global_data->affs)
+	{
+		temp_aff = global_data->affs->next;
+		ft_memdel((void**)&(global_data->affs));
+		global_data->affs = temp_aff;
+	}
+}
 
 static void		ft_free_processes(t_global *global_data)
 {
@@ -65,4 +77,6 @@ void			ft_free_data(t_global *global_data)
 	ft_memdel((void**)&global_data->arena);
 	ft_memdel((void**)&global_data->arena_dump);
 	ft_free_processes(global_data);
+	if (global_data->affs)
+		ft_free_affs(global_data);
 }

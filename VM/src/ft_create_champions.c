@@ -6,13 +6,13 @@
 /*   By: magoumi <magoumi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 21:57:29 by magoumi           #+#    #+#             */
-/*   Updated: 2020/02/19 00:04:19 by magoumi          ###   ########.fr       */
+/*   Updated: 2020/02/21 19:05:03 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewarh.h"
 
-int		ft_champion_count(char **argv)
+static int	ft_champion_count(char **argv)
 {
 	int	argn;
 	int	champ_num;
@@ -28,7 +28,7 @@ int		ft_champion_count(char **argv)
 	return (champ_num);
 }
 
-void	ft_init_champions(t_global *data)
+static void	ft_init_champions(t_global *data)
 {
 	size_t	i;
 
@@ -53,7 +53,7 @@ void	ft_init_champions(t_global *data)
 **	add protection to the next function
 */
 
-void	ft_create_champions(t_global *data, char **argv)
+void		ft_create_champions(t_global *data, char **argv)
 {
 	if (!(data->champion_count = ft_champion_count(argv)))
 		return ;

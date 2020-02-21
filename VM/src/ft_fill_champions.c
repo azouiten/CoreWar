@@ -6,15 +6,15 @@
 /*   By: magoumi <magoumi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 22:00:25 by magoumi           #+#    #+#             */
-/*   Updated: 2020/02/18 23:59:25 by magoumi          ###   ########.fr       */
+/*   Updated: 2020/02/21 12:48:21 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewarh.h"
 
-int			ft_dash_n_value(char *n_string)
+static int		ft_dash_n_value(char *n_string)
 {
-	int	i;
+	int			i;
 
 	i = 0;
 	while (n_string[i])
@@ -26,10 +26,10 @@ int			ft_dash_n_value(char *n_string)
 	return (ft_atoi(n_string));
 }
 
-int			ft_get_champion_index(int argn, t_global *data, char **argv,
+static int		ft_get_champion_index(int argn, t_global *data, char **argv,
 			int time)
 {
-	int	n_value;
+	int			n_value;
 
 	n_value = 100;
 	if (argn >= 3)
@@ -53,10 +53,10 @@ int			ft_get_champion_index(int argn, t_global *data, char **argv,
 	return (argn);
 }
 
-void		ft_assign_global_champion(char **argv, t_global *data,
+static void		ft_assign_global_champion(char **argv, t_global *data,
 			int argn, int time)
 {
-	int	index;
+	int			index;
 
 	index = ft_get_champion_index(argn, data, argv, time);
 	if (index == -1)
@@ -65,7 +65,7 @@ void		ft_assign_global_champion(char **argv, t_global *data,
 	data->champions[index].argn = argn;
 }
 
-int		ft_assigned(char **argv, t_global *data, int wn)
+int				ft_assigned(char **argv, t_global *data, int wn)
 {
 	int			i;
 
@@ -80,7 +80,7 @@ int		ft_assigned(char **argv, t_global *data, int wn)
 	return (0);
 }
 
-void	ft_fill_champions(t_global *data, char **argv)
+void			ft_fill_champions(t_global *data, char **argv)
 {
 	size_t	argn;
 
