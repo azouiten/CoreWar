@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewarh.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: magoumi <magoumi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 17:56:42 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/16 21:36:43 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/18 23:58:05 by magoumi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,8 +134,7 @@ char					ft_get_bit_value(unsigned char number, int number_bits,
 void					ft_create_initial_processes(t_global *global_data);
 void					ft_fill_arena(t_global *global_data);
 void					ft_prepare_arena(t_global *global_data);
-int						ft_dodge_bytes(t_global *global_data, int i, int bytes,
-						int error_num);
+int						ft_dodge_bytes(t_global *global_data, int i, int bytes);
 void					ft_free_data(t_global *global_data);
 void					ft_gather_byte_code(t_global *global_data);
 void					ft_check_magic_headers(t_global *global_data, int i,
@@ -144,7 +143,7 @@ int						ft_check_cor_extension(char *potential_champion);
 int						ft_count_champions(char **argv);
 void					ft_create_champions(t_global *global_data,
 						char **argv);
-void					ft_fill_champions(char **argv, t_global *global_data);
+void					ft_fill_champions(t_global *global_data, char **argv);
 void					ft_manage_error(t_global *global_data, int error_num,
 						int champion_index, int exit);
 void					ft_battlegrounds(t_global *global_data, int after_life);
