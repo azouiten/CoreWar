@@ -1,3 +1,8 @@
 cmake-build-debug
 corewar.dSYM
 delete_files
+obj/
+corewar
+libft/obj
+libft/libft.a
+*.sw*
