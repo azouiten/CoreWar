@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 10:26:05 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/10 05:58:12 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/22 13:59:37 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ void		ft_execute_long_load(t_process **process, t_global *global_data)
 	int		load_arg_value;
 	int		reg_value;
 
+	load_arg_value = 0;
+	reg_value = 0;
 	if ((*process)->arg[0] == IND_CODE)
 		ft_long_load_ind(process, global_data, load_arg_value, reg_value);
 	else if ((*process)->arg[0] == DIR_CODE)

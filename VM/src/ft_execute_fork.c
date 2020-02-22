@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 09:48:27 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/10 05:28:31 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/22 13:58:50 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void			ft_execute_fork(t_process **process, t_global *global_data)
 {
 	t_process	*dup_process;
-	t_process	*current;
 	int			dir_arg;
 
 	dir_arg = ft_extract_argument_dir_short(global_data, process, 1);

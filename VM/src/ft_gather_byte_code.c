@@ -6,13 +6,13 @@
 /*   By: magoumi <magoumi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 04:14:09 by magoumi           #+#    #+#             */
-/*   Updated: 2020/02/21 23:00:57 by magoumi          ###   ########.fr       */
+/*   Updated: 2020/02/22 13:54:46 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewarh.h"
 
-void	ft_extract_name(t_global *data, int i, int cn)
+static void	ft_extract_name(t_global *data, int i)
 {
 	int	ret;
 
@@ -27,7 +27,7 @@ void	ft_extract_name(t_global *data, int i, int cn)
 		ft_manage_error(data, READ_FAIL, i, 0);
 }
 
-void	ft_extract_exec_code_size(t_global *data, int i)
+static void	ft_extract_exec_code_size(t_global *data, int i)
 {
 	char		c;
 	t_hexa		uni_hexa;
@@ -53,7 +53,7 @@ void	ft_extract_exec_code_size(t_global *data, int i)
 		ft_manage_error(data, BIG_CHAMP, i, 1);
 }
 
-void	ft_extract_comment(t_global *data, int i, int cn)
+static void	ft_extract_comment(t_global *data, int i)
 {
 	int			ret;
 
@@ -77,7 +77,7 @@ void	ft_extract_comment(t_global *data, int i, int cn)
 	}
 }
 
-void	ft_extract_exec_code(t_global *data, int i)
+static void	ft_extract_exec_code(t_global *data, int i)
 {
 	int			cn;
 	int			ret;
@@ -96,11 +96,7 @@ void	ft_extract_exec_code(t_global *data, int i)
 		ft_manage_error(data, READ_FAIL, i, 0);
 }
 
-/*
-*** name >> null bytes >> exec code size >> comment >> null >> exec code
-*/
-
-void	ft_gather_byte_code(t_global *data)
+void		ft_gather_byte_code(t_global *data)
 {
 	int	i;
 
@@ -113,11 +109,11 @@ void	ft_gather_byte_code(t_global *data)
 			i++;
 			continue ;
 		}
-		ft_extract_name(data, i, 0);
+		ft_extract_name(data, i);
 		if (!ft_dodge_bytes(data, i, 4) && (i = i + 1))
 			continue ;
 		ft_extract_exec_code_size(data, i);
-		ft_extract_comment(data, i, 0);
+		ft_extract_comment(data, i);
 		if (!ft_dodge_bytes(data, i, 4) && (i = i + 1))
 			continue ;
 		ft_extract_exec_code(data, i);

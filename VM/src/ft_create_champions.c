@@ -6,7 +6,7 @@
 /*   By: magoumi <magoumi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 21:57:29 by magoumi           #+#    #+#             */
-/*   Updated: 2020/02/21 19:44:39 by magoumi          ###   ########.fr       */
+/*   Updated: 2020/02/22 13:54:02 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	ft_champion_count(char **argv)
 
 static void	ft_init_champions(t_global *data)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	while (i < data->champion_count)
@@ -48,10 +48,6 @@ static void	ft_init_champions(t_global *data)
 		i++;
 	}
 }
-
-/*
-**	add protection to the next function
-*/
 
 void		ft_create_champions(t_global *data, char **argv)
 {

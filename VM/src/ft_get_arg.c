@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 03:37:34 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/10 06:05:18 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/22 14:04:06 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		ft_get_arg(t_process **process, t_global *global_data,
 {
 	int	arg;
 
-	if ((*process)->arg[arg_index] == REG_CODE)
+	if (!(arg = 0) && (*process)->arg[arg_index] == REG_CODE)
 	{
 		arg = global_data->arena[((*process)->process_cursor + *dodge)
 			% MEM_SIZE];

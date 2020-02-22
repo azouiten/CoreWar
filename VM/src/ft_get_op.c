@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/31 03:57:22 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/16 18:44:52 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/22 13:55:19 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static void			ft_execute_op(t_global *global_data, t_process **process)
 {
-	int				arg_type;
 	int				fail;
 
 	fail = 0;

@@ -6,7 +6,7 @@
 /*   By: magoumi <magoumi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 03:40:36 by magoumi           #+#    #+#             */
-/*   Updated: 2020/02/21 22:52:43 by magoumi          ###   ########.fr       */
+/*   Updated: 2020/02/22 11:18:27 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int		ft_cmp_magic_header(unsigned char *magic_header)
 	return (1);
 }
 
-void	ft_check_magic_headers(t_global *data, int i, int ret)
+void			ft_check_magic_headers(t_global *data, int i, int ret)
 {
 	unsigned char	magic_header[5];
 

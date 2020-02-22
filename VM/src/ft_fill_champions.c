@@ -6,7 +6,7 @@
 /*   By: magoumi <magoumi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 22:00:25 by magoumi           #+#    #+#             */
-/*   Updated: 2020/02/21 12:48:21 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/22 11:18:53 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static void		ft_assign_global_champion(char **argv, t_global *data,
 	data->champions[index].argn = argn;
 }
 
-int				ft_assigned(char **argv, t_global *data, int wn)
+static int		ft_assigned(char **argv, t_global *data, int wn)
 {
 	int			i;
 

@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 09:41:58 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/10 06:06:39 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/22 13:58:32 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int		ft_get_arg_short(t_process **process, t_global *global_data,
 {
 	int	arg;
 
+	arg = 0;
 	if ((*process)->arg[arg_index] == REG_CODE)
 	{
 		arg = global_data->arena[((*process)->process_cursor + *dodge)

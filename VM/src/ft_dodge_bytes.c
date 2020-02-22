@@ -6,7 +6,7 @@
 /*   By: magoumi <magoumi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 23:59:36 by magoumi           #+#    #+#             */
-/*   Updated: 2020/02/18 23:59:42 by magoumi          ###   ########.fr       */
+/*   Updated: 2020/02/22 13:55:07 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int			ft_dodge_bytes(t_global *data, int i, int bytes)
 {
-	int		ret;
 	char	buf[4];
 
 	if (read(data->champions[i].fd, buf, bytes) <= 0)

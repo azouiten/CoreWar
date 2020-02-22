@@ -6,31 +6,34 @@
 /*   By: magoumi <magoumi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 18:05:02 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/21 14:37:37 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/22 13:53:33 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewarh.h"
 
-static void		ft_get_dump_cycle(t_global *global_data, char **argv)
+static void		ft_get_dump_cycle(t_global *global_data, char **argv, int wn)
 {
-	int	wn;
 	int	cn;
+	int	next;
 
-	wn = 0;
 	while (argv[wn])
 	{
+		next = 0;
 		if (!ft_strcmp(argv[wn], "-dump") && argv[wn + 1])
 		{
 			cn = 0;
 			while (argv[wn + 1][cn] != '\0')
 			{
-				if (!ft_isdigit(argv[wn + 1][cn]))
-					return ;
+				if (!ft_isdigit(argv[wn + 1][cn]) && (next = 1))
+					break ;
 				cn++;
 			}
-			global_data->dump_cycle = ft_atoi(argv[wn + 1]);
-			return ;
+			if (next != 1)
+			{
+				global_data->dump_cycle = ft_atoi(argv[wn + 1]);
+				return ;
+			}
 		}
 		wn++;
 	}
@@ -100,12 +103,13 @@ int				main(int argc, char **argv)
 	int			i;
 
 	i = 0;
+	(void)argc;
 	ft_init_global_data(&global_data);
 	ft_create_champions(&global_data, argv);
 	ft_fill_champions(&global_data, argv);
 	ft_check_magic_headers(&global_data, 0, 0);
 	ft_gather_byte_code(&global_data);
-	ft_get_dump_cycle(&global_data, argv);
+	ft_get_dump_cycle(&global_data, argv, 0);
 	ft_get_valid_champions_count(&global_data);
 	ft_declare_champions(global_data);
 	ft_prepare_arena(&global_data);
