@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+         #
+#    By: melalj <melalj@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/11 17:52:15 by ohachim           #+#    #+#              #
-#    Updated: 2020/02/22 13:51:53 by ohachim          ###   ########.fr        #
+#    Updated: 2020/02/24 15:48:34 by melalj           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,7 +60,8 @@ SRC_NAME = main.c \
 	   ft_count_dodge_bytes.c \
 	   ft_arg_size.c \
 	   ft_check_registries.c \
-	   ft_copy_arena.c
+	   ft_copy_arena.c\
+	   print_arena.c
 
 SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
 
@@ -74,7 +75,7 @@ CPPFLAGS =-Iinclude -Ilibft/include
 
 LDFLAGS = -Llibft
 
-LDLIBS = -lft
+LDLIBS = -lft -lncurses
 
 NAME = corewar
 

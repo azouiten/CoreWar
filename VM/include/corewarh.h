@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewarh.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: magoumi <magoumi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: melalj <melalj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 17:56:42 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/21 19:46:29 by magoumi          ###   ########.fr       */
+/*   Updated: 2020/02/24 17:22:46 by melalj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <libft.h>
+# include <curses.h>
+
 # include "op.h"
+# include "visu.h"
 
 enum					e_operations
 {
@@ -132,6 +135,7 @@ typedef struct			s_global
 	int					number_of_checks;
 	int					all_time_cycles;
 	int					dump_cycle;
+	t_arena				visu_arena[4096];
 }						t_global;
 
 t_op					g_op_tab[17];
@@ -188,7 +192,7 @@ int						ft_extract_argument_dir_short(t_global *global_data,
 void					ft_execute_jump_if_zero(t_process **process,
 						t_global *global_data);
 void					ft_arena_cpy(t_global *global_data, int cpy_to,
-						int to_cpy);
+						int to_cpy, t_process *process);
 int						ft_get_arg_short(t_process **process,
 						t_global *global_data, int *dodge, int arg_index);
 void					ft_execute_store_index(t_process **process,
@@ -217,4 +221,10 @@ int						ft_check_registries(t_process **process, int reg_index,
 						int arg_num, t_global *global_data);
 void					ft_print_affs(t_global global_data);
 
+/*
+** VISU FUNC
+*/
+WINDOW *visu_battlegrounds(t_global *data);
+int	end_visu(void);
+int	visu_arena_print(t_global *data, WINDOW *win);
 #endif

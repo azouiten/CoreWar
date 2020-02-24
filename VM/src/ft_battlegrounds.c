@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/31 01:34:58 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/16 18:28:25 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/24 17:12:49 by melalj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,11 +93,13 @@ static void		ft_battlegrounds_afterlife(t_global *global_data)
 
 void			ft_battlegrounds(t_global *global_data, int after_life)
 {
+	WINDOW *win = visu_battlegrounds(global_data);
 	while (global_data->cycles_to_die > 0
 			&& ft_enough_processes(global_data) >= 1)
 	{
 		while (global_data->cycle_since_start < global_data->cycles_to_die)
 		{
+			visu_arena_print(global_data, win);
 			ft_get_op(global_data, NULL);
 			global_data->cycle_since_start += 1;
 		}
@@ -117,4 +119,5 @@ void			ft_battlegrounds(t_global *global_data, int after_life)
 		global_data->all_time_cycles += 1;
 		ft_battlegrounds_afterlife(global_data);
 	}
+	end_visu();
 }

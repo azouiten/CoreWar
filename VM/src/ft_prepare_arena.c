@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_prepare_arena.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: melalj <melalj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/26 14:23:25 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/14 17:04:00 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/24 17:30:04 by melalj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ static void	ft_get_starting_points(t_global *global_data)
 			i++;
 		global_data->champions[i].starting_point = mem_point;
 		mem_point = mem_point + step;
+		global_data->champions[i].number = checked;
 		checked++;
 	}
 	global_data->last_live_player = global_data->champions[i];
