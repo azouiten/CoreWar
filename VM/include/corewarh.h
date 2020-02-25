@@ -6,7 +6,7 @@
 /*   By: magoumi <magoumi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 17:56:42 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/21 19:46:29 by magoumi          ###   ########.fr       */
+/*   Updated: 2020/02/24 19:09:51 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,8 @@ typedef struct			s_champion
 typedef struct			s_aff
 {
 	int					value;
+	int					cycle;
+	int					written;
 	struct s_aff		*next;
 }						t_aff;
 

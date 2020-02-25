@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 10:42:41 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/21 12:46:02 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/24 19:12:30 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,20 @@
 
 void			ft_print_affs(t_global global_data)
 {
-	while (global_data.affs)
+	t_aff *temp;
+
+	temp = global_data.affs;
+	while (temp)
 	{
-		ft_printf("AFF: %c\n", global_data.affs->value);
-		global_data.affs = global_data.affs->next;
+		if ((temp->cycle <= global_data.dump_cycle
+				|| global_data.dump_cycle == -1) && !temp->written)
+		{
+			ft_printf("Aff: %c\n", temp->value);
+			temp->written = 1;
+		}
+		else
+			break ;
+		temp = temp->next;
 	}
 }
 
@@ -28,6 +38,8 @@ static t_aff	*ft_add_aff_node(int aff_value, t_global *global_data)
 	if (!(aff_node = (t_aff*)malloc(sizeof(t_aff))))
 		ft_manage_error(global_data, MALLOC_FAIL, -1, 1);
 	aff_node->value = aff_value;
+	aff_node->cycle = global_data->all_time_cycles;
+	aff_node->written = 0;
 	aff_node->next = NULL;
 	return (aff_node);
 }

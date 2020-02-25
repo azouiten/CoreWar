@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/19 21:45:10 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/10 05:32:29 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/25 16:16:48 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,12 @@ void			ft_execute_live(t_process **process, t_global *global_data)
 	global_data->number_lives_declared++;
 	if (live_arg_value * -1 > 0 && live_arg_value * -1
 		<= global_data->champion_count)
+	{
 		global_data->last_live_player =
 			global_data->champions[(live_arg_value * -1) - 1];
+		ft_printf("A process shows that player %d (%s) is alive\n",
+				live_arg_value * -1,
+				global_data->champions[(live_arg_value * -1) - 1]);
+	}
+
 }

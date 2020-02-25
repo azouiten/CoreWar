@@ -1,24 +1,31 @@
-
 op_cor/add.cor
 
 op_cor/add_carry.cor
 op_cor/aff.cor
 op_cor/and.cor
-op_cor/fork.cor
-op_cor/fork2.cor
 
+op_cor/Car.cor
+op_cor/fluttershy.cor
+op_cor/fork.cor
+
+op_cor/fork2.cor
+op_cor/helltrain.cor
 op_cor/ld_1.cor
 op_cor/ld_2.cor
 op_cor/ld_carry.cor
 op_cor/ldi_1.cor
-
 op_cor/ldi_2.cor
+
 op_cor/ldi_bug_in_zaz_corewar.cor
 op_cor/ldi_carry.cor
+op_cor/le_pet_de_nonne.cor
+op_cor/leapfrog.cor
 op_cor/lfork.cor
 op_cor/live.cor
+op_cor/live_forever.cor
 
 op_cor/lldi_carry.cor
+op_cor/md5.cor
 op_cor/or.cor
 op_cor/reg_after_fork.cor
 op_cor/st.cor
@@ -29,7 +36,6 @@ op_cor/sti_negative.cor
 op_cor/sub.cor
 op_cor/sub_carry.cor
 op_cor/t.cor
-
 op_cor/test_limit.cor
 op_cor/test_no_life.cor
 op_cor/test_ocp.cor
@@ -37,8 +43,8 @@ op_cor/test_ocp.cor
 op_cor/test_process_1.cor
 op_cor/test_process_2.cor
 op_cor/test_with_many_live.cor
-
 op_cor/testing_reg_after_fork.cor
-op_cor/xor.cor
+op_cor/toto.cor
 
+op_cor/xor.cor
 op_cor/zjmp_carry_with_fork.cor
