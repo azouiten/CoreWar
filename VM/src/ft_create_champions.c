@@ -6,7 +6,7 @@
 /*   By: magoumi <magoumi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 21:57:29 by magoumi           #+#    #+#             */
-/*   Updated: 2020/02/22 13:54:02 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/24 20:05:49 by melalj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ static void	ft_init_champions(t_global *data)
 		data->champions[i].argn = -1;
 		data->champions[i].fd = -1;
 		data->champions[i].starting_point = -1;
+		data->champions[i].last_live_cycle = 0;
+		data->champions[i].still_alive = 0;
 		i++;
 	}
 }

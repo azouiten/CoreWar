@@ -6,7 +6,7 @@
 /*   By: melalj <melalj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 15:03:20 by melalj            #+#    #+#             */
-/*   Updated: 2020/02/24 16:55:23 by melalj           ###   ########.fr       */
+/*   Updated: 2020/02/25 16:08:09 by melalj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,11 @@ typedef struct	s_arena
 	int				v;
 	int				cursor;
 }				t_arena;
+
+typedef struct s_visu
+{
+	WINDOW *win_arena;
+	WINDOW *win_stats;
+}				t_visu;
 
 #endif

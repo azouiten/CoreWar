@@ -6,7 +6,7 @@
 /*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/19 21:45:10 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/10 05:32:29 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/24 20:08:32 by melalj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,12 @@ void			ft_execute_live(t_process **process, t_global *global_data)
 	global_data->number_lives_declared++;
 	if (live_arg_value * -1 > 0 && live_arg_value * -1
 		<= global_data->champion_count)
+	{
 		global_data->last_live_player =
 			global_data->champions[(live_arg_value * -1) - 1];
+		//v
+		global_data->champions[(live_arg_value * -1) - 1].still_alive = global_data->cycles_to_die - global_data->cycle_since_start;
+		global_data->champions[(live_arg_value * -1) - 1].last_live_cycle = global_data->all_time_cycles;
+	}
+
 }
