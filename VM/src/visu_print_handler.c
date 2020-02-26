@@ -6,7 +6,7 @@
 /*   By: melalj <melalj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 03:12:35 by melalj            #+#    #+#             */
-/*   Updated: 2020/02/26 03:39:20 by melalj           ###   ########.fr       */
+/*   Updated: 2020/02/26 03:56:39 by melalj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ int			visu_key_handling(t_global *data, t_visu screen)
 	if (!data->v)
 		return (0);
 	nodelay(stdscr, TRUE);
-	//key = getch();
 	if ((key = getch()) == 'q')
 	{
 		endwin();

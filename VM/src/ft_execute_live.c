@@ -6,7 +6,7 @@
 /*   By: melalj <melalj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/19 21:45:10 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/26 03:50:11 by melalj           ###   ########.fr       */
+/*   Updated: 2020/02/26 03:56:14 by melalj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,4 @@ void			ft_execute_live(t_process **process, t_global *global_data)
 				live_arg_value * -1,
 				global_data->champions[(live_arg_value * -1) - 1].byte_name);
 	}
-
 }
