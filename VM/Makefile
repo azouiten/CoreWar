@@ -6,7 +6,7 @@
 #    By: melalj <melalj@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/11 17:52:15 by ohachim           #+#    #+#              #
-#    Updated: 2020/02/24 15:48:34 by melalj           ###   ########.fr        #
+#    Updated: 2020/02/26 03:19:42 by melalj           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,7 +61,10 @@ SRC_NAME = main.c \
 	   ft_arg_size.c \
 	   ft_check_registries.c \
 	   ft_copy_arena.c\
-	   print_arena.c
+	   visu_init.c\
+	   visu_print_handler.c\
+	   visu_print_arena.c\
+	   visu_print_stats.c
 
 SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
 

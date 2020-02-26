@@ -6,7 +6,7 @@
 /*   By: melalj <melalj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 17:56:42 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/25 20:16:46 by melalj           ###   ########.fr       */
+/*   Updated: 2020/02/26 03:18:34 by melalj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -226,7 +226,9 @@ void					ft_print_affs(t_global global_data);
 /*
 ** VISU FUNC
 */
-t_visu	visu_battlegrounds(t_global *data);
-int	end_visu(void);
-int	visu_key_handling(t_global *data, t_visu screen);
+t_visu					visu_battlegrounds(t_global *data);
+int						end_visu(void);
+int						visu_stats_print(t_global *data, t_visu screen);
+int						visu_arena_print(t_global *data, t_visu screen, int k);
+int						visu_key_handling(t_global *data, t_visu screen);
 #endif
