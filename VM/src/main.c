@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: magoumi <magoumi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: melalj <melalj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 18:05:02 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/22 13:53:33 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/26 03:39:42 by melalj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewarh.h"
 
-static void		ft_get_dump_cycle(t_global *global_data, char **argv, int wn)
+static void		ft_get_flags(t_global *global_data, char **argv, int wn)
 {
 	int	cn;
 	int	next;
@@ -35,6 +35,8 @@ static void		ft_get_dump_cycle(t_global *global_data, char **argv, int wn)
 				return ;
 			}
 		}
+		else if (ft_strequ(argv[wn], "--visu"))
+			global_data->v = 1;
 		wn++;
 	}
 }
@@ -95,6 +97,7 @@ static void		ft_init_global_data(t_global *global_data)
 	global_data->arena_dump = NULL;
 	global_data->print = 0;
 	global_data->affs = NULL;
+	global_data->v = 0;
 }
 
 int				main(int argc, char **argv)
@@ -109,7 +112,7 @@ int				main(int argc, char **argv)
 	ft_fill_champions(&global_data, argv);
 	ft_check_magic_headers(&global_data, 0, 0);
 	ft_gather_byte_code(&global_data);
-	ft_get_dump_cycle(&global_data, argv, 0);
+	ft_get_flags(&global_data, argv, 0);
 	ft_get_valid_champions_count(&global_data);
 	ft_declare_champions(global_data);
 	ft_prepare_arena(&global_data);

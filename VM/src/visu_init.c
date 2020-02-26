@@ -6,7 +6,7 @@
 /*   By: melalj <melalj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 03:05:18 by melalj            #+#    #+#             */
-/*   Updated: 2020/02/26 03:15:09 by melalj           ###   ########.fr       */
+/*   Updated: 2020/02/26 03:44:37 by melalj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,10 +97,12 @@ t_visu		visu_battlegrounds(t_global *data)
 	return (screen);
 }
 
-int			end_visu(void)
+int			end_visu(t_global *data)
 {
 	int	c;
 
+	if (!data->v)
+		return (0);
 	while ((c = getch()) != 'q')
 		endwin();
 	return (1);

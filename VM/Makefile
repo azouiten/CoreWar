@@ -6,7 +6,7 @@
 #    By: melalj <melalj@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/11 17:52:15 by ohachim           #+#    #+#              #
-#    Updated: 2020/02/26 03:19:42 by melalj           ###   ########.fr        #
+#    Updated: 2020/02/26 03:24:43 by melalj           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -90,18 +90,7 @@ CFLAGS = -Wall -Wextra -Werror
 
 .PHONY: all, clean, fclean, re
 
-all: $(NAME) #visu
-#*************************************#
-#VISUALISATOR RULES		      #
-#visu:                                #
-#	@cd Lem_vis ; make            #
-#visur:                               #
-#	@cd Lem_vis ; make re         #
-#visuc:                               #
-#	@cd Lem_vis ; make clean      #
-#visufc:                              #
-#	@cd Lem_vis ; make fclean     #
-#*************************************#
+all: $(NAME)
 
 $(NAME): $(OBJ)
 	@cd libft ; make

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_execute_live.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ohachim <ohachim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: melalj <melalj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/19 21:45:10 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/24 20:08:32 by melalj           ###   ########.fr       */
+/*   Updated: 2020/02/26 03:50:11 by melalj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,14 @@ void			ft_execute_live(t_process **process, t_global *global_data)
 	{
 		global_data->last_live_player =
 			global_data->champions[(live_arg_value * -1) - 1];
-		//v
-		global_data->champions[(live_arg_value * -1) - 1].still_alive = global_data->cycles_to_die - global_data->cycle_since_start;
-		global_data->champions[(live_arg_value * -1) - 1].last_live_cycle = global_data->all_time_cycles;
+		global_data->champions[(live_arg_value * -1) - 1].still_alive =
+				global_data->cycles_to_die - global_data->cycle_since_start;
+		global_data->champions[(live_arg_value * -1) - 1].last_live_cycle =
+				global_data->all_time_cycles;
+		if (!global_data->v)
+			ft_printf("A process shows that player %d (%s) is alive\n",
+				live_arg_value * -1,
+				global_data->champions[(live_arg_value * -1) - 1].byte_name);
 	}
 
 }

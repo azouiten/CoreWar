@@ -6,7 +6,7 @@
 /*   By: melalj <melalj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 17:56:42 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/26 03:18:34 by melalj           ###   ########.fr       */
+/*   Updated: 2020/02/26 03:41:13 by melalj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,8 @@ typedef struct			s_champion
 typedef struct			s_aff
 {
 	int					value;
+	int					cycle;
+	int					written;
 	struct s_aff		*next;
 }						t_aff;
 
@@ -138,6 +140,7 @@ typedef struct			s_global
 	int					all_time_cycles;
 	int					dump_cycle;
 	t_arena				visu_arena[4096];
+	int					v;
 }						t_global;
 
 t_op					g_op_tab[17];
@@ -159,7 +162,8 @@ void					ft_create_champions(t_global *global_data,
 void					ft_fill_champions(t_global *global_data, char **argv);
 void					ft_manage_error(t_global *global_data, int error_num,
 						int champion_index, int exit);
-void					ft_battlegrounds(t_global *global_data, int after_life);
+void					ft_battlegrounds(t_global *global_data, int after_life,
+						t_visu screen);
 void					ft_get_op(t_global *global_data,
 						t_process *temp_process);
 int						ft_check_arg_validity(int arg, int arg_num,
@@ -227,7 +231,7 @@ void					ft_print_affs(t_global global_data);
 ** VISU FUNC
 */
 t_visu					visu_battlegrounds(t_global *data);
-int						end_visu(void);
+int						end_visu(t_global *data);
 int						visu_stats_print(t_global *data, t_visu screen);
 int						visu_arena_print(t_global *data, t_visu screen, int k);
 int						visu_key_handling(t_global *data, t_visu screen);

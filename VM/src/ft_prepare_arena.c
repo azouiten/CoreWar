@@ -6,7 +6,7 @@
 /*   By: melalj <melalj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/26 14:23:25 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/24 17:30:04 by melalj           ###   ########.fr       */
+/*   Updated: 2020/02/26 03:45:32 by melalj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ static void	ft_get_starting_points(t_global *global_data)
 
 void		ft_prepare_arena(t_global *global_data)
 {
+	t_visu	screen;
+
 	if (!(global_data->arena = (unsigned char*)malloc(sizeof(unsigned char)
 								* MEM_SIZE)))
 		ft_manage_error(global_data, MALLOC_FAIL, -1, 1);
@@ -46,5 +48,9 @@ void		ft_prepare_arena(t_global *global_data)
 	ft_get_starting_points(global_data);
 	ft_create_initial_processes(global_data);
 	ft_fill_arena(global_data);
-	ft_battlegrounds(global_data, 1);
+	screen.win_arena = NULL;
+	screen.win_stats = NULL;
+	if (global_data->v)
+		screen = visu_battlegrounds(global_data);
+	ft_battlegrounds(global_data, 1, screen);
 }

@@ -6,7 +6,7 @@
 /*   By: magoumi <magoumi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 04:14:09 by magoumi           #+#    #+#             */
-/*   Updated: 2020/02/22 13:54:46 by ohachim          ###   ########.fr       */
+/*   Updated: 2020/02/25 16:31:45 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void	ft_extract_exec_code_size(t_global *data, int i)
 	uni_hexa.buf[1] = uni_hexa.buf[2];
 	uni_hexa.buf[2] = c;
 	data->champions[i].hex_code_size = uni_hexa.value;
-	if (uni_hexa.value > CHAMP_MAX_SIZE || !uni_hexa.value)
+	if (uni_hexa.value > CHAMP_MAX_SIZE)
 		ft_manage_error(data, BIG_CHAMP, i, 1);
 }
 
