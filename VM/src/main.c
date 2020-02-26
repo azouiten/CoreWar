@@ -6,7 +6,7 @@
 /*   By: melalj <melalj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 18:05:02 by ohachim           #+#    #+#             */
-/*   Updated: 2020/02/26 03:39:42 by melalj           ###   ########.fr       */
+/*   Updated: 2020/02/26 04:02:02 by ohachim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ static void		ft_get_flags(t_global *global_data, char **argv, int wn)
 				return ;
 			}
 		}
-		else if (ft_strequ(argv[wn], "--visu"))
-			global_data->v = 1;
+		else if (ft_strequ(argv[wn], "--visu") && (global_data->v = 1))
+			return ;
 		wn++;
 	}
 }
