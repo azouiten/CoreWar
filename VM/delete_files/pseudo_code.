@@ -1,6 +1,0 @@
-processes do stuff
-check for dead processes and terminate them
-increment checks
-if number of lives is greater than or equal NBR_LIVE substract CYCLES_DELTA from CYCLES_TO_DIE
-reset live nbr
-if checks == 10 substract CYCLES_DELTA from CYCLES_TO_DIE
